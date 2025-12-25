@@ -45,7 +45,6 @@ public class EnemyMovement : MonoBehaviour
         int bestHCost;
         foreach(NodeClass node in neighborNodes)
         {
-            node.hCost = 
         }
     }
 }

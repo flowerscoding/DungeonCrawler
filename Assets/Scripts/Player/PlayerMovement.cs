@@ -57,8 +57,8 @@ public class PlayerMovement : MonoBehaviour
             case "left": nodeX = -1; nodeY = 0; break;
             case "right": nodeX = 1; nodeY = 0; break;
         }
-        nodeX += Mathf.FloorToInt(playerRB.position.x);
-        nodeY += Mathf.FloorToInt(playerRB.position.z);
+        nodeX += Mathf.FloorToInt(playerRB.position.x - Node.instance.nodeGrid.gridOrigin.x); //change to + if grid origin.x is positive. same is said for z
+        nodeY += Mathf.FloorToInt(playerRB.position.z - Node.instance.nodeGrid.gridOrigin.z);
         NodeClass targetNode = Node.instance.nodeGrid.grid[nodeX, nodeY];
         StartCoroutine(MoveToTarget(targetNode));
     }

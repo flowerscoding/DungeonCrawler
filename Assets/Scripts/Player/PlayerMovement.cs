@@ -1,9 +1,10 @@
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float duration;
     public Rigidbody playerRB;
 
     private InputAction _upAction;
@@ -20,16 +21,62 @@ public class PlayerMovement : MonoBehaviour
     void OnEnable()
     {
         _upAction.performed += MoveUp;
+        _downAction.performed += MoveDown;
+        _leftAction.performed += MoveLeft;
+        _rightAction.performed += MoveRight;
     }
-    public void MoveUp(InputAction.CallbackContext ctx)
+    void MoveUp(InputAction.CallbackContext ctx)
     {
         if(ctx.performed)
+            MoveDirection("up");
+    }
+    void MoveDown(InputAction.CallbackContext ctx)
+    {
+        if(ctx.performed)
+            MoveDirection("down");
+    }
+    void MoveLeft(InputAction.CallbackContext ctx)
+    {
+        if(ctx.performed)
+            MoveDirection("left");
+    }
+    void MoveRight(InputAction.CallbackContext ctx)
+    {
+        if(ctx.performed)
+            MoveDirection("right");
+    }
+    void MoveDirection(string direction)
+    {
+        int nodeX = 0;
+        int nodeY = 0;
+        switch(direction)
         {
-            int indexX = Mathf.FloorToInt(playerRB.position.x);
-            int indexY = Mathf.FloorToInt(playerRB.position.z);
-            NodeClass curNode = Node.instance.nodeGrid.grid[indexX, indexY];
-            print(curNode.worldPos);
-            print(curNode.indexX + " , " + curNode.indexY);
+            case "up": nodeX = 0; nodeY = 1; break;
+            case "down": nodeX = 0; nodeY = -1; break;
+            case "left": nodeX = -1; nodeY = 0; break;
+            case "right": nodeX = 1; nodeY = 0; break;
+        }
+        nodeX += Mathf.FloorToInt(playerRB.position.x);
+        nodeY += Mathf.FloorToInt(playerRB.position.z);
+        NodeClass targetNode = Node.instance.nodeGrid.grid[nodeX, nodeY];
+        StartCoroutine(MoveToTarget(targetNode));
+    }
+    IEnumerator MoveToTarget(NodeClass targetNode)
+    {
+        print(1);
+        Vector3 start = playerRB.position;
+        Vector3 goal = targetNode.worldPos;
+        float t = 0;
+        while (t < 1)
+        {
+            print(2);
+            t += Time.deltaTime / duration;
+            playerRB.MovePosition(Vector3.Lerp(start, goal, t));
+            yield return null;
+        }
+        if(t > 1)
+        {
+            playerRB.position = goal;
         }
     }
 }

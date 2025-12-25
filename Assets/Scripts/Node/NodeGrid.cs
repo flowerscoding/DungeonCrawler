@@ -13,17 +13,17 @@ public class NodeGrid : MonoBehaviour
     void CreateGrid()
     {
         grid = new NodeClass[gridSize, gridSize];
-        float xOff;
-        float zOff;
+        float xOff = 0;
+        float zOff = 0;
         for(int x = 0; x < gridSize; x++)
         {
             for(int y = 0; y < gridSize; y++)
             {
-                xOff = x + offSet;
-                zOff = y + offSet;
                 Vector3 worldPos = gridOrigin + new Vector3(xOff, 0, zOff);
                 grid[x, y] = new NodeClass(worldPos, x, y);
+                zOff = y + offSet;
             }
+            xOff = x + offSet;
         }
     }
 }

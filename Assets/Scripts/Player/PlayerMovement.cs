@@ -64,7 +64,6 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator MoveToTarget(NodeClass targetNode)
     {
-        TurnManager.instance.EndPlayerTurn();
 
         Vector3 start = playerRB.position;
         Vector3 goal = targetNode.worldPos;

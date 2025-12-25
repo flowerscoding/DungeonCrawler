@@ -3,6 +3,7 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     public static InputManager instance;
+    public PlayerInputActions inputActions;
     void Awake()
     {
         if(instance != null)
@@ -11,5 +12,7 @@ public class InputManager : MonoBehaviour
             return;
         }
         instance = this;
+        inputActions = new PlayerInputActions();
+        inputActions.Enable();
     }
 }

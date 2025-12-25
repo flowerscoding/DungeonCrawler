@@ -22,8 +22,7 @@ public class NodeGrid : MonoBehaviour
                 xOff = x + offSet;
                 zOff = y + offSet;
                 Vector3 worldPos = gridOrigin + new Vector3(xOff, 0, zOff);
-
-                grid[x, y].worldPos = worldPos;
+                grid[x, y] = new NodeClass(worldPos, x, y);
             }
         }
     }

@@ -4,7 +4,7 @@ public class Player : MonoBehaviour
 {
     public static Player instance;
     public PlayerMovement playerMovement;
-    public PlayerNode playerNode;
+    public GridAgent playerGridAgent;
     void Awake()
     {
         if(instance != null)

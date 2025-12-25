@@ -57,12 +57,11 @@ public class PlayerMovement : MonoBehaviour
             case "left": nodeX = -1; nodeY = 0; break;
             case "right": nodeX = 1; nodeY = 0; break;
         }
-        nodeX += Player.instance.playerNode.nodeX;
-        nodeY += Player.instance.playerNode.nodeY;
-        print("NODE X: " + nodeX + " NODE Y : "  + nodeY);
+        nodeX += Player.instance.playerGridAgent.nodeX;
+        nodeY += Player.instance.playerGridAgent.nodeY;
         NodeClass targetNode = Node.instance.nodeGrid.grid[nodeX, nodeY];
 
-        Player.instance.playerNode.SetNode(targetNode);
+        Player.instance.playerGridAgent.SetNode(targetNode);
         StartCoroutine(MoveToTarget(targetNode));
     }
     IEnumerator MoveToTarget(NodeClass targetNode)

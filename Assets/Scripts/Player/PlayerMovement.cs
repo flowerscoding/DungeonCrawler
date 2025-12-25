@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void MoveDirection(string direction)
     {
+        if(TurnManager.instance.state != TurnManager.State.PlayerTurn) return;
         int nodeX = 0;
         int nodeY = 0;
         switch(direction)
@@ -63,6 +64,8 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator MoveToTarget(NodeClass targetNode)
     {
+        TurnManager.instance.EndPlayerTurn();
+
         Vector3 start = playerRB.position;
         Vector3 goal = targetNode.worldPos;
         float t = 0;
@@ -74,8 +77,6 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
         if(t > 1)
-        {
             playerRB.position = goal;
-        }
     }
 }

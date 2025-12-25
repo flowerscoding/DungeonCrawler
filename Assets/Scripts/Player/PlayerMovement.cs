@@ -63,7 +63,6 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator MoveToTarget(NodeClass targetNode)
     {
-        print(1);
         Vector3 start = playerRB.position;
         Vector3 goal = targetNode.worldPos;
         float t = 0;

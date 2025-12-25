@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,6 +23,13 @@ public class PlayerMovement : MonoBehaviour
     }
     public void MoveUp(InputAction.CallbackContext ctx)
     {
-        
+        if(ctx.performed)
+        {
+            int indexX = Mathf.FloorToInt(playerRB.position.x);
+            int indexY = Mathf.FloorToInt(playerRB.position.z);
+            NodeClass curNode = Node.instance.nodeGrid.grid[indexX, indexY];
+            print(curNode.worldPos);
+            print(curNode.indexX + " , " + curNode.indexY);
+        }
     }
 }

@@ -34,7 +34,7 @@ public class EnemySystem : MonoBehaviour
         {
             if(enemy.enemyState.state == EnemyState.State.active)
             {
-                enemy.enemyAI.DecideAction(enemy);
+                enemy.DecideAction();
             }
         }
     }

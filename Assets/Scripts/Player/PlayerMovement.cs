@@ -81,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
         Player.instance.playerGridAgent.SetNode(targetNode);
 
         StartCoroutine(MoveToTarget(targetNode));
+        
         Enemy.instance.enemySystem.MoveAI();
     }
     IEnumerator MoveToTarget(NodeClass targetNode)

@@ -8,23 +8,19 @@ public class EnemyAI : MonoBehaviour
         Move,
         Attack,
     }
-    public void DecideAction(EnemyController enemyController)
+    public CharacterStateMachine.State DecideAction(GridAgent gridAgent)
     {
-        Action action = ActionCheck(enemyController);
-        switch(action)
-        {
-            case Action.Move: enemyController.enemyMovement.MoveAI(); break;
-            case Action.Attack: print("ATTACK"); break;
-        }
+        CharacterStateMachine.State action = ActionCheck(gridAgent);
+        return action;
     }
-    Action ActionCheck(EnemyController enemyController)
+    CharacterStateMachine.State ActionCheck(GridAgent gridAgent)
     {
-        int dx = Mathf.Abs(enemyController.gridAgent.nodeX - Player.instance.playerGridAgent.nodeX); 
-        int dy = Mathf.Abs(enemyController.gridAgent.nodeY - Player.instance.playerGridAgent.nodeY);
+        int dx = Mathf.Abs(gridAgent.nodeX - Player.instance.playerGridAgent.nodeX); 
+        int dy = Mathf.Abs(gridAgent.nodeY - Player.instance.playerGridAgent.nodeY);
         int distance = dx + dy;
         if(distance <= 1)
-            return Action.Attack;
+            return CharacterStateMachine.State.Attacking;
         else
-            return Action.Move;
+            return CharacterStateMachine.State.Walking;
     }
 }

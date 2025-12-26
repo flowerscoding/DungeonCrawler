@@ -7,6 +7,7 @@ public class TurnManager : MonoBehaviour
     {
         PlayerTurn,
         EnemyTurn,
+        Resolving,
     }
     public State state;
     void Awake()
@@ -18,12 +19,8 @@ public class TurnManager : MonoBehaviour
         }
         instance = this;
     }
-    public void EndPlayerTurn()
+    public void ChangeTurn(State newState)
     {
-        state = State.EnemyTurn;
-    }
-    public void StartPlayerTurn()
-    {
-        state = State.PlayerTurn;
+        state = newState;
     }
 }

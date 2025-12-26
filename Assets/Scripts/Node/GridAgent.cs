@@ -19,8 +19,10 @@ public class GridAgent : MonoBehaviour
     }
     public void SetNode(NodeClass newNode)
     {
+        node.state = NodeClass.State.Empty;
         node = newNode;
-        nodeX = node.indexX;
-        nodeY = node.indexY;
+        nodeX = node.nodeX;
+        nodeY = node.nodeY;
+        node.state = NodeClass.State.Unwalkable;
     }
 }

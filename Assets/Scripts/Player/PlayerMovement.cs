@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -45,6 +46,20 @@ public class PlayerMovement : MonoBehaviour
         if(ctx.performed)
             MoveDirection("right");
     }
+    bool CheckIfWalkable(NodeClass targetNode)
+    {
+        if(targetNode.state != NodeClass.State.Empty)
+        {
+            print("blocked");
+            PlayCrashAnimation();
+            return false;
+        }
+        return true;
+    }
+    void PlayCrashAnimation() //like pokemon's walk animation towards a wall. maybe add sfx
+    {
+        return;
+    }
     void MoveDirection(string direction)
     {
         if(TurnManager.instance.state != TurnManager.State.PlayerTurn) return;
@@ -60,12 +75,18 @@ public class PlayerMovement : MonoBehaviour
         nodeX += Player.instance.playerGridAgent.nodeX;
         nodeY += Player.instance.playerGridAgent.nodeY;
         NodeClass targetNode = Node.instance.nodeGrid.grid[nodeX, nodeY];
-
+        
+        if(!CheckIfWalkable(targetNode))
+            return; //return if empty. shouldn't waste a player's turn
+        
         Player.instance.playerGridAgent.SetNode(targetNode);
+
         StartCoroutine(MoveToTarget(targetNode));
+        Enemy.instance.enemySystem.MoveAI();
     }
     IEnumerator MoveToTarget(NodeClass targetNode)
     {
+        TurnManager.instance.ChangeTurn(TurnManager.State.EnemyTurn);
         Vector3 start = playerRB.position;
         Vector3 goal = targetNode.worldPos;
         float t = 0;

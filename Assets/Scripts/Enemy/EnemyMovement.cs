@@ -1,50 +1,34 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public Transform testEnemy;
-    private NodeClass _startNode;
-    private NodeClass _targetNode;
+    public GridAgent gridAgent;
+    public float duration;
+    public void MoveAI()
+    {
+        FindPath();
+    }
+    void FindPath()
+    {
+        Pathfinder newPath = new Pathfinder();
+        NodeClass targetNode = Player.instance.playerGridAgent.node;
+        NodeClass bestNode = newPath.FindPath(gridAgent.node, targetNode);
+        Vector3 start = gridAgent.node.worldPos;
 
-    private List<NodeClass> neighborNodes = new List<NodeClass>();
-    public void MoveEnemy()
-    {
-        int nodeX = Mathf.FloorToInt(testEnemy.position.x + Node.instance.nodeGrid.gridOrigin.x);
-        int nodeY = Mathf.FloorToInt(testEnemy.position.z + Node.instance.nodeGrid.gridOrigin.z);
-        nodeX += Mathf.FloorToInt(Node.instance.nodeGrid.gridOrigin.x);
-        nodeY += Mathf.FloorToInt(Node.instance.nodeGrid.gridOrigin.z);
-        _startNode = Node.instance.nodeGrid.grid[nodeX, nodeY];
+        gridAgent.SetNode(bestNode);
+        StartCoroutine(EnemyAnim(start, bestNode.worldPos));
     }
-    void AStarPathfinding()
+    IEnumerator EnemyAnim(Vector3 start, Vector3 goal)
     {
-        int[,] dirs = new int[,]
+        float t = 0;
+        while (t < 1)
         {
-            {0, 1},
-            {0, -1},
-            {1, 0},
-            {-1, 0},
-        };
-        for(int i = 0; i < 4; i++)
-        {
-            int nodeX = dirs[i, 0] + _startNode.indexX;
-            int nodeY = dirs[i, 1] + _startNode.indexY;
-            int gridSize = Node.instance.nodeGrid.gridSize;
-            if(nodeX > 0 && nodeX < gridSize
-                && nodeY > 0 && nodeY < gridSize)
-            {
-                NodeClass neighborNode = Node.instance.nodeGrid.grid[nodeX, nodeY];
-                neighborNodes.Add(neighborNode);
-            }
+            t += Time.deltaTime / duration;
+            transform.position = Vector3.Lerp(start, goal, t);
+            yield return null;
         }
-    }
-    void CheckNeighbors()
-    {
-        NodeClass bestNode;
-        int bestFCost;
-        int bestHCost;
-        foreach(NodeClass node in neighborNodes)
-        {
-        }
+        if(t > 1)
+            transform.position = goal;
     }
 }

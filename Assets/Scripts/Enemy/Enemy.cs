@@ -3,7 +3,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public static Enemy instance;
-    public EnemyMovement enemyMovement;
+    public EnemySystem enemySystem;
     void Awake()
     {
         if(instance != null)

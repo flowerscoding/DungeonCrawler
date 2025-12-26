@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -97,6 +96,9 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
         if(t > 1)
+        {
             playerRB.position = goal;
+            TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
+        }
     }
 }

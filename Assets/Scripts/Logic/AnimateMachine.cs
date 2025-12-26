@@ -8,6 +8,7 @@ public class AnimateMachine : MonoBehaviour
         switch(state)
         {
             case CharacterStateMachine.State.Idle : animator.Play("Idle"); break;
+            case CharacterStateMachine.State.Aggro : animator.Play("Aggro");
             case CharacterStateMachine.State.Walking : animator.Play("Walk"); break;
             case CharacterStateMachine.State.Attacking : animator.Play("Attack"); break;
         }

@@ -8,12 +8,10 @@ public class EnemyMovement : MonoBehaviour
     public float duration;
     public void MoveAI(Action<CharacterStateMachine.State> onCompleteAction)
     {
-        print(3);
         FindPath(onCompleteAction);
     }
     void FindPath(Action<CharacterStateMachine.State> onCompleteAction)
     {
-        print(2);
         Pathfinder newPath = new Pathfinder();
         NodeClass targetNode = Player.instance.playerGridAgent.node;
         NodeClass bestNode = newPath.FindPath(gridAgent.node, targetNode);
@@ -27,6 +25,9 @@ public class EnemyMovement : MonoBehaviour
         print(1);
         float t = 0;
         //run animation
+        Vector3 direction = goal - start;
+        direction.y = 0f;
+        gridAgent.transform.forward = direction.normalized;
         while (t < 1)
         {
             t += Time.deltaTime / duration;

@@ -37,7 +37,7 @@ public class EnemyMovement : MonoBehaviour
         {
 
             transform.position = goal;
-            onCompleteAction.Invoke(CharacterStateMachine.State.Idle);
+            onCompleteAction.Invoke(CharacterStateMachine.State.Aggro);
         }
     }
 }

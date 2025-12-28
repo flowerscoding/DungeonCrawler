@@ -10,6 +10,14 @@ public class TurnManager : MonoBehaviour
         Resolving,
     }
     public State state;
+    public enum BattleState
+    {
+        PlayerTurn,
+        EnemyTurn,
+        PlayerAttacking,
+        EnemyAttacking,
+    }
+    public BattleState battleState;
     void Awake()
     {
         if(instance != null)
@@ -22,5 +30,9 @@ public class TurnManager : MonoBehaviour
     public void ChangeTurn(State newState)
     {
         state = newState;
+    }
+    public void ChangeBattleTurn(BattleState newState)
+    {
+        battleState = newState;
     }
 }

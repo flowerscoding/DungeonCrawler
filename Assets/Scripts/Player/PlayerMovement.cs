@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -50,13 +51,15 @@ public class PlayerMovement : MonoBehaviour
         if(targetNode.state != NodeClass.State.Empty)
         {
             print("blocked");
-            PlayCrashAnimation();
+            PlayCrashAnimation(targetNode);
             return false;
         }
         return true;
     }
-    void PlayCrashAnimation() //like pokemon's walk animation towards a wall. maybe add sfx
+    void PlayCrashAnimation(NodeClass targetNode) //like pokemon's walk animation towards a wall. maybe add sfx
     {
+        Vector3 direction = targetNode.worldPos - playerRB.transform.position;
+        playerRB.transform.forward = direction;
         return;
     }
     void MoveDirection(string direction)
@@ -71,14 +74,14 @@ public class PlayerMovement : MonoBehaviour
             case "left": nodeX = -1; nodeY = 0; break;
             case "right": nodeX = 1; nodeY = 0; break;
         }
-        nodeX += Player.instance.playerGridAgent.nodeX;
-        nodeY += Player.instance.playerGridAgent.nodeY;
+        nodeX += Player.instance.gridAgent.nodeX;
+        nodeY += Player.instance.gridAgent.nodeY;
         NodeClass targetNode = Node.instance.nodeGrid.grid[nodeX, nodeY];
         
         if(!CheckIfWalkable(targetNode))
             return; //return if empty. shouldn't waste a player's turn
         
-        Player.instance.playerGridAgent.SetNode(targetNode);
+        Player.instance.gridAgent.SetNode(targetNode);
 
         StartCoroutine(MoveToTarget(targetNode));
         
@@ -86,6 +89,8 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator MoveToTarget(NodeClass targetNode)
     {
+        Vector3 direction = targetNode.worldPos - playerRB.transform.position;
+        playerRB.transform.forward = direction;
         TurnManager.instance.ChangeTurn(TurnManager.State.EnemyTurn);
         Vector3 start = playerRB.position;
         Vector3 goal = targetNode.worldPos;

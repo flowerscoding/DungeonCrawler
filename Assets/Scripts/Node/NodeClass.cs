@@ -8,12 +8,14 @@ public class NodeClass
     public int gCost;
     public int hCost;
     public int fCost => gCost + hCost;
+
     public enum State
     {
         Empty,
         Unwalkable
     }
     public State state;
+    public EnemyController occupant;
     public NodeClass(Vector3 _worldPos, int _nodeX, int _nodeY)
     {
         worldPos = _worldPos;

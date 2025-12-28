@@ -15,8 +15,8 @@ public class EnemyAI : MonoBehaviour
     }
     CharacterStateMachine.State ActionCheck(GridAgent gridAgent)
     {
-        int dx = Mathf.Abs(gridAgent.nodeX - Player.instance.playerGridAgent.nodeX); 
-        int dy = Mathf.Abs(gridAgent.nodeY - Player.instance.playerGridAgent.nodeY);
+        int dx = Mathf.Abs(gridAgent.nodeX - Player.instance.gridAgent.nodeX); 
+        int dy = Mathf.Abs(gridAgent.nodeY - Player.instance.gridAgent.nodeY);
         int distance = dx + dy;
         if(distance <= 1)
             return CharacterStateMachine.State.Attacking;

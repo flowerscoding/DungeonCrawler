@@ -13,7 +13,7 @@ public class EnemyMovement : MonoBehaviour
     void FindPath(Action<CharacterStateMachine.State> onCompleteAction)
     {
         Pathfinder newPath = new Pathfinder();
-        NodeClass targetNode = Player.instance.playerGridAgent.node;
+        NodeClass targetNode = Player.instance.gridAgent.node;
         NodeClass bestNode = newPath.FindPath(gridAgent.node, targetNode);
         Vector3 start = gridAgent.node.worldPos;
 
@@ -22,7 +22,6 @@ public class EnemyMovement : MonoBehaviour
     }
     IEnumerator EnemyAnim(Vector3 start, Vector3 goal, Action<CharacterStateMachine.State> onCompleteAction)
     {
-        print(1);
         float t = 0;
         //run animation
         Vector3 direction = goal - start;

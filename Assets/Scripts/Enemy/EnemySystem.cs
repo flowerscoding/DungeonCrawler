@@ -16,8 +16,8 @@ public class EnemySystem : MonoBehaviour
         activeEnemies.Clear();
         foreach(EnemyController enemy in enemies)
         {
-            int xDis = Mathf.Abs(enemy.gridAgent.nodeX - Player.instance.playerGridAgent.nodeX);
-            int yDis = Mathf.Abs(enemy.gridAgent.nodeY - Player.instance.playerGridAgent.nodeY);
+            int xDis = Mathf.Abs(enemy.gridAgent.nodeX - Player.instance.gridAgent.nodeX);
+            int yDis = Mathf.Abs(enemy.gridAgent.nodeY - Player.instance.gridAgent.nodeY);
             if(xDis + yDis < activateDistance)
             {
                 enemy.enemyState.state = EnemyState.State.active;

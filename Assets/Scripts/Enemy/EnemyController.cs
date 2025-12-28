@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     public EnemyState enemyState;
     public AnimateMachine animateMachine;
     public CharacterStateMachine characterStateMachine;
+    public EnemyHealth enemyHealth;
 
     public void MoveCharacter()
     {
@@ -29,5 +30,13 @@ public class EnemyController : MonoBehaviour
     public void DecideAction()
     {
         CharacterStateChange(enemyAI.DecideAction(gridAgent));
+    }
+    public void DecideAttack()
+    {
+        
+    }
+    public void TakeDamage(int damage)
+    {
+        enemyHealth.curHealth -= damage;
     }
 }

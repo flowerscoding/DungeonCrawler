@@ -3,8 +3,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public static Player instance;
+    public PlayerData playerData;
     public PlayerMovement playerMovement;
-    public GridAgent playerGridAgent;
+    public GridAgent gridAgent;
+    public PlayerAttack playerAttack;
     void Awake()
     {
         if(instance != null)

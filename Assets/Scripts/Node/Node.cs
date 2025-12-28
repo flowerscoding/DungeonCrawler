@@ -13,4 +13,9 @@ public class Node : MonoBehaviour
         }
         instance = this;
     }
+    public void ResetNode(NodeClass node)
+    {
+        node.occupant = null;
+        node.state = NodeClass.State.Empty;
+    }
 }

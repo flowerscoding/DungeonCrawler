@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     }
     bool CheckIfWalkable(NodeClass targetNode)
     {
+        print(targetNode.state);
         if(targetNode.state != NodeClass.State.Empty)
         {
             print("blocked");

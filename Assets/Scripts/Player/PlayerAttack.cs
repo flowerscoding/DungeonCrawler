@@ -19,17 +19,16 @@ public class PlayerAttack : MonoBehaviour
             return;
         NodeClass targetNode = NodeFacing();
 
-        if (targetNode.occupant != null)
+        if (targetNode.occupant != null 
+        && targetNode.occupant.enemyState.state  == EnemyState.State.active)
             ExecuteAttack(targetNode);
     }
     void ExecuteAttack(NodeClass targetNode)
     {
-        //TurnManager.instance.ChangeBattleTurn(TurnManager.BattleState.PlayerAttacking);
         targetNode.occupant.TakeDamage(AttackDamageCalculation());
-        print(targetNode.occupant.enemyHealth.curHealth);
     }
     int AttackDamageCalculation()
-    {//ADD OR COMPONENTS IN THE FUTURE FOR DAMAGE FACTORS
+    {//ADD MORE COMPONENTS IN THE FUTURE FOR DAMAGE FACTORS
         int attackDamage = Player.instance.playerData.attackDamage;
         return attackDamage;
     }

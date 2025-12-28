@@ -5,20 +5,22 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public GridAgent gridAgent;
+    public EnemyData enemyData;
     public EnemyAI enemyAI;
     public EnemyMovement enemyMovement;
     public EnemyState enemyState;
     public AnimateMachine animateMachine;
     public CharacterStateMachine characterStateMachine;
     public EnemyHealth enemyHealth;
+    public EnemyAttack enemyAttack;
     public Vector3 deadSpot;
     public float deathAnimationDuration;
     public void MoveCharacter()
     {
-        Action<CharacterStateMachine.State> characterStateChange = CharacterStateChange;
-        enemyMovement.MoveAI(characterStateChange);
+        Action<CharacterStateMachine.State> characterStateFunction = CharacterStateFunction;
+        enemyMovement.MoveAI(characterStateFunction);
     }
-    public void CharacterStateChange(CharacterStateMachine.State newState)
+    public void CharacterStateFunction(CharacterStateMachine.State newState)
     {
         characterStateMachine.state = newState;
         animateMachine.Animate(newState);
@@ -26,30 +28,46 @@ public class EnemyController : MonoBehaviour
         {
             case CharacterStateMachine.State.Walking : MoveCharacter(); break;
             case CharacterStateMachine.State.Attacking : break;
+            case CharacterStateMachine.State.Hurt : StartCoroutine(TrackHurt()); break;
             default: break;
+        }
+    }
+    IEnumerator TrackHurt()
+    {
+        float t = 0;
+        while (t < enemyData.hurtDuration)
+        {
+            t += Time.deltaTime / enemyData.hurtDuration;
+            yield return null;
+        }
+        if (t >= enemyData.hurtDuration)
+        {
+            if(enemyHealth.curHealth > 0)
+            {
+                AttackPlayer();
+            }
+            else
+                ExecuteDeath();
         }
     }
     public void DecideAction()
     {
-        CharacterStateChange(enemyAI.DecideAction(gridAgent));
+        CharacterStateFunction(enemyAI.DecideAction(gridAgent));
     }
-    public void DecideAttack()
+    public void AttackPlayer()
     {
         
     }
     public void TakeDamage(int damage)
     {
         enemyHealth.curHealth -= damage;
-        if(enemyHealth.curHealth <= 0)
-        {
-            ExecuteDeath();
-        }
+        CharacterStateFunction(CharacterStateMachine.State.Hurt);
     }
     public void ExecuteDeath()
     {
         Enemy.instance.enemySystem.activeEnemies.Remove(this);
         enemyState.state = EnemyState.State.inactive;
-        CharacterStateChange(CharacterStateMachine.State.Dead);
+        CharacterStateFunction(CharacterStateMachine.State.Dead);
         StartCoroutine(RunDeathAnimation());
     }
     IEnumerator RunDeathAnimation()

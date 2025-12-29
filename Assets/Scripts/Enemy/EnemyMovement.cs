@@ -38,6 +38,7 @@ public class EnemyMovement : MonoBehaviour
 
             transform.position = goal;
             onCompleteAction.Invoke(CharacterStateMachine.State.Aggro);
+            TurnManager.instance.ChangeBattleTurn(TurnManager.BattleState.PlayerTurn);
         }
     }
 }

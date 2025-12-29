@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: Alligatle_Data
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Alligatle
-  maxHealth: 2
-  attack: 1
-  idleDuration: 5
-  walkDuration: 2
-  attackDuration: 2
-  hurtDuration: 0.8
-  deadDuration: 5
+  maxHealth: 10
+  attackDamage: 1
+  attackHitFrame: 0.3

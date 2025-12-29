@@ -20,11 +20,13 @@ public class PlayerAttack : MonoBehaviour
         NodeClass targetNode = NodeFacing();
 
         if (targetNode.occupant != null 
-        && targetNode.occupant.enemyState.state  == EnemyState.State.active)
+        && targetNode.occupant.enemyState.state  == EnemyState.State.Active
+        && targetNode.occupant.enemyHealth.curHealth > 0f)
             ExecuteAttack(targetNode);
     }
     void ExecuteAttack(NodeClass targetNode)
     {
+        TurnManager.instance.ChangeBattleTurn(TurnManager.BattleState.PlayerAttacking);
         targetNode.occupant.TakeDamage(AttackDamageCalculation());
     }
     int AttackDamageCalculation()

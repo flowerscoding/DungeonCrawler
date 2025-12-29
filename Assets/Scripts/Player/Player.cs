@@ -16,4 +16,9 @@ public class Player : MonoBehaviour
         }
         instance = this;
     }
+    public void TakeDamage(int damage)
+    {
+        playerData.curHealth -= damage;
+        print("DAMAGE TAKEN");
+    }
 }

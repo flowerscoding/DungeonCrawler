@@ -18,7 +18,7 @@ public class EnemyAI : MonoBehaviour
         int dx = Mathf.Abs(gridAgent.nodeX - Player.instance.gridAgent.nodeX); 
         int dy = Mathf.Abs(gridAgent.nodeY - Player.instance.gridAgent.nodeY);
         int distance = dx + dy;
-        if(distance <= 1)
+        if(distance <= 0)
             return CharacterStateMachine.State.Attacking;
         else
             return CharacterStateMachine.State.Walking;

@@ -18,13 +18,17 @@ public class EnemySystem : MonoBehaviour
         {
             int xDis = Mathf.Abs(enemy.gridAgent.nodeX - Player.instance.gridAgent.nodeX);
             int yDis = Mathf.Abs(enemy.gridAgent.nodeY - Player.instance.gridAgent.nodeY);
-            if(xDis + yDis < activateDistance)
+            if(xDis + yDis < activateDistance && enemy.enemyState.state != EnemyState.State.Dead)
             {
-                enemy.enemyState.state = EnemyState.State.active;
+                enemy.enemyState.state = EnemyState.State.Active;
                 activeEnemies.Add(enemy);
             }
+            else if (enemy.enemyState.state != EnemyState.State.Dead)
+                enemy.enemyState.state = EnemyState.State.Inactive;
             else
-                enemy.enemyState.state = EnemyState.State.inactive;
+            {
+                enemy.enemyState.state = EnemyState.State.Dead;
+            }
         }
         DecideActions();
     }
@@ -32,7 +36,7 @@ public class EnemySystem : MonoBehaviour
     {
         foreach(EnemyController enemy in activeEnemies)
         {
-            if(enemy.enemyState.state == EnemyState.State.active)
+            if(enemy.enemyState.state == EnemyState.State.Active)
             {
                 enemy.DecideAction();
             }

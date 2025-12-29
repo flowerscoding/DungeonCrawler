@@ -4,8 +4,9 @@ public class EnemyState : MonoBehaviour
 {
     public enum State
     {
-        inactive,
-        active,
+        Inactive,
+        Active,
+        Dead,
     }
     public State state;
 }

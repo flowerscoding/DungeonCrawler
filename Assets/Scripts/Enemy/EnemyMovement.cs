@@ -20,10 +20,12 @@ public class EnemyMovement : MonoBehaviour
         gridAgent.SetNode(bestNode);
         StartCoroutine(EnemyAnim(start, bestNode.worldPos, onCompleteAction));
     }
-    IEnumerator EnemyAnim(Vector3 start, Vector3 goal, Action<CharacterStateMachine.State> onCompleteAction)
+    IEnumerator EnemyAnim(Vector3 start, Vector3 goal, 
+    Action<CharacterStateMachine.State> onCompleteAction)
     {
+        yield return null;
+
         float t = 0;
-        //run animation
         Vector3 direction = goal - start;
         direction.y = 0f;
         gridAgent.transform.forward = direction.normalized;
@@ -33,10 +35,11 @@ public class EnemyMovement : MonoBehaviour
             transform.position = Vector3.Lerp(start, goal, t);
             yield return null;
         }
-        if(t > 1)
+        if (t > 1)
         {
 
             transform.position = goal;
+            
             onCompleteAction.Invoke(CharacterStateMachine.State.Aggro);
             TurnManager.instance.ChangeBattleTurn(TurnManager.BattleState.PlayerTurn);
         }

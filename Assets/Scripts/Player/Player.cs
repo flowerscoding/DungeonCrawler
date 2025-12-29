@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public PlayerMovement playerMovement;
     public GridAgent gridAgent;
     public PlayerAttack playerAttack;
+    public AnimateMachine animateMachine;
+    public PlayerState playerState;
     void Awake()
     {
         if(instance != null)
@@ -19,6 +21,13 @@ public class Player : MonoBehaviour
     public void TakeDamage(int damage)
     {
         playerData.curHealth -= damage;
-        print("DAMAGE TAKEN");
+        if(playerData.curHealth > 0)
+            StateChange(PlayerState.State.Hurt);
+        else
+            StateChange(PlayerState.State.Dead);
+    }
+    public void StateChange(PlayerState.State newState)
+    {
+        playerState.NewState(newState);
     }
 }

@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
         playerData.curHealth -= damage;
         if(playerData.curHealth > 0)
             StateChange(PlayerState.State.Hurt);
-        else
+        else if(playerData.curHealth <= 0)
             StateChange(PlayerState.State.Dead);
     }
     public void StateChange(PlayerState.State newState)

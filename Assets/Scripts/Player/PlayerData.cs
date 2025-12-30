@@ -4,4 +4,6 @@ public class PlayerData : MonoBehaviour
 {
     public int curHealth;
     public int attackDamage;
+
+    public float attackHitPoint;
 }

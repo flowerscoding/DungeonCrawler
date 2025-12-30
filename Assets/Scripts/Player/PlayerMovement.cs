@@ -4,8 +4,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveDuration;
-    public float turnDuration;
     public Rigidbody playerRB;
 
     private InputAction _upAction;
@@ -77,16 +75,26 @@ public class PlayerMovement : MonoBehaviour
         if (targetNode.state != NodeClass.State.Empty)
         {
             print("blocked");
-            PlayCrashAnimation(targetNode);
+            StartCoroutine(TrackCrashAnimation(targetNode));
             return false;
         }
         return true;
     }
-    void PlayCrashAnimation(NodeClass targetNode) //like pokemon's walk animation towards a wall. maybe add sfx
+    IEnumerator TrackCrashAnimation(NodeClass targetNode)
     {
-        Vector3 direction = targetNode.worldPos - playerRB.transform.position;
-        playerRB.transform.forward = direction;
-        return;
+        Player.instance.StateChange(PlayerState.State.Walking);
+
+        Quaternion start = playerRB.rotation;
+        Quaternion goal = Quaternion.LookRotation(targetNode.worldPos - playerRB.position);
+        float t = 0;
+        while(t < 1)
+        {
+            t += Time.fixedDeltaTime / TurnManager.instance.rotateDuration;
+            playerRB.MoveRotation(Quaternion.Slerp(start, goal, t));
+            yield return new WaitForFixedUpdate();
+        }
+        if(t >= 1 && Player.instance.playerState.state == PlayerState.State.Walking)
+            Player.instance.playerState.NewState(PlayerState.State.Idle);
     }
     void MoveDirection(string direction)
     {
@@ -104,21 +112,17 @@ public class PlayerMovement : MonoBehaviour
         nodeX += Player.instance.gridAgent.nodeX;
         nodeY += Player.instance.gridAgent.nodeY;
         NodeClass targetNode = Node.instance.nodeGrid.grid[nodeX, nodeY];
-
+        
         if (!CheckIfWalkable(targetNode))
             return; //return if empty. shouldn't waste a player's turn
 
         Player.instance.gridAgent.SetNode(targetNode);
 
         StartCoroutine(MoveToTarget(targetNode));
-
-        Enemy.instance.enemySystem.MoveAI();
     }
     IEnumerator MoveToTarget(NodeClass targetNode)
     {
         Player.instance.StateChange(PlayerState.State.Walking);
-        Vector3 direction = targetNode.worldPos - playerRB.transform.position;
-        playerRB.transform.forward = direction;
         TurnManager.instance.ChangeTurn(TurnManager.State.EnemyTurn);
         Vector3 start = playerRB.position;
         Vector3 goal = targetNode.worldPos;
@@ -130,20 +134,20 @@ public class PlayerMovement : MonoBehaviour
         {
             if(t2 < 1)
             {
-                t2 += Time.fixedDeltaTime / turnDuration;
+                t2 += Time.fixedDeltaTime / TurnManager.instance.rotateDuration;
                 playerRB.MoveRotation(Quaternion.Slerp(startQuat, goalQuat, t2));
             }
             else
                 playerRB.rotation = goalQuat;
-            t += Time.fixedDeltaTime / moveDuration;
+            t += Time.fixedDeltaTime / TurnManager.instance.movementDuration;
             playerRB.MovePosition(Vector3.Lerp(start, goal, t));
             yield return new WaitForFixedUpdate();
         }
         if (t >= 1)
         {
+            TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
             playerRB.position = goal;
             playerRB.rotation = goalQuat;
-            TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
             if (_holdingDirection != " " && TurnManager.instance.state == TurnManager.State.PlayerTurn)
                 switch (_holdingDirection)
                 {
@@ -154,7 +158,6 @@ public class PlayerMovement : MonoBehaviour
                 }
             else
                 Player.instance.StateChange(PlayerState.State.Idle);
-
         }
     }
 }

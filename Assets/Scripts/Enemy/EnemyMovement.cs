@@ -1,16 +1,14 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
     public GridAgent gridAgent;
-    public float duration;
-    public void MoveAI(Action<CharacterStateMachine.State> onCompleteAction)
+    public void MoveAI(EnemyController controller)
     {
-        FindPath(onCompleteAction);
+        FindPath(controller);
     }
-    void FindPath(Action<CharacterStateMachine.State> onCompleteAction)
+    void FindPath(EnemyController controller)
     {
         Pathfinder newPath = new Pathfinder();
         NodeClass targetNode = Player.instance.gridAgent.node;
@@ -18,20 +16,18 @@ public class EnemyMovement : MonoBehaviour
         Vector3 start = gridAgent.node.worldPos;
 
         gridAgent.SetNode(bestNode);
-        StartCoroutine(EnemyAnim(start, bestNode.worldPos, onCompleteAction));
+        StartCoroutine(EnemyAnim(start, bestNode.worldPos, controller));
     }
-    IEnumerator EnemyAnim(Vector3 start, Vector3 goal, 
-    Action<CharacterStateMachine.State> onCompleteAction)
+    IEnumerator EnemyAnim(Vector3 start, Vector3 goal, EnemyController controller)
     {
         yield return null;
-
         float t = 0;
         Vector3 direction = goal - start;
         direction.y = 0f;
         gridAgent.transform.forward = direction.normalized;
         while (t < 1)
         {
-            t += Time.deltaTime / duration;
+            t += Time.deltaTime / TurnManager.instance.movementDuration;
             transform.position = Vector3.Lerp(start, goal, t);
             yield return null;
         }
@@ -39,9 +35,7 @@ public class EnemyMovement : MonoBehaviour
         {
 
             transform.position = goal;
-            
-            onCompleteAction.Invoke(CharacterStateMachine.State.Aggro);
-            TurnManager.instance.ChangeBattleTurn(TurnManager.BattleState.PlayerTurn);
+            controller.NewState(EnemyAI.State.Aggro);
         }
     }
 }

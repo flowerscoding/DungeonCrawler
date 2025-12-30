@@ -8,5 +8,9 @@ public class EnemyState : MonoBehaviour
         Active,
         Dead,
     }
-    public State state;
+    public State state {get; private set;}
+    public void NewState(State newState)
+    {
+        state = newState;
+    }
 }

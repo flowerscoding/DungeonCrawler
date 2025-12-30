@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 public class PlayerAttack : MonoBehaviour
 {
     private InputAction _attackButton;
+    public NodeClass targetNode; //for PlayerState script
+    public int damageOutput;
     void Awake()
     {
         _attackButton = InputManager.instance.inputActions.asset.FindActionMap("Player").FindAction("Attack");
@@ -14,20 +16,26 @@ public class PlayerAttack : MonoBehaviour
     }
     void AttackPressed(InputAction.CallbackContext ctx)
     {
-        if (TurnManager.instance.state != TurnManager.State.PlayerTurn
-        || TurnManager.instance.battleState != TurnManager.BattleState.PlayerTurn)
-            return;
-        NodeClass targetNode = NodeFacing();
+        targetNode = NodeFacing();
 
-        if (targetNode.occupant != null 
+        if (TurnManager.instance.state == TurnManager.State.PlayerTurn
+        && targetNode.occupant != null 
         && targetNode.occupant.enemyState.state  == EnemyState.State.Active
         && targetNode.occupant.enemyHealth.curHealth > 0f)
-            ExecuteAttack(targetNode);
+            ExecuteAttack();
+        else if(TurnManager.instance.state == TurnManager.State.PlayerTurn)
+            ExecuteEmptyAttack();
     }
-    void ExecuteAttack(NodeClass targetNode)
+    void ExecuteAttack()
     {
-        TurnManager.instance.ChangeBattleTurn(TurnManager.BattleState.PlayerAttacking);
-        targetNode.occupant.TakeDamage(AttackDamageCalculation());
+        damageOutput = AttackDamageCalculation();
+        Player.instance.StateChange(PlayerState.State.Attacking);
+        TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
+    }
+    void ExecuteEmptyAttack()
+    {
+        Player.instance.StateChange(PlayerState.State.Attacking);
+        TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
     }
     int AttackDamageCalculation()
     {//ADD MORE COMPONENTS IN THE FUTURE FOR DAMAGE FACTORS

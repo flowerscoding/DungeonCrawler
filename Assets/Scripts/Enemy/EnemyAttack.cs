@@ -8,8 +8,6 @@ public class EnemyAttack : MonoBehaviour
     public void AttackPlayer(EnemyController enemyController)
     {
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
-        TurnManager.instance.ChangeBattleTurn(TurnManager.BattleState.EnemyAttacking);
-        enemyController.CharacterStateFunction(CharacterStateMachine.State.Attacking);
 
         CheckDirection(enemyController);
 
@@ -18,15 +16,15 @@ public class EnemyAttack : MonoBehaviour
     IEnumerator RunAttackAnimation(EnemyController enemyController)
     {
         yield return null; //wait a frame to help reset the animator
-        AnimatorStateInfo info = enemyController.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
         float progress = 0;
+        bool hitLanded = false;
         while (progress < 1)
         {
-            info = enemyController.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
+            AnimatorStateInfo info = enemyController.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
             progress = info.normalizedTime;
-            if (progress > enemyData.attackHitFrame)
+            if (progress > enemyData.attackHitFrame && !hitLanded)
             {
-                //***PLAY PLAYER HURT ANIMATION / TAKE DAMAGE FUNCTION
+                hitLanded = true;
                 Player.instance.TakeDamage(enemyData.attackDamage);
             }
 
@@ -35,7 +33,6 @@ public class EnemyAttack : MonoBehaviour
         if (progress >= 1)
         {
             TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
-            TurnManager.instance.ChangeBattleTurn(TurnManager.BattleState.PlayerTurn);
         }
     }
     void CheckDirection(EnemyController enemyController)

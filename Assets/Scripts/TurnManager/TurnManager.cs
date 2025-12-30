@@ -3,6 +3,8 @@ using UnityEngine;
 public class TurnManager : MonoBehaviour
 {
     public static TurnManager instance;
+    public float movementDuration;
+    public float rotateDuration;
     public enum State
     {
         PlayerTurn,
@@ -10,29 +12,19 @@ public class TurnManager : MonoBehaviour
         Resolving,
     }
     public State state;
-    public enum BattleState
-    {
-        PlayerTurn,
-        EnemyTurn,
-        PlayerAttacking,
-        EnemyAttacking,
-    }
-    public BattleState battleState;
     void Awake()
     {
-        if(instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        instance = this;
+        if(instance == null)
+            instance = this;
     }
     public void ChangeTurn(State newState)
     {
         state = newState;
-    }
-    public void ChangeBattleTurn(BattleState newState)
-    {
-        battleState = newState;
+        switch(newState)
+        {
+            case State.EnemyTurn: Enemy.instance.enemySystem.MoveAI(); break;
+            case State.PlayerTurn: break;
+            case State.Resolving: break;
+        }
     }
 }

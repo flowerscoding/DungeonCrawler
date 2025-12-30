@@ -25,8 +25,7 @@ public class PlayerState : MonoBehaviour
                 Player.instance.animateMachine.Animate(CharacterStateMachine.State.Walking);
                 break;
             case State.Attacking:
-            print("ATTACK");
-                Player.instance.animateMachine.Animate(CharacterStateMachine.State.Attacking);
+                AttackState();
                 break;
             case State.Hurt:
                 HurtState();
@@ -36,19 +35,48 @@ public class PlayerState : MonoBehaviour
                 break;
         }
     }
+    void AttackState()
+    {
+        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Attacking);
+        StartCoroutine(TrackAttack());
+    }
+    IEnumerator TrackAttack()
+    {
+        yield return null;
+        PlayerAttack playerAttack = Player.instance.playerAttack;
+        float progress = 0;
+        bool hitLanded = false;
+        while(progress < 1)
+        {
+            AnimatorStateInfo info = Player.instance.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
+            progress = info.normalizedTime;
+            if(progress > Player.instance.playerData.attackHitPoint)
+            { 
+                if(playerAttack.targetNode.occupant != null && !hitLanded) //for empty attacks
+                {
+                    hitLanded = true;
+                    playerAttack.targetNode.occupant.TakeDamage(playerAttack.damageOutput);
+                }
+            }
+            yield return null;
+        }
+        if(progress >= 1)
+        {
+            NewState(State.Idle);
+            if(playerAttack.targetNode.occupant == null)
+            {
+                TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
+            }
+
+        }
+    }
     void IdleState()
     {
-        state = State.Idle;
         Player.instance.animateMachine.Animate(CharacterStateMachine.State.Idle);
-        Player.instance.playerState.state = State.Idle;
-        TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
-        TurnManager.instance.ChangeBattleTurn(TurnManager.BattleState.PlayerTurn);
     }
     void DeadState()
     {
-        state = State.Dead;
         Player.instance.animateMachine.Animate(CharacterStateMachine.State.Dead);
-        TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
         StartCoroutine(TrackDead());
     }
     IEnumerator TrackDead()
@@ -65,11 +93,8 @@ public class PlayerState : MonoBehaviour
     }
     void HurtState() //damage already taken in player controller and has been calculated to still survive
     {
-        state = State.Hurt;
         Player.instance.animateMachine.Animate(CharacterStateMachine.State.Hurt);
-        TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
         StartCoroutine(TrackHurt());
-
     }
     IEnumerator TrackHurt()
     {
@@ -81,7 +106,6 @@ public class PlayerState : MonoBehaviour
         if (progress >= 1)
         {
             NewState(State.Idle);
-            TurnManager.instance.ChangeBattleTurn(TurnManager.BattleState.PlayerTurn);
             TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
         }
     }

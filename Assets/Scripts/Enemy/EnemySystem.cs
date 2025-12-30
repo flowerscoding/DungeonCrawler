@@ -8,7 +8,11 @@ public class EnemySystem : MonoBehaviour
     public int activateDistance;
     public void MoveAI()
     { //kind of pointless since this only gets called by the players move decision but its defensive programming i guess lol
-        if(TurnManager.instance.state != TurnManager.State.EnemyTurn) return; 
+        if(TurnManager.instance.state != TurnManager.State.EnemyTurn)
+        {
+            print("NOT ENEMY TURN");
+            return;
+        }
         ActivateEnemies();
     }
     void ActivateEnemies()
@@ -20,14 +24,14 @@ public class EnemySystem : MonoBehaviour
             int yDis = Mathf.Abs(enemy.gridAgent.nodeY - Player.instance.gridAgent.nodeY);
             if(xDis + yDis < activateDistance && enemy.enemyState.state != EnemyState.State.Dead)
             {
-                enemy.enemyState.state = EnemyState.State.Active;
+                enemy.enemyState.NewState(EnemyState.State.Active);
                 activeEnemies.Add(enemy);
             }
             else if (enemy.enemyState.state != EnemyState.State.Dead)
-                enemy.enemyState.state = EnemyState.State.Inactive;
+                enemy.enemyState.NewState(EnemyState.State.Inactive);
             else
             {
-                enemy.enemyState.state = EnemyState.State.Dead;
+                enemy.enemyState.NewState(EnemyState.State.Dead);
             }
         }
         DecideActions();
@@ -38,7 +42,7 @@ public class EnemySystem : MonoBehaviour
         {
             if(enemy.enemyState.state == EnemyState.State.Active)
             {
-                enemy.DecideAction();
+                enemy.NewState(EnemyAI.State.Walking);
             }
         }
     }

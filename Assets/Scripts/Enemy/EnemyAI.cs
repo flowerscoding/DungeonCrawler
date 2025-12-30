@@ -52,7 +52,6 @@ public class EnemyAI : MonoBehaviour
     IEnumerator TrackHurt(EnemyController controller)
     {
         yield return null; //wait a frame to help reset the animator
-        print("HURT");
         float progress = 0;
         while (progress < 1)
         {
@@ -116,7 +115,6 @@ public class EnemyAI : MonoBehaviour
     }
     void DeadState(EnemyController controller)
     {
-        print("DEAD");
         TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
         Enemy.instance.enemySystem.activeEnemies.Remove(controller);
         controller.enemyState.NewState(EnemyState.State.Dead);

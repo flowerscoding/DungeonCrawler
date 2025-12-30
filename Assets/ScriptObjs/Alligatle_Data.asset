@@ -15,4 +15,4 @@ MonoBehaviour:
   enemyName: Alligatle
   maxHealth: 10
   attackDamage: 1
-  attackHitFrame: 0.3
+  attackHitFrame: 0.4

@@ -98,9 +98,8 @@ public class PlayerMovement : MonoBehaviour
     }
     void MoveDirection(string direction)
     {
-        print(TurnManager.instance.state);
-        if (TurnManager.instance.state != TurnManager.State.PlayerTurn) return;
         _holdingDirection = direction;
+        if (TurnManager.instance.state != TurnManager.State.PlayerTurn) return;
         int nodeX = 0;
         int nodeY = 0;
         switch (direction)

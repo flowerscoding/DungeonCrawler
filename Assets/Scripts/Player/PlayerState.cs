@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerState : MonoBehaviour
 {
@@ -81,11 +82,14 @@ public class PlayerState : MonoBehaviour
     }
     IEnumerator TrackDead()
     {
-        AnimatorStateInfo info = Player.instance.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
         yield return null;
-        float progress = info.normalizedTime;
+        float progress = 0;
         while (progress < 1)
+        {
+            AnimatorStateInfo info = Player.instance.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
+            progress = info.normalizedTime;
             yield return null;
+        }
         if(progress >= 1)
         {
             print("DEAD!!! ADD GAMEOVER FUNCTIONS HERE!");
@@ -98,11 +102,14 @@ public class PlayerState : MonoBehaviour
     }
     IEnumerator TrackHurt()
     {
-        AnimatorStateInfo info = Player.instance.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
         yield return null; //frame pause for new getcurrentstateinfo(0)
-        float progress = info.normalizedTime;
+        float progress = 0;
         while(progress < 1)
+        {
+            AnimatorStateInfo info = Player.instance.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
+            progress = info.normalizedTime;
             yield return null;
+        }
         if (progress >= 1)
         {
             NewState(State.Idle);

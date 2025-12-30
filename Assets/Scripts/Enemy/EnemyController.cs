@@ -16,10 +16,6 @@ public class EnemyController : MonoBehaviour
     {
         enemyAI.NewState(newState, this);
     }
-    public void AttackPlayer()
-    {
-        enemyAttack.AttackPlayer(this);
-    }
     public void TakeDamage(int damage)
     {
         enemyHealth.curHealth -= damage;

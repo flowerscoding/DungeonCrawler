@@ -1050,8 +1050,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663d38820d4ba9d47920a637d6ad7e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  movementDuration: 1
+  rotateDuration: 0.1
   state: 0
-  battleState: 0
 --- !u!1 &381884619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,6 +1737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a3d6480b49bfa84c877a7b21982e576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  damageOutput: 1
 --- !u!1 &683397000
 GameObject:
   m_ObjectHideFlags: 0
@@ -3195,7 +3197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a371e210ce92448a268a6656617381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyState
-  state: 0
 --- !u!114 &1292259624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3209,7 +3210,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   gridAgent: {fileID: 1292259626}
-  duration: 1
 --- !u!114 &1292259625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3474,7 +3474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a371e210ce92448a268a6656617381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyState
-  state: 0
 --- !u!114 &1343756602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3488,7 +3487,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   gridAgent: {fileID: 1343756604}
-  duration: 1
 --- !u!114 &1343756603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3754,8 +3752,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1682ece384869334385446806cac1f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  moveDuration: 1
-  turnDuration: 0.1
   playerRB: {fileID: 7998432898676589291}
 --- !u!1 &1458709425
 GameObject:
@@ -4172,8 +4168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b259ff0d16fab442a808bc9bea5a5b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  curHealth: 0
+  curHealth: 2
   attackDamage: 1
+  attackHitPoint: 0.4
 --- !u!1 &1738908242
 GameObject:
   m_ObjectHideFlags: 0
@@ -5448,7 +5445,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a371e210ce92448a268a6656617381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyState
-  state: 0
 --- !u!114 &759120224479419015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5462,7 +5458,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   gridAgent: {fileID: 759120224479419017}
-  duration: 1
 --- !u!114 &759120224479419016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7221,7 +7216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a371e210ce92448a268a6656617381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyState
-  state: 0
 --- !u!114 &4390362304035596885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7235,7 +7229,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   gridAgent: {fileID: 4390362304035596887}
-  duration: 1
 --- !u!114 &4390362304035596886
 MonoBehaviour:
   m_ObjectHideFlags: 0

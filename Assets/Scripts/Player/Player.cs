@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public PlayerAttack playerAttack;
     public AnimateMachine animateMachine;
     public PlayerState playerState;
+    public PlayerInteract playerInteract;
     void Awake()
     {
         if(instance != null)
@@ -30,5 +31,9 @@ public class Player : MonoBehaviour
     public void StateChange(PlayerState.State newState)
     {
         playerState.NewState(newState);
+    }
+    public void MoveBoulder(NodeClass goalNode)
+    {
+        playerMovement.MoveBoulder(goalNode);
     }
 }

@@ -19,9 +19,9 @@ public class PlayerAttack : MonoBehaviour
         targetNode = NodeFacing();
 
         if (TurnManager.instance.state == TurnManager.State.PlayerTurn
-        && targetNode.occupant != null 
-        && targetNode.occupant.enemyState.state  == EnemyState.State.Active
-        && targetNode.occupant.enemyHealth.curHealth > 0f)
+        && targetNode.enemyController != null 
+        && targetNode.enemyController.enemyState.state  == EnemyState.State.Active
+        && targetNode.enemyController.enemyHealth.curHealth > 0f)
             ExecuteAttack();
         else if(TurnManager.instance.state == TurnManager.State.PlayerTurn)
             ExecuteEmptyAttack();

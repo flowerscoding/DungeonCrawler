@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    public EnemyMovement enemyMovement;
+    
+    public ParticleSystem bloodParticles;
     public enum State
     {
         Idle,
@@ -42,10 +43,11 @@ public class EnemyAI : MonoBehaviour
     void WalkState(EnemyController controller)
     {
         controller.animateMachine.Animate(CharacterStateMachine.State.Walking);
-        enemyMovement.MoveAI(controller);
+        controller.enemyMovement.MoveAI(controller);
     }
     void HurtState(EnemyController controller)
     {
+        bloodParticles.Play();
         controller.animateMachine.Animate(CharacterStateMachine.State.Hurt);
         StartCoroutine(TrackHurt(controller));
     }
@@ -115,6 +117,7 @@ public class EnemyAI : MonoBehaviour
     }
     void DeadState(EnemyController controller)
     {
+        bloodParticles.Play();
         TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
         Enemy.instance.enemySystem.activeEnemies.Remove(controller);
         controller.enemyState.NewState(EnemyState.State.Dead);

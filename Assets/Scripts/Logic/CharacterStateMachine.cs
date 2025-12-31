@@ -9,7 +9,9 @@ public class CharacterStateMachine : MonoBehaviour
         Aggro,
         Attacking,
         Hurt,
-        Dead
+        Dead,
+        Push,
+        PushFail,
     }
     public State state;
 }

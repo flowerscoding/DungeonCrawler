@@ -14,6 +14,8 @@ public class AnimateMachine : MonoBehaviour
             case CharacterStateMachine.State.Attacking : animator.Play("Attack", 0, 0); break;
             case CharacterStateMachine.State.Hurt : animator.Play("Hurt", 0, 0); break;
             case CharacterStateMachine.State.Dead : animator.Play("Dead", 0, 0); break;
+            case CharacterStateMachine.State.Push : animator.Play("BoulderPush", 0, 0); break;
+            case CharacterStateMachine.State.PushFail : animator.Play("PushFail", 0, 0); break;
         }
     }
 }

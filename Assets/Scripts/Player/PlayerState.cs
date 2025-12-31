@@ -1,17 +1,18 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class PlayerState : MonoBehaviour
 {
+    public ParticleSystem bloodParticles;
     public enum State
     {
         Idle,
         Walking,
         Attacking,
         Hurt,
-        Dead
-
+        Dead,
+        BoulderPush,
+        PushFail,
     }
     public State state { get; private set; }
     public void NewState(State newState)
@@ -23,7 +24,7 @@ public class PlayerState : MonoBehaviour
                 IdleState();
                 break;
             case State.Walking:
-                Player.instance.animateMachine.Animate(CharacterStateMachine.State.Walking);
+                WalkState();
                 break;
             case State.Attacking:
                 AttackState();
@@ -34,10 +35,49 @@ public class PlayerState : MonoBehaviour
             case State.Dead:
                 DeadState();
                 break;
+            case State.BoulderPush:
+                BoulderState();
+                break;
+            case State.PushFail:
+                    PushFailState();
+                break;
         }
+    }
+    void PushFailState()
+    {
+        Player.instance.animateMachine.Animate(CharacterStateMachine.State.PushFail);
+        Player.instance.playerInteract.InteractablesOff();
+    }
+    void BoulderState()
+    {
+        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Push);
+        Player.instance.playerInteract.InteractablesOff();
+        StartCoroutine(TrackBoulderPush());
+    }
+    IEnumerator TrackBoulderPush()
+    {
+        yield return null;
+        float progress = 0;
+        while (progress < 1)
+        {
+            AnimatorStateInfo info = Player.instance.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
+            progress = info.normalizedTime;
+            yield return null;
+        }
+        if(progress >= 1)
+        {
+            NewState(State.Idle);
+            TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
+        }
+    }
+    void WalkState()
+    {
+        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Walking);
+        Player.instance.playerInteract.InteractablesOff();
     }
     void AttackState()
     {
+        Player.instance.playerInteract.CheckInteractables();
         Player.instance.animateMachine.Animate(CharacterStateMachine.State.Attacking);
         StartCoroutine(TrackAttack());
     }
@@ -53,10 +93,10 @@ public class PlayerState : MonoBehaviour
             progress = info.normalizedTime;
             if(progress > Player.instance.playerData.attackHitPoint)
             { 
-                if(playerAttack.targetNode.occupant != null && !hitLanded) //for empty attacks
+                if(playerAttack.targetNode.enemyController != null && !hitLanded) //for empty attacks
                 {
                     hitLanded = true;
-                    playerAttack.targetNode.occupant.TakeDamage(playerAttack.damageOutput);
+                    playerAttack.targetNode.enemyController.TakeDamage(playerAttack.damageOutput);
                 }
             }
             yield return null;
@@ -64,19 +104,20 @@ public class PlayerState : MonoBehaviour
         if(progress >= 1)
         {
             NewState(State.Idle);
-            if(playerAttack.targetNode.occupant == null)
+            if(playerAttack.targetNode.enemyController == null)
             {
                 TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
             }
-
         }
     }
     void IdleState()
     {
         Player.instance.animateMachine.Animate(CharacterStateMachine.State.Idle);
+        Player.instance.playerInteract.CheckInteractables();
     }
     void DeadState()
     {
+        bloodParticles.Play();
         Player.instance.animateMachine.Animate(CharacterStateMachine.State.Dead);
         StartCoroutine(TrackDead());
     }
@@ -97,6 +138,7 @@ public class PlayerState : MonoBehaviour
     }
     void HurtState() //damage already taken in player controller and has been calculated to still survive
     {
+        bloodParticles.Play();
         Player.instance.animateMachine.Animate(CharacterStateMachine.State.Hurt);
         StartCoroutine(TrackHurt());
     }

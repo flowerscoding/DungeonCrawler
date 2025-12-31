@@ -15,7 +15,8 @@ public class Node : MonoBehaviour
     }
     public void ResetNode(NodeClass node)
     {
-        node.occupant = null;
+        node.enemyController = null;
+        node.boulderController = null;
         node.state = NodeClass.State.Empty;
     }
 }

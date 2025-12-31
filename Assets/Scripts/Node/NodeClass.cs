@@ -12,10 +12,14 @@ public class NodeClass
     public enum State
     {
         Empty,
-        Unwalkable
+        Player,
+        Enemy,
+        Boulder,
+        Chest
     }
     public State state;
-    public EnemyController occupant;
+    public EnemyController enemyController;
+    public BoulderController boulderController;
     public NodeClass(Vector3 _worldPos, int _nodeX, int _nodeY)
     {
         worldPos = _worldPos;

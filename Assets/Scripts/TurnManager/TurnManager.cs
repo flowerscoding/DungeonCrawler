@@ -14,13 +14,13 @@ public class TurnManager : MonoBehaviour
     public State state;
     void Awake()
     {
-        if(instance == null)
+        if (instance == null)
             instance = this;
     }
     public void ChangeTurn(State newState)
     {
         state = newState;
-        switch(newState)
+        switch (newState)
         {
             case State.EnemyTurn: Enemy.instance.enemySystem.MoveAI(); break;
             case State.PlayerTurn: break;

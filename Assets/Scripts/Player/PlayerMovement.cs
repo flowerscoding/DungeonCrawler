@@ -6,6 +6,14 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody playerRB;
 
+    public enum DirectionState
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+    public DirectionState directionState;
     private InputAction _upAction;
     private InputAction _downAction;
     private InputAction _leftAction;
@@ -104,10 +112,10 @@ public class PlayerMovement : MonoBehaviour
         int nodeY = 0;
         switch (direction)
         {
-            case "up": nodeX = 0; nodeY = 1; break;
-            case "down": nodeX = 0; nodeY = -1; break;
-            case "left": nodeX = -1; nodeY = 0; break;
-            case "right": nodeX = 1; nodeY = 0; break;
+            case "up": nodeX = 0; nodeY = 1; directionState = DirectionState.Up; break;
+            case "down": nodeX = 0; nodeY = -1; directionState = DirectionState.Down; break;
+            case "left": nodeX = -1; nodeY = 0; directionState = DirectionState.Left; break;
+            case "right": nodeX = 1; nodeY = 0; directionState = DirectionState.Right; break;
         }
         nodeX += Player.instance.gridAgent.nodeX;
         nodeY += Player.instance.gridAgent.nodeY;
@@ -158,6 +166,28 @@ public class PlayerMovement : MonoBehaviour
                 }
             else
                 Player.instance.StateChange(PlayerState.State.Idle);
+        }
+    }
+    public void MoveBoulder(NodeClass goalNode) //controlled by player controller. EX: Boulderpush fires this once it permits the push
+    {
+        StartCoroutine(TrackMoveBoulder(goalNode));
+    }
+    IEnumerator TrackMoveBoulder(NodeClass goalNode)
+    {
+        Vector3 start = playerRB.position;
+        Vector3 goal = goalNode.worldPos;
+        //copy duration to the boulder side too!
+        float duration = TurnManager.instance.movementDuration * 2f;
+        float t = 0;
+        while(t < 1)
+        {
+            t += Time.fixedDeltaTime / duration; 
+            playerRB.MovePosition(Vector3.Lerp(start, goal, t));
+            yield return new WaitForFixedUpdate();
+        }
+        if(t >= 1)
+        {
+            playerRB.position = goal;
         }
     }
 }

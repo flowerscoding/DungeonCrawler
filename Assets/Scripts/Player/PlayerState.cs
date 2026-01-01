@@ -1,4 +1,5 @@
 using System.Collections;
+using NUnit.Framework.Interfaces;
 using UnityEngine;
 
 public class PlayerState : MonoBehaviour
@@ -8,6 +9,7 @@ public class PlayerState : MonoBehaviour
     {
         Idle,
         Walking,
+        Running,
         Attacking,
         Hurt,
         Dead,
@@ -26,6 +28,9 @@ public class PlayerState : MonoBehaviour
             case State.Walking:
                 WalkState();
                 break;
+            case State.Running:
+                RunState();
+                break;
             case State.Attacking:
                 AttackState();
                 break;
@@ -39,7 +44,7 @@ public class PlayerState : MonoBehaviour
                 BoulderState();
                 break;
             case State.PushFail:
-                    PushFailState();
+                PushFailState();
                 break;
         }
     }
@@ -47,6 +52,23 @@ public class PlayerState : MonoBehaviour
     {
         Player.instance.animateMachine.Animate(CharacterStateMachine.State.PushFail);
         Player.instance.playerInteract.InteractablesOff();
+        StartCoroutine(TrackPushFail());
+    }
+    IEnumerator TrackPushFail()
+    {
+        yield return null;
+        float progress = 0;
+        while(progress < 1)
+        {
+            AnimatorStateInfo info = Player.instance.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
+            progress = info.normalizedTime;
+            yield return null;
+        }
+        if(progress >= 1)
+        {
+            TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
+            NewState(State.Idle);
+        }
     }
     void BoulderState()
     {
@@ -73,6 +95,11 @@ public class PlayerState : MonoBehaviour
     void WalkState()
     {
         Player.instance.animateMachine.Animate(CharacterStateMachine.State.Walking);
+        Player.instance.playerInteract.InteractablesOff();
+    }
+    void RunState()
+    {
+        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Running);
         Player.instance.playerInteract.InteractablesOff();
     }
     void AttackState()

@@ -1,9 +1,9 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInteract : MonoBehaviour
 {
+    public Canvas actionsUI;
     public NodeClass curInteractingNode;
     public NodeClass goalNode;
 
@@ -18,16 +18,26 @@ public class PlayerInteract : MonoBehaviour
     }
     void InteractPressed(InputAction.CallbackContext ctx)
     {
-        if (curInteractingNode == null || TurnManager.instance.state != TurnManager.State.PlayerTurn) return;
+        if (curInteractingNode == null 
+        || TurnManager.instance.state != TurnManager.State.PlayerTurn 
+        || !ctx.performed) return;
 
         switch (curInteractingNode.state)
         {
+            case NodeClass.State.Enemy:
+            EnemyInteract();
+                break;
             case NodeClass.State.Boulder:
                 BoulderPush();
                 break;
             case NodeClass.State.Chest:
+
                 break;
         }
+    }
+    void EnemyInteract()
+    {
+        ActionsMenu.instance.EnableActionsMenu();
     }
     void BoulderPush()
     {

@@ -3,18 +3,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private InputAction _attackButton;
     public NodeClass targetNode; //for PlayerState script
     public int damageOutput;
-    void Awake()
-    {
-        _attackButton = InputManager.instance.inputActions.asset.FindActionMap("Player").FindAction("Attack");
-    }
-    void OnEnable()
-    {
-        _attackButton.performed += AttackPressed;
-    }
-    void AttackPressed(InputAction.CallbackContext ctx)
+    public void AttackPressed()
     {
         targetNode = NodeFacing();
 

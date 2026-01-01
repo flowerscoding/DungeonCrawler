@@ -18,13 +18,16 @@ public class PlayerMovement : MonoBehaviour
     private InputAction _downAction;
     private InputAction _leftAction;
     private InputAction _rightAction;
+    private InputAction _runToggleAction;
     private string _holdingDirection;
+    public bool runToggle;
     void Awake()
     {
         _upAction = InputManager.instance.inputActions.asset.FindActionMap("Player").FindAction("Up");
         _downAction = InputManager.instance.inputActions.asset.FindActionMap("Player").FindAction("Down");
         _leftAction = InputManager.instance.inputActions.asset.FindActionMap("Player").FindAction("Left");
         _rightAction = InputManager.instance.inputActions.asset.FindActionMap("Player").FindAction("Right");
+        _runToggleAction = InputManager.instance.inputActions.asset.FindActionMap("Player").FindAction("RunToggle");
     }
     void OnEnable()
     {
@@ -32,11 +35,21 @@ public class PlayerMovement : MonoBehaviour
         _downAction.performed += MoveDown;
         _leftAction.performed += MoveLeft;
         _rightAction.performed += MoveRight;
+        _runToggleAction.performed += RunToggle;
 
+        _runToggleAction.canceled += RunUntoggle;
         _upAction.canceled += UpRelease;
         _downAction.canceled += DownRelease;
         _leftAction.canceled += LeftRelease;
         _rightAction.canceled += RightRelease;
+    }
+    void RunToggle(InputAction.CallbackContext ctx)
+    {
+        runToggle = true;
+    }
+    void RunUntoggle(InputAction.CallbackContext ctx)
+    {
+        runToggle = false;
     }
     void UpRelease(InputAction.CallbackContext ctx)
     {
@@ -82,7 +95,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (targetNode.state != NodeClass.State.Empty)
         {
-            print("blocked");
             StartCoroutine(TrackCrashAnimation(targetNode));
             return false;
         }
@@ -130,7 +142,11 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator MoveToTarget(NodeClass targetNode)
     {
-        Player.instance.StateChange(PlayerState.State.Walking);
+        if(runToggle)
+            Player.instance.StateChange(PlayerState.State.Running);
+        else
+            Player.instance.StateChange(PlayerState.State.Walking);
+
         TurnManager.instance.ChangeTurn(TurnManager.State.EnemyTurn);
         Vector3 start = playerRB.position;
         Vector3 goal = targetNode.worldPos;
@@ -138,6 +154,7 @@ public class PlayerMovement : MonoBehaviour
         Quaternion startQuat = playerRB.rotation;
         float t = 0;
         float t2 = 0;
+        float duration = runToggle ? TurnManager.instance.runDuration : TurnManager.instance.movementDuration;
         while (t < 1)
         {
             if(t2 < 1)
@@ -147,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
                 playerRB.rotation = goalQuat;
-            t += Time.fixedDeltaTime / TurnManager.instance.movementDuration;
+            t += Time.fixedDeltaTime / duration;
             playerRB.MovePosition(Vector3.Lerp(start, goal, t));
             yield return new WaitForFixedUpdate();
         }
@@ -168,7 +185,7 @@ public class PlayerMovement : MonoBehaviour
                 Player.instance.StateChange(PlayerState.State.Idle);
         }
     }
-    public void MoveBoulder(NodeClass goalNode) //controlled by player controller. EX: Boulderpush fires this once it permits the push
+    public void MoveBoulder(NodeClass goalNode)
     {
         StartCoroutine(TrackMoveBoulder(goalNode));
     }
@@ -177,7 +194,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 start = playerRB.position;
         Vector3 goal = goalNode.worldPos;
         //copy duration to the boulder side too!
-        float duration = TurnManager.instance.movementDuration * 2f;
+        float duration = TurnManager.instance.pushDuration;
         float t = 0;
         while(t < 1)
         {

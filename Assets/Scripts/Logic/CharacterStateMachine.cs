@@ -6,6 +6,7 @@ public class CharacterStateMachine : MonoBehaviour
     {
         Idle,
         Walking,
+        Running,
         Aggro,
         Attacking,
         Hurt,

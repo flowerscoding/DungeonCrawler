@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public AnimateMachine animateMachine;
     public PlayerState playerState;
     public PlayerInteract playerInteract;
+    public PlayerParry playerParry;
     void Awake()
     {
         if(instance != null)

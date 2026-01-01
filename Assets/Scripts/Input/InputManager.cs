@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
     public static InputManager instance;
     public PlayerInputActions inputActions;
+
+    public InputMapping inputMapping;
     void Awake()
     {
         if(instance != null)
@@ -13,6 +16,11 @@ public class InputManager : MonoBehaviour
         }
         instance = this;
         inputActions = new PlayerInputActions();
-        inputActions.Enable();
+        inputActions.Disable();
+        inputActions.asset.actionMaps[0].Enable();
+    }
+    public void MapChange(string newMap)
+    {
+        inputMapping.MapChange(newMap);
     }
 }

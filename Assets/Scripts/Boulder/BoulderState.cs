@@ -46,7 +46,7 @@ public class BoulderState : MonoBehaviour
         Vector3 goal = newNode.worldPos;
         Vector3 start = transform.position;
 
-        float duration = TurnManager.instance.movementDuration * 2f;
+        float duration = TurnManager.instance.pushDuration;
         float t = 0;
         while(t < 1)
         {
@@ -57,6 +57,7 @@ public class BoulderState : MonoBehaviour
         if(t > 1)
         {
             NewState(State.Idle, controller);
+            transform.position = goal;
         }
     }
 }

@@ -53,22 +53,22 @@ public class PlayerMovement : MonoBehaviour
     }
     void UpRelease(InputAction.CallbackContext ctx)
     {
-        if(_holdingDirection == "up")
+        if (_holdingDirection == "up")
             _holdingDirection = " ";
     }
     void DownRelease(InputAction.CallbackContext ctx)
     {
-        if(_holdingDirection == "down")
+        if (_holdingDirection == "down")
             _holdingDirection = " ";
     }
     void LeftRelease(InputAction.CallbackContext ctx)
     {
-        if(_holdingDirection == "left")
+        if (_holdingDirection == "left")
             _holdingDirection = " ";
     }
     void RightRelease(InputAction.CallbackContext ctx)
     {
-        if(_holdingDirection == "right")
+        if (_holdingDirection == "right")
             _holdingDirection = " ";
     }
     void MoveUp(InputAction.CallbackContext ctx)
@@ -107,13 +107,13 @@ public class PlayerMovement : MonoBehaviour
         Quaternion start = playerRB.rotation;
         Quaternion goal = Quaternion.LookRotation(targetNode.worldPos - playerRB.position);
         float t = 0;
-        while(t < 1)
+        while (t < 1)
         {
             t += Time.fixedDeltaTime / TurnManager.instance.rotateDuration;
             playerRB.MoveRotation(Quaternion.Slerp(start, goal, t));
             yield return new WaitForFixedUpdate();
         }
-        if(t >= 1 && Player.instance.playerState.state == PlayerState.State.Walking)
+        if (t >= 1 && Player.instance.playerState.state == PlayerState.State.Walking)
             Player.instance.playerState.NewState(PlayerState.State.Idle);
     }
     void MoveDirection(string direction)
@@ -132,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
         nodeX += Player.instance.gridAgent.nodeX;
         nodeY += Player.instance.gridAgent.nodeY;
         NodeClass targetNode = Node.instance.nodeGrid.grid[nodeX, nodeY];
-        
+
         if (!CheckIfWalkable(targetNode))
             return; //return if empty. shouldn't waste a player's turn
 
@@ -142,10 +142,6 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator MoveToTarget(NodeClass targetNode)
     {
-        if(runToggle)
-            Player.instance.StateChange(PlayerState.State.Running);
-        else
-            Player.instance.StateChange(PlayerState.State.Walking);
 
         TurnManager.instance.ChangeTurn(TurnManager.State.EnemyTurn);
         Vector3 start = playerRB.position;
@@ -154,10 +150,15 @@ public class PlayerMovement : MonoBehaviour
         Quaternion startQuat = playerRB.rotation;
         float t = 0;
         float t2 = 0;
-        float duration = runToggle ? TurnManager.instance.runDuration : TurnManager.instance.movementDuration;
         while (t < 1)
         {
-            if(t2 < 1)
+            //run toggle allows smooth walk to run movement speeds/animations
+            float duration = runToggle ? TurnManager.instance.runDuration : TurnManager.instance.movementDuration;
+            if (runToggle)
+                Player.instance.StateChange(PlayerState.State.Running);
+            else
+                Player.instance.StateChange(PlayerState.State.Walking);
+            if (t2 < 1)
             {
                 t2 += Time.fixedDeltaTime / TurnManager.instance.rotateDuration;
                 playerRB.MoveRotation(Quaternion.Slerp(startQuat, goalQuat, t2));
@@ -196,13 +197,13 @@ public class PlayerMovement : MonoBehaviour
         //copy duration to the boulder side too!
         float duration = TurnManager.instance.pushDuration;
         float t = 0;
-        while(t < 1)
+        while (t < 1)
         {
-            t += Time.fixedDeltaTime / duration; 
+            t += Time.fixedDeltaTime / duration;
             playerRB.MovePosition(Vector3.Lerp(start, goal, t));
             yield return new WaitForFixedUpdate();
         }
-        if(t >= 1)
+        if (t >= 1)
         {
             playerRB.position = goal;
         }

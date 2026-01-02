@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -29,8 +28,12 @@ public class PlayerAttack : MonoBehaviour
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
     }
     int AttackDamageCalculation()
-    {//ADD MORE COMPONENTS IN THE FUTURE FOR DAMAGE FACTORS
-        int attackDamage = Player.instance.playerData.attackDamage;
+    {//Damage output factors can be added
+
+        int attackDamage = 
+        Player.instance.playerData.attackStat *
+        Player.instance.playerData.weapon.data.damage;
+
         return attackDamage;
     }
     NodeClass NodeFacing()

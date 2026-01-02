@@ -56,6 +56,7 @@ public class GridAgent : MonoBehaviour
             case NodeClass.State.Chest:
                 break;
             case NodeClass.State.Player:
+                node.state = NodeClass.State.Player;
                 break;
         }
     }

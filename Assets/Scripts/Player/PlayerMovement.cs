@@ -188,6 +188,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void MoveBoulder(NodeClass goalNode)
     {
+        Player.instance.gridAgent.SetNode(goalNode);
         StartCoroutine(TrackMoveBoulder(goalNode));
     }
     IEnumerator TrackMoveBoulder(NodeClass goalNode)

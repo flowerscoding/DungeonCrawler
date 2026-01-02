@@ -15273,8 +15273,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   curHealth: 2
-  attackDamage: 1
+  attackStat: 0
+  defenseStat: 0
   attackHitPoint: 0.3
+  weapon:
+    data: {fileID: 11400000, guid: de6b72b4bdd8e89438597e025225d09a, type: 2}
 --- !u!1 &1738908242
 GameObject:
   m_ObjectHideFlags: 0
@@ -26701,7 +26704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &759120224479419011
 Animator:
   serializedVersion: 7
@@ -28581,7 +28584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4047585300130358934
 Transform:
   m_ObjectHideFlags: 0
@@ -30439,7 +30442,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &7917661323138198012
 GameObject:
   m_ObjectHideFlags: 0

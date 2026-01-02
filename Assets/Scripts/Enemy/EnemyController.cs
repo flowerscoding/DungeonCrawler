@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour
     public CharacterStateMachine characterStateMachine;
     public EnemyHealth enemyHealth;
     public EnemyAttack enemyAttack;
+    public float stagger;
     public Vector3 deadSpot;
     public void NewState(EnemyAI.State newState)
     {
@@ -25,5 +26,15 @@ public class EnemyController : MonoBehaviour
         {
             NewState(EnemyAI.State.Dead);
         }
+    }
+    public void TakeStagger(float amount)
+    {
+        stagger += amount;
+        if(stagger > enemyData.staggerLimit)
+        {
+            print("OVER STAGGER!    stagger: " + stagger);
+        }
+        else
+            print("CurStagger = " + stagger);
     }
 }

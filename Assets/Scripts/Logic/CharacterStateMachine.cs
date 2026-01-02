@@ -13,6 +13,7 @@ public class CharacterStateMachine : MonoBehaviour
         Dead,
         Push,
         PushFail,
+        Block,
     }
     public State state;
 }

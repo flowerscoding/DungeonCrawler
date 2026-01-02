@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public AnimateMachine animateMachine;
     public PlayerState playerState;
     public PlayerInteract playerInteract;
-    public PlayerParry playerParry;
+    public PlayerBlock playerBlock;
     void Awake()
     {
         if(instance != null)
@@ -22,7 +22,6 @@ public class Player : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        print(0);
         playerData.curHealth -= damage;
         if(playerData.curHealth > 0)
             StateChange(PlayerState.State.Hurt);

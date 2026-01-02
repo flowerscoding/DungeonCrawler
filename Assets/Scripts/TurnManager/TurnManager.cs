@@ -25,7 +25,7 @@ public class TurnManager : MonoBehaviour
         switch (newState)
         {
             case State.EnemyTurn: Enemy.instance.enemySystem.MoveAI(); break;
-            case State.PlayerTurn: break;
+            case State.PlayerTurn: Player.instance.playerBlock.BlockOn(); break;
             case State.Resolving: break;
         }
     }

@@ -6,4 +6,5 @@ public class WeaponData : ScriptableObject
     public string weaponName;
     public int damage;
     public int attackSpeed;
+    public int stagger;
 }

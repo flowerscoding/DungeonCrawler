@@ -18,14 +18,17 @@ public class PlayerInteract : MonoBehaviour
     }
     void InteractPressed(InputAction.CallbackContext ctx)
     {
-        if (curInteractingNode == null 
-        || TurnManager.instance.state != TurnManager.State.PlayerTurn 
+        if (curInteractingNode == null
+        || TurnManager.instance.state != TurnManager.State.PlayerTurn
         || !ctx.performed) return;
+
+        if (curInteractingNode.enemyController != null && curInteractingNode.enemyController.enemyState.state == EnemyState.State.Dead)
+            return; //dont interact with dead enemies
 
         switch (curInteractingNode.state)
         {
             case NodeClass.State.Enemy:
-            EnemyInteract();
+                EnemyInteract();
                 break;
             case NodeClass.State.Boulder:
                 BoulderPush();
@@ -136,9 +139,5 @@ public class PlayerInteract : MonoBehaviour
     void BoulderInteractable(NodeClass boulderNode)
     {
         boulderNode.boulderController.NewState(BoulderState.State.Interactable);
-    }
-    void EnemyInteractable()
-    {
-
     }
 }

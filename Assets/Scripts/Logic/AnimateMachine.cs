@@ -17,6 +17,11 @@ public class AnimateMachine : MonoBehaviour
             case CharacterStateMachine.State.Push : animator.Play("BoulderPush", 0, 0); break;
             case CharacterStateMachine.State.PushFail : animator.Play("PushFail", 0, 0); break;
             case CharacterStateMachine.State.Running : animator.Play("Run"); break;
+            case CharacterStateMachine.State.Block: animator.Play("Block", 0, 0); break;
         }
+    }
+    public void ResetMachine()
+    {
+        animator.speed = 1;
     }
 }

@@ -33,7 +33,6 @@ public class PlayerAttack : MonoBehaviour
         int attackDamage = 
         Player.instance.playerData.attackStat *
         Player.instance.playerData.weapon.data.damage;
-
         return attackDamage;
     }
     NodeClass NodeFacing()

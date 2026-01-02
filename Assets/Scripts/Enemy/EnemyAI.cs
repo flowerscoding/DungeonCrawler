@@ -72,23 +72,34 @@ public class EnemyAI : MonoBehaviour
 
         controller.animateMachine.Animate(CharacterStateMachine.State.Attacking);
 
+        Player.instance.playerBlock.BlockOn();
+
+
         StartCoroutine(RotateAnimation());
 
         StartCoroutine(TrackAttack(controller));
     }
-    IEnumerator TrackAttack(EnemyController enemyController)
+    IEnumerator TrackAttack(EnemyController controller)
     {
-        yield return null; //wait a frame to help reset the animator
+        yield return null; 
         float progress = 0;
         bool hitLanded = false;
         while (progress < 1)
         {
-            AnimatorStateInfo info = enemyController.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
+            AnimatorStateInfo info = controller.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
             progress = info.normalizedTime;
-            if (progress > enemyController.enemyData.attackHitFrame && !hitLanded)
+            if(progress > controller.enemyData.parryWindow 
+            && progress < controller.enemyData.attackHitFrame
+            && Player.instance.playerBlock.parryActive)
+            {
+                Player.instance.playerBlock.SuccessfulParry(controller);
+                Player.instance.playerBlock.BlockOn();
+                yield break;
+            }
+            if (progress > controller.enemyData.attackHitFrame && !hitLanded)
             {
                 hitLanded = true;
-                Player.instance.TakeDamage(enemyController.enemyData.attackDamage);
+                Player.instance.TakeDamage(controller.enemyData.attackDamage);
             }
 
             yield return null;
@@ -121,13 +132,15 @@ public class EnemyAI : MonoBehaviour
         TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
         Enemy.instance.enemySystem.activeEnemies.Remove(controller);
         controller.enemyState.NewState(EnemyState.State.Dead);
+        
+        controller.animateMachine.Animate(CharacterStateMachine.State.Dead);
         StartCoroutine(TrackDead(controller));
     }
     IEnumerator TrackDead(EnemyController controller)
     {
-        yield return null; //wait a frame to help reset the animator
+
+        yield return null;
         float progress = 0;
-        controller.animateMachine.Animate(CharacterStateMachine.State.Dead);
         while (progress < 1)
         {
             AnimatorStateInfo info = controller.animateMachine.animator.GetCurrentAnimatorStateInfo(0);

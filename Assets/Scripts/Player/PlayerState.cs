@@ -1,6 +1,8 @@
 using System.Collections;
+using JetBrains.Annotations;
 using NUnit.Framework.Interfaces;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerState : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class PlayerState : MonoBehaviour
         Walking,
         Running,
         Attacking,
+        Block,
         Hurt,
         Dead,
         BoulderPush,
@@ -46,10 +49,37 @@ public class PlayerState : MonoBehaviour
             case State.PushFail:
                 PushFailState();
                 break;
+            case State.Block:
+            BlockState();
+                break;
+        }
+    }
+    void BlockState()
+    {
+        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Block);
+        StartCoroutine(TrackBlock());
+    }
+    IEnumerator TrackBlock()
+    {
+        yield return null;
+        float progress = 0;
+        while(progress < 1)
+        {
+            AnimatorStateInfo info = Player.instance.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
+            progress = info.normalizedTime;
+
+            if(progress > 0.9f && Player.instance.playerBlock.holdingBlock)
+            {
+                Player.instance.animateMachine.animator.speed = 0f;
+                yield break;
+            }
+            yield return null;
         }
     }
     void PushFailState()
     {
+        Player.instance.playerBlock.BlockOff();
+
         Player.instance.animateMachine.Animate(CharacterStateMachine.State.PushFail);
         Player.instance.playerInteract.InteractablesOff();
         StartCoroutine(TrackPushFail());
@@ -72,6 +102,8 @@ public class PlayerState : MonoBehaviour
     }
     void BoulderState()
     {
+        Player.instance.playerBlock.BlockOff();
+        
         Player.instance.animateMachine.Animate(CharacterStateMachine.State.Push);
         Player.instance.playerInteract.InteractablesOff();
         StartCoroutine(TrackBoulderPush());
@@ -94,16 +126,22 @@ public class PlayerState : MonoBehaviour
     }
     void WalkState()
     {
+        Player.instance.animateMachine.ResetMachine();
+
         Player.instance.animateMachine.Animate(CharacterStateMachine.State.Walking);
         Player.instance.playerInteract.InteractablesOff();
     }
     void RunState()
     {
+        Player.instance.animateMachine.ResetMachine();
+
         Player.instance.animateMachine.Animate(CharacterStateMachine.State.Running);
         Player.instance.playerInteract.InteractablesOff();
     }
     void AttackState()
     {
+        Player.instance.playerBlock.BlockOff();
+        
         Player.instance.playerInteract.CheckInteractables();
         Player.instance.animateMachine.Animate(CharacterStateMachine.State.Attacking);
         StartCoroutine(TrackAttack());
@@ -144,6 +182,9 @@ public class PlayerState : MonoBehaviour
     }
     void DeadState()
     {
+        Player.instance.animateMachine.ResetMachine();
+        Player.instance.playerBlock.BlockOff();
+
         bloodParticles.Play();
         Player.instance.animateMachine.Animate(CharacterStateMachine.State.Dead);
         StartCoroutine(TrackDead());
@@ -165,6 +206,9 @@ public class PlayerState : MonoBehaviour
     }
     void HurtState() //damage already taken in player controller and has been calculated to still survive
     {
+        Player.instance.animateMachine.ResetMachine();
+        Player.instance.playerBlock.BlockOff();
+
         bloodParticles.Play();
         Player.instance.animateMachine.Animate(CharacterStateMachine.State.Hurt);
         StartCoroutine(TrackHurt());
@@ -182,6 +226,7 @@ public class PlayerState : MonoBehaviour
         if (progress >= 1)
         {
             NewState(State.Idle);
+            Player.instance.playerBlock.BlockOn();
             TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
         }
     }

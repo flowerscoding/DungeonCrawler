@@ -6,19 +6,25 @@ public class InputMapping : MonoBehaviour
 {
     private PlayerInputActions _inputActions;
     public InputActionMap currentMap { get; private set; }
+    public enum MapType
+    {
+        Player,
+        ActionsMenu,
+    }
     void Awake()
     {
         _inputActions = InputManager.instance.inputActions;
         currentMap = _inputActions.asset.actionMaps[0];
     }
-    public void MapChange(string newMap)
+    public void MapChange(MapType newMap)
     {
-        StartCoroutine(EnablePause(newMap));
+        string mapName = newMap.ToString();
+        StartCoroutine(EnablePause(mapName));
     }
-    IEnumerator EnablePause(string newMap) //prevent the next map to press auto
+    IEnumerator EnablePause(string mapName) //prevent the next map to press auto
     {
         _inputActions.asset.Disable(); //disables all maps
-        InputActionMap nextMap = _inputActions.asset.FindActionMap(newMap);
+        InputActionMap nextMap = _inputActions.asset.FindActionMap(mapName);
 
         yield return null;
 

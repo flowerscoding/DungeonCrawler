@@ -15,12 +15,12 @@ public class ActionsMenu : MonoBehaviour
     {
         actionsMenuState.ResetState();
         actionsMenuUI.enabled = true;
-        InputManager.instance.MapChange("ActionsMenu");
+        InputManager.instance.MapChange(InputMapping.MapType.ActionsMenu);
     }
     public void DisableActionsMenu()
     {
         actionsMenuUI.enabled = false;
-        InputManager.instance.MapChange("Player");
+        InputManager.instance.MapChange(InputMapping.MapType.Player);
     }
     public void ConfirmedAction()
     {

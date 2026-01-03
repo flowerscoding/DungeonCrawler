@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerInteract : MonoBehaviour
 {
-    public Canvas actionsUI;
     public NodeClass curInteractingNode;
     public NodeClass goalNode;
 
@@ -43,14 +42,14 @@ public class PlayerInteract : MonoBehaviour
     }
     void LatterInteract()
     {
-        if(curInteractingNode.latterController.active)
+        if(curInteractingNode.ladderController.active)
         {
             int nodeX = Player.instance.gridAgent.nodeX;
             int nodeY = Player.instance.gridAgent.nodeY;
             NodeClass goalNode = Node.instance.nodeGrid.grid[nodeX, nodeY];
-            Player.instance.ClimbToTarget(goalNode);
+            Player.instance.Climb(curInteractingNode);
             
-            curInteractingNode.latterController.DeactivateLatter();
+            curInteractingNode.ladderController.DeactivateLatter();
         }
     }
     void EnemyInteract()
@@ -114,7 +113,7 @@ public class PlayerInteract : MonoBehaviour
                     curInteractingNode.boulderController.NewState(BoulderState.State.Idle);
                     break;
                 case NodeClass.State.Latter:
-                    curInteractingNode.latterController.DeactivateLatter();
+                    curInteractingNode.ladderController.DeactivateLatter();
                     break;
             }
     }
@@ -153,7 +152,7 @@ public class PlayerInteract : MonoBehaviour
     }
     void LatterInteractable(NodeClass stairNode)
     {
-        stairNode.latterController.ActivateLatter();
+        stairNode.ladderController.ActivateLatter();
     }
     void BoulderInteractable(NodeClass boulderNode)
     {

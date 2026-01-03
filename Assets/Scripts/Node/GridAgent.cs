@@ -16,7 +16,6 @@ public class GridAgent : MonoBehaviour
         nodeX = Mathf.FloorToInt(transform.position.x - Node.instance.nodeGrid.gridOrigin.x);
         nodeY = Mathf.FloorToInt(transform.position.z - Node.instance.nodeGrid.gridOrigin.z);
         node = Node.instance.nodeGrid.grid[nodeX, nodeY];
-
         switch (state)
         {
             case NodeClass.State.Enemy:
@@ -30,7 +29,7 @@ public class GridAgent : MonoBehaviour
             case NodeClass.State.Chest:
                 break;
             case NodeClass.State.Latter:
-                node.latterController = transform.GetComponent<LatterController>();
+                node.ladderController = transform.GetComponent<LadderController>();
                 node.state = NodeClass.State.Latter;
                 break;
         }
@@ -42,7 +41,7 @@ public class GridAgent : MonoBehaviour
 
         node.enemyController = null;
         node.boulderController = null;
-        node.latterController = null;
+        node.ladderController = null;
 
         node = newNode;
         nodeX = node.nodeX;
@@ -60,7 +59,7 @@ public class GridAgent : MonoBehaviour
             case NodeClass.State.Chest:
                 break;
             case NodeClass.State.Latter:
-                node.latterController = transform.GetComponent<LatterController>();
+                node.ladderController = transform.GetComponent<LadderController>();
                 node.state = NodeClass.State.Latter;
                 break;
         }

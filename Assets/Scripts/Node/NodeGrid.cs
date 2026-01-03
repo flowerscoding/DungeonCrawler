@@ -26,9 +26,11 @@ public class NodeGrid : MonoBehaviour
     }
     public void AssignPlayer()
     {
-        int x = Mathf.FloorToInt(spawnPos.x);
-        int y = Mathf.FloorToInt(spawnPos.z);
-        Player.instance.gridAgent.SetNode(grid[x, y]);
+        int x = Mathf.FloorToInt(spawnPos.x - gridOrigin.x);
+        int y = Mathf.FloorToInt(spawnPos.z - gridOrigin.z);
+        x = Mathf.FloorToInt(x / offSet);
+        y = Mathf.FloorToInt(x / offSet);
+        Player.instance.gridAgent.SetStartNode(grid[x, y]);
     }
     public void SpawnPlayer()
     {

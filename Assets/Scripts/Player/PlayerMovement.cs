@@ -208,24 +208,25 @@ public class PlayerMovement : MonoBehaviour
             playerRB.position = goal;
         }
     }
-    public void ClimbToTarget(NodeClass targetNode)
+    public void Climb(NodeClass ladderNode)
     {
         Player.instance.StateChange(PlayerState.State.Climb);
-        StartCoroutine(InitiateClimb(targetNode));
+        StartCoroutine(InitiateClimb(ladderNode));
     }
-    IEnumerator InitiateClimb(NodeClass targetNode)
+    IEnumerator InitiateClimb(NodeClass ladderNode)
     {
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
         Vector3 start = playerRB.position;
-        Vector3 goal = targetNode.worldPos + new Vector3(0, 2, 0);
+        Vector3 goal = Player.instance.gridAgent.node.worldPos + new Vector3(0, 2, 0);
         float t = 0;
         bool sceneBootedUP = false;
         while (t < 1)
         {
-            if(t > 0.6f && !sceneBootedUP) //TEMPORARY TRANSITION TIME
+            if(t > TransitionData.LadderToSceneTime && !sceneBootedUP) //TEMPORARY TRANSITION TIME
             {
                 sceneBootedUP = true;
-                LoadSystem.instance.LoadScene("Castle_Room1");
+                LoadSystem.SceneType scene = ladderNode.ladderController.GetTargetScene();
+                LoadSystem.instance.LoadScene(scene);
             }
             //run toggle allows smooth walk to run movement speeds/animations
             float duration = TurnManager.instance.climbDuration;

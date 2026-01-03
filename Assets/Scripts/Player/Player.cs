@@ -36,8 +36,8 @@ public class Player : MonoBehaviour
     {
         playerMovement.MoveBoulder(goalNode);
     }
-    public void ClimbToTarget(NodeClass goalNode)
+    public void Climb(NodeClass ladderNode)
     {
-        playerMovement.ClimbToTarget(goalNode);
+        playerMovement.Climb(ladderNode);
     }
 }

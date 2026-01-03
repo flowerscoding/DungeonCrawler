@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
@@ -19,7 +18,7 @@ public class InputManager : MonoBehaviour
         inputActions.Disable();
         inputActions.asset.actionMaps[0].Enable();
     }
-    public void MapChange(string newMap)
+    public void MapChange(InputMapping.MapType newMap)
     {
         inputMapping.MapChange(newMap);
     }

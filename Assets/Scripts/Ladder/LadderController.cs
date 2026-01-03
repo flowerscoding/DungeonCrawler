@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class LatterController : MonoBehaviour
+public class LadderController : MonoBehaviour
 {
     public Canvas interactUI;
     public bool active {get; private set;}
+   [SerializeField] private LoadSystem.SceneType targetScene;
     public void ActivateLatter()
     {
         interactUI.enabled = true;
@@ -13,5 +14,9 @@ public class LatterController : MonoBehaviour
     {
         interactUI.enabled = false;
         active = false;
+    }
+    public LoadSystem.SceneType GetTargetScene()
+    {
+        return targetScene;
     }
 }

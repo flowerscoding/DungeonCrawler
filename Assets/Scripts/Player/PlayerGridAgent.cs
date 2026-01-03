@@ -6,12 +6,14 @@ public class PlayerGridAgent : MonoBehaviour
     public NodeClass node { get; private set; }
     public int nodeX;
     public int nodeY;
-    public void CreateStartNode()
+    public void SetStartNode(NodeClass newNode)
     {
-        //change to + if grid origin.x is positive. same is said for nodeY
-        nodeX = Mathf.FloorToInt(transform.position.x - Node.instance.nodeGrid.gridOrigin.x);
-        nodeY = Mathf.FloorToInt(transform.position.z - Node.instance.nodeGrid.gridOrigin.z);
-        node = Node.instance.nodeGrid.grid[nodeX, nodeY];
+        node = newNode;
+        node.state = NodeClass.State.Player;
+
+        node.enemyController = null;
+        node.boulderController = null;
+        node.ladderController = null;
     }
     public void SetNode(NodeClass newNode)
     {
@@ -20,7 +22,7 @@ public class PlayerGridAgent : MonoBehaviour
 
         node.enemyController = null;
         node.boulderController = null;
-        node.latterController = null;
+        node.ladderController = null;
 
         node = newNode;
         nodeX = node.nodeX;

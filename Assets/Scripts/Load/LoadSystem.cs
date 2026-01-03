@@ -7,8 +7,10 @@ public class LoadSystem : MonoBehaviour
 {
     public static LoadSystem instance;
     public Image transitionImg;
-    public float transitionDuration;
-    public float transitionPause;
+    public enum SceneType
+    {
+        Castle_Floor1,
+    }
     void Awake()
     {
         if (instance != null)
@@ -18,17 +20,20 @@ public class LoadSystem : MonoBehaviour
         }
         instance = this;
     }
-    public void LoadScene(string sceneName)
+    public void LoadScene(SceneType scene)
     {
+        string sceneName = scene.ToString();
         StartCoroutine(TransitionEffect(sceneName));
     }
     IEnumerator TransitionEffect(string sceneName)
     {
         Color c = new Color();
         float progress = 0;
+        float duration = TransitionData.TransitionTime;
+        float pauseTime = TransitionData.TransitionPause;
         while (progress < 1)
         {
-            progress += Time.deltaTime / transitionDuration;
+            progress += Time.deltaTime / duration;
 
             float alpha = Mathf.Clamp(progress, 0, 1);
             c = transitionImg.color;
@@ -40,7 +45,24 @@ public class LoadSystem : MonoBehaviour
         c.a = 1;
         transitionImg.color = c;
         SceneManager.LoadScene(sceneName);
-        yield return new WaitForSeconds(transitionPause);
+        TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
+        
+        yield return new WaitForSeconds(pauseTime);
+        progress = 0;
+        while (progress < 1)
+        {
+            progress += Time.deltaTime / duration;
+
+            float alpha = Mathf.Clamp(progress, 0, 1);
+            c = transitionImg.color;
+            c.a = 1 - alpha;
+            transitionImg.color = c;
+
+            yield return null;
+        }
+        TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
+         c.a = 0;
+        transitionImg.color = c;
     }
 }
 

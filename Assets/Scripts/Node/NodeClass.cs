@@ -21,7 +21,7 @@ public class NodeClass
     public State state;
     public EnemyController enemyController;
     public BoulderController boulderController;
-    public LatterController latterController;
+    public LadderController ladderController;
     public NodeClass(Vector3 _worldPos, int _nodeX, int _nodeY)
     {
         worldPos = _worldPos;

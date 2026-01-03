@@ -2,15 +2,12 @@ using UnityEngine;
 
 public class NodeGrid : MonoBehaviour
 {
+    public Vector3 spawnPos;
     public Vector3 gridOrigin;
     public int gridSize;
     public float offSet;
     public NodeClass[,] grid {get; private set;}
-    void Awake()
-    {
-        CreateGrid();
-    }
-    void CreateGrid()
+    public void CreateGrid()
     {
         grid = new NodeClass[gridSize, gridSize];
         float xOff = gridOrigin.x;
@@ -26,5 +23,15 @@ public class NodeGrid : MonoBehaviour
             zOff = gridOrigin.z;
             xOff += offSet;
         }
+    }
+    public void AssignPlayer()
+    {
+        int x = Mathf.FloorToInt(spawnPos.x);
+        int y = Mathf.FloorToInt(spawnPos.z);
+        Player.instance.gridAgent.SetNode(grid[x, y]);
+    }
+    public void SpawnPlayer()
+    {
+        Player.instance.playerMovement.playerRB.position = Player.instance.gridAgent.node.worldPos;
     }
 }

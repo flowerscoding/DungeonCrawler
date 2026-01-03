@@ -5,7 +5,7 @@ public class Player : MonoBehaviour
     public static Player instance;
     public PlayerData playerData;
     public PlayerMovement playerMovement;
-    public GridAgent gridAgent;
+    public PlayerGridAgent gridAgent;
     public PlayerAttack playerAttack;
     public AnimateMachine animateMachine;
     public PlayerState playerState;
@@ -35,5 +35,9 @@ public class Player : MonoBehaviour
     public void MoveBoulder(NodeClass goalNode)
     {
         playerMovement.MoveBoulder(goalNode);
+    }
+    public void ClimbToTarget(NodeClass goalNode)
+    {
+        playerMovement.ClimbToTarget(goalNode);
     }
 }

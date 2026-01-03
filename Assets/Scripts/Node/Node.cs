@@ -4,6 +4,7 @@ public class Node : MonoBehaviour
 {
     public static Node instance;
     public NodeGrid nodeGrid;
+
     void Awake()
     {
         if(instance != null)
@@ -12,11 +13,18 @@ public class Node : MonoBehaviour
             return;
         }
         instance = this;
+        AssignNodes();
     }
     public void ResetNode(NodeClass node)
     {
         node.enemyController = null;
         node.boulderController = null;
         node.state = NodeClass.State.Empty;
+    }
+    public void AssignNodes()
+    {
+        nodeGrid.CreateGrid();
+        nodeGrid.AssignPlayer();
+        nodeGrid.SpawnPlayer();
     }
 }

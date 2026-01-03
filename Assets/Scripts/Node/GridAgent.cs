@@ -29,16 +29,20 @@ public class GridAgent : MonoBehaviour
                 break;
             case NodeClass.State.Chest:
                 break;
-            case NodeClass.State.Player: break;
+            case NodeClass.State.Latter:
+                node.latterController = transform.GetComponent<LatterController>();
+                node.state = NodeClass.State.Latter;
+                break;
         }
     }
     public void SetNode(NodeClass newNode)
     {
         newNode.state = node.state;
         node.state = NodeClass.State.Empty;
-        
+
         node.enemyController = null;
         node.boulderController = null;
+        node.latterController = null;
 
         node = newNode;
         nodeX = node.nodeX;
@@ -55,8 +59,9 @@ public class GridAgent : MonoBehaviour
                 break;
             case NodeClass.State.Chest:
                 break;
-            case NodeClass.State.Player:
-                node.state = NodeClass.State.Player;
+            case NodeClass.State.Latter:
+                node.latterController = transform.GetComponent<LatterController>();
+                node.state = NodeClass.State.Latter;
                 break;
         }
     }

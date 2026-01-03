@@ -31,20 +31,31 @@ public class PlayerInteract : MonoBehaviour
                 EnemyInteract();
                 break;
             case NodeClass.State.Boulder:
-                BoulderPush();
+                BoulderPushCheck();
                 break;
             case NodeClass.State.Chest:
 
                 break;
+            case NodeClass.State.Latter:
+                LatterInteract();
+                break;
+        }
+    }
+    void LatterInteract()
+    {
+        if(curInteractingNode.latterController.active)
+        {
+            int nodeX = Player.instance.gridAgent.nodeX;
+            int nodeY = Player.instance.gridAgent.nodeY;
+            NodeClass goalNode = Node.instance.nodeGrid.grid[nodeX, nodeY];
+            Player.instance.ClimbToTarget(goalNode);
+            
+            curInteractingNode.latterController.DeactivateLatter();
         }
     }
     void EnemyInteract()
     {
         ActionsMenu.instance.EnableActionsMenu();
-    }
-    void BoulderPush()
-    {
-        BoulderPushCheck();
     }
     void BoulderPushCheck()
     {
@@ -102,6 +113,9 @@ public class PlayerInteract : MonoBehaviour
                 case NodeClass.State.Boulder:
                     curInteractingNode.boulderController.NewState(BoulderState.State.Idle);
                     break;
+                case NodeClass.State.Latter:
+                    curInteractingNode.latterController.DeactivateLatter();
+                    break;
             }
     }
     public void CheckInteractables()
@@ -133,8 +147,13 @@ public class PlayerInteract : MonoBehaviour
                 case NodeClass.State.Empty: break;
                 case NodeClass.State.Enemy: break;
                 case NodeClass.State.Boulder: BoulderInteractable(checkingNode); break;
+                case NodeClass.State.Latter: LatterInteractable(checkingNode); break;
             }
         }
+    }
+    void LatterInteractable(NodeClass stairNode)
+    {
+        stairNode.latterController.ActivateLatter();
     }
     void BoulderInteractable(NodeClass boulderNode)
     {

@@ -14,6 +14,7 @@ public class CharacterStateMachine : MonoBehaviour
         Push,
         PushFail,
         Block,
+        Climb,
     }
     public State state;
 }

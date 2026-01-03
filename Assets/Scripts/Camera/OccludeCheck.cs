@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class OccludeCheck : MonoBehaviour
 {
-    public Transform playerTransform;
+    private Transform _playerTransform;
     private LayerMask _occluderMask;
     void Awake()
     {
         _occluderMask = LayerMask.GetMask("Occluder");
+        _playerTransform = Player.instance.playerMovement.playerRB.transform;
     }
     void LateUpdate()
     {
@@ -14,7 +15,7 @@ public class OccludeCheck : MonoBehaviour
     }
     void CheckForOccluders()
     {
-        Vector3 dir = playerTransform.position - transform.position;
+        Vector3 dir = _playerTransform.position - transform.position;
         float distance = dir.magnitude;
         float radius = 0.4f;
         Ray ray = new Ray(transform.position, dir);

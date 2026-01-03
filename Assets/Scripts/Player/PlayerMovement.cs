@@ -142,7 +142,6 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator MoveToTarget(NodeClass targetNode)
     {
-
         TurnManager.instance.ChangeTurn(TurnManager.State.EnemyTurn);
         Vector3 start = playerRB.position;
         Vector3 goal = targetNode.worldPos;
@@ -207,6 +206,40 @@ public class PlayerMovement : MonoBehaviour
         if (t >= 1)
         {
             playerRB.position = goal;
+        }
+    }
+    public void ClimbToTarget(NodeClass targetNode)
+    {
+        Player.instance.StateChange(PlayerState.State.Climb);
+        StartCoroutine(InitiateClimb(targetNode));
+    }
+    IEnumerator InitiateClimb(NodeClass targetNode)
+    {
+        TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
+        Vector3 start = playerRB.position;
+        Vector3 goal = targetNode.worldPos + new Vector3(0, 2, 0);
+        float t = 0;
+        bool sceneBootedUP = false;
+        while (t < 1)
+        {
+            if(t > 0.6f && !sceneBootedUP) //TEMPORARY TRANSITION TIME
+            {
+                sceneBootedUP = true;
+                LoadSystem.instance.LoadScene("Castle_Room1");
+            }
+            //run toggle allows smooth walk to run movement speeds/animations
+            float duration = TurnManager.instance.climbDuration;
+
+            t += Time.fixedDeltaTime / duration;
+            playerRB.MovePosition(Vector3.Lerp(start, goal, t));
+            yield return new WaitForFixedUpdate();
+        }
+        if (t >= 1)
+        {
+            TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
+            playerRB.position = goal;
+            
+            Player.instance.StateChange(PlayerState.State.Idle);
         }
     }
 }

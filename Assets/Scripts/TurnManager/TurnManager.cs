@@ -7,6 +7,7 @@ public class TurnManager : MonoBehaviour
     public float rotateDuration;
     public float runDuration;
     public float pushDuration;
+    public float climbDuration;
     public enum State
     {
         PlayerTurn,

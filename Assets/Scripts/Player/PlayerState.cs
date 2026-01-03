@@ -1,8 +1,5 @@
 using System.Collections;
-using JetBrains.Annotations;
-using NUnit.Framework.Interfaces;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class PlayerState : MonoBehaviour
 {
@@ -18,6 +15,7 @@ public class PlayerState : MonoBehaviour
         Dead,
         BoulderPush,
         PushFail,
+        Climb,
     }
     public State state { get; private set; }
     public void NewState(State newState)
@@ -50,9 +48,16 @@ public class PlayerState : MonoBehaviour
                 PushFailState();
                 break;
             case State.Block:
-            BlockState();
+                BlockState();
+                break;
+            case State.Climb:
+                ClimbState();
                 break;
         }
+    }
+    void ClimbState()
+    {
+        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Climb);
     }
     void BlockState()
     {
@@ -63,12 +68,12 @@ public class PlayerState : MonoBehaviour
     {
         yield return null;
         float progress = 0;
-        while(progress < 1)
+        while (progress < 1)
         {
             AnimatorStateInfo info = Player.instance.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
             progress = info.normalizedTime;
 
-            if(progress > 0.9f && Player.instance.playerBlock.holdingBlock)
+            if (progress > 0.9f && Player.instance.playerBlock.holdingBlock)
             {
                 Player.instance.animateMachine.animator.speed = 0f;
                 yield break;
@@ -88,13 +93,13 @@ public class PlayerState : MonoBehaviour
     {
         yield return null;
         float progress = 0;
-        while(progress < 1)
+        while (progress < 1)
         {
             AnimatorStateInfo info = Player.instance.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
             progress = info.normalizedTime;
             yield return null;
         }
-        if(progress >= 1)
+        if (progress >= 1)
         {
             TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
             NewState(State.Idle);
@@ -103,7 +108,7 @@ public class PlayerState : MonoBehaviour
     void BoulderState()
     {
         Player.instance.playerBlock.BlockOff();
-        
+
         Player.instance.animateMachine.Animate(CharacterStateMachine.State.Push);
         Player.instance.playerInteract.InteractablesOff();
         StartCoroutine(TrackBoulderPush());
@@ -118,7 +123,7 @@ public class PlayerState : MonoBehaviour
             progress = info.normalizedTime;
             yield return null;
         }
-        if(progress >= 1)
+        if (progress >= 1)
         {
             NewState(State.Idle);
             TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
@@ -141,7 +146,7 @@ public class PlayerState : MonoBehaviour
     void AttackState()
     {
         Player.instance.playerBlock.BlockOff();
-        
+
         Player.instance.playerInteract.CheckInteractables();
         Player.instance.animateMachine.Animate(CharacterStateMachine.State.Attacking);
         StartCoroutine(TrackAttack());
@@ -152,13 +157,13 @@ public class PlayerState : MonoBehaviour
         PlayerAttack playerAttack = Player.instance.playerAttack;
         float progress = 0;
         bool hitLanded = false;
-        while(progress < 1)
+        while (progress < 1)
         {
             AnimatorStateInfo info = Player.instance.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
             progress = info.normalizedTime;
-            if(progress > Player.instance.playerData.attackHitPoint)
-            { 
-                if(playerAttack.targetNode.enemyController != null && !hitLanded) //for empty attacks
+            if (progress > Player.instance.playerData.attackHitPoint)
+            {
+                if (playerAttack.targetNode.enemyController != null && !hitLanded) //for empty attacks
                 {
                     hitLanded = true;
                     playerAttack.targetNode.enemyController.TakeDamage(playerAttack.damageOutput);
@@ -166,10 +171,10 @@ public class PlayerState : MonoBehaviour
             }
             yield return null;
         }
-        if(progress >= 1)
+        if (progress >= 1)
         {
             NewState(State.Idle);
-            if(playerAttack.targetNode.enemyController == null)
+            if (playerAttack.targetNode.enemyController == null)
             {
                 TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
             }
@@ -199,7 +204,7 @@ public class PlayerState : MonoBehaviour
             progress = info.normalizedTime;
             yield return null;
         }
-        if(progress >= 1)
+        if (progress >= 1)
         {
             print("DEAD!!! ADD GAMEOVER FUNCTIONS HERE!");
         }
@@ -217,7 +222,7 @@ public class PlayerState : MonoBehaviour
     {
         yield return null; //frame pause for new getcurrentstateinfo(0)
         float progress = 0;
-        while(progress < 1)
+        while (progress < 1)
         {
             AnimatorStateInfo info = Player.instance.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
             progress = info.normalizedTime;

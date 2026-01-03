@@ -15,11 +15,13 @@ public class NodeClass
         Player,
         Enemy,
         Boulder,
-        Chest
+        Chest,
+        Latter,
     }
     public State state;
     public EnemyController enemyController;
     public BoulderController boulderController;
+    public LatterController latterController;
     public NodeClass(Vector3 _worldPos, int _nodeX, int _nodeY)
     {
         worldPos = _worldPos;

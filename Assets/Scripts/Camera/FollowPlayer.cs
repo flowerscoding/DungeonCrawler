@@ -2,13 +2,17 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    public Transform playerTransform;
+    private Transform _playerTransform;
 
     public float yOffset;
     public float zOffset;
+    void Awake()
+    {
+        _playerTransform = Player.instance.playerMovement.playerRB.transform;
+    }
     public void LateUpdate()
     {
-        Vector3 pos = new Vector3(playerTransform.position.x, playerTransform.position.y + yOffset, playerTransform.position.z + zOffset);
+        Vector3 pos = new Vector3(_playerTransform.position.x, _playerTransform.position.y + yOffset, _playerTransform.position.z + zOffset);
         transform.position = pos;
     }
 }

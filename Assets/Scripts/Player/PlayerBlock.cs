@@ -28,6 +28,11 @@ public class PlayerBlock : MonoBehaviour
         _blockAction.performed += BlockPressed;
         _blockAction.canceled += BlockLetGo;
     }
+    public void ParryBlockOn()
+    {
+        BlockOn();
+        okayToParry = true;
+    }
     void BlockLetGo(InputAction.CallbackContext ctx)
     {
         holdingBlock = false;
@@ -47,6 +52,7 @@ public class PlayerBlock : MonoBehaviour
     }
     void BlockPressed(InputAction.CallbackContext ctx)
     {
+        if(Player.instance.playerState.state == PlayerState.State.Climb) return;
         if (okayToBlock)
         {
             holdingBlock = true;

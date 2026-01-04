@@ -194,7 +194,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 start = playerRB.position;
         Vector3 goal = goalNode.worldPos;
-        //copy duration to the boulder side too!
+
         float duration = TurnManager.instance.pushDuration;
         float t = 0;
         while (t < 1)
@@ -222,13 +222,12 @@ public class PlayerMovement : MonoBehaviour
         bool sceneBootedUP = false;
         while (t < 1)
         {
-            if(t > TransitionData.LadderToSceneTime && !sceneBootedUP) //TEMPORARY TRANSITION TIME
+            if(t > TransitionData.LadderToSceneTime && !sceneBootedUP) 
             {
                 sceneBootedUP = true;
                 LoadSystem.SceneType scene = ladderNode.ladderController.GetTargetScene();
                 LoadSystem.instance.LoadScene(scene);
             }
-            //run toggle allows smooth walk to run movement speeds/animations
             float duration = TurnManager.instance.climbDuration;
 
             t += Time.fixedDeltaTime / duration;

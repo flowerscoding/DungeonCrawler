@@ -16,5 +16,5 @@ MonoBehaviour:
   maxHealth: 10
   attackDamage: 1
   attackHitFrame: 0.4
-  parryWindow: 0.36
+  parryWindow: 0.34
   staggerLimit: 10

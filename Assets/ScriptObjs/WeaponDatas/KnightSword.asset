@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: KnightSword
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   weaponName: Knight Sword
-  damage: 5
+  damage: 4
   attackSpeed: 1
   stagger: 10

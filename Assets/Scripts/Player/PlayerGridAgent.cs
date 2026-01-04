@@ -9,6 +9,9 @@ public class PlayerGridAgent : MonoBehaviour
     public void SetStartNode(NodeClass newNode)
     {
         node = newNode;
+        nodeX = node.nodeX;
+        nodeY = node.nodeY;
+
         node.state = NodeClass.State.Player;
 
         node.enemyController = null;
@@ -17,8 +20,8 @@ public class PlayerGridAgent : MonoBehaviour
     }
     public void SetNode(NodeClass newNode)
     {
-        newNode.state = node.state;
         node.state = NodeClass.State.Empty;
+        newNode.state = node.state;
 
         node.enemyController = null;
         node.boulderController = null;

@@ -40,4 +40,8 @@ public class Player : MonoBehaviour
     {
         playerMovement.Climb(ladderNode);
     }
+    public void ParryBlockOn()
+    {
+        playerBlock.ParryBlockOn();
+    }
 }

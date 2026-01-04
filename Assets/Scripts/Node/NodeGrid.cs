@@ -24,16 +24,15 @@ public class NodeGrid : MonoBehaviour
             xOff += offSet;
         }
     }
+    public void SpawnPlayer()
+    {
+        Player.instance.playerMovement.playerRB.position = spawnPos;
+    }
     public void AssignPlayer()
     {
         int x = Mathf.FloorToInt(spawnPos.x - gridOrigin.x);
         int y = Mathf.FloorToInt(spawnPos.z - gridOrigin.z);
-        x = Mathf.FloorToInt(x / offSet);
-        y = Mathf.FloorToInt(x / offSet);
-        Player.instance.gridAgent.SetStartNode(grid[x, y]);
-    }
-    public void SpawnPlayer()
-    {
-        Player.instance.playerMovement.playerRB.position = Player.instance.gridAgent.node.worldPos;
+        NodeClass node = Node.instance.nodeGrid.grid[x, y];
+        Player.instance.gridAgent.SetStartNode(node);
     }
 }

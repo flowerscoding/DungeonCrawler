@@ -10141,8 +10141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8628f972c9a634785626061a6464fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  yOffset: 3
-  zOffset: -2.5
+  zoomMin: -6
+  zoomMax: -2.5
+  yOffset: 1
+  zOffset: -6
 --- !u!114 &330585549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11743,7 +11745,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30

@@ -6,15 +6,6 @@ public class EnemyMovement : MonoBehaviour
     public GridAgent gridAgent;
     public void MoveAI(EnemyController controller)
     {
-        NodeClass startNode = controller.gridAgent.node;
-        if (startNode == null)
-        {
-            Debug.LogError("Enemy " + controller.name + " has null startNode in GridAgent!");
-        }
-        else
-        {
-            Debug.Log("Enemy " + controller.name + " startNode: " + startNode.nodeX + "," + startNode.nodeY);
-        }
         FindPath(controller);
     }
     void FindPath(EnemyController controller)

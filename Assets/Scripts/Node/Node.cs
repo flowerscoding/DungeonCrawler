@@ -25,6 +25,5 @@ public class Node : MonoBehaviour
     {
         nodeGrid.CreateGrid();
         nodeGrid.AssignPlayer();
-        nodeGrid.SpawnPlayer();
     }
 }

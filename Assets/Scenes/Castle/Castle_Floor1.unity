@@ -43313,7 +43313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52388d3aabf3856498a89e15323385e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  spawnPos: {x: 0, y: 0, z: 0}
+  spawnPos: {x: -2, y: 0, z: -5}
   gridOrigin: {x: -10, y: 0, z: -10}
   gridSize: 100
   offSet: 1
@@ -50934,7 +50934,7 @@ GameObject:
   - component: {fileID: 1582641547}
   - component: {fileID: 1582641548}
   m_Layer: 0
-  m_Name: Latter
+  m_Name: Ladder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

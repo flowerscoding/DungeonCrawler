@@ -13,6 +13,9 @@ public class PlayerGridAgent : MonoBehaviour
         nodeX = node.nodeX;
         nodeY = node.nodeY;
 
+        Rigidbody rb = Player.instance.playerMovement.playerRB;
+        rb.position = node.worldPos;
+
         node.state = NodeClass.State.Player;
 
         node.enemyController = null;

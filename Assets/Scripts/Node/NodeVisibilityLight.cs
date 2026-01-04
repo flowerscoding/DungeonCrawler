@@ -6,7 +6,7 @@ public class NodeVisibilityLight : MonoBehaviour
     public NodeClass node;
     public int nodeX;
     public int nodeY;
-
+    
     private int _visibilityRadius = 11;
     void Awake()
     {

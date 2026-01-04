@@ -48,6 +48,8 @@ public class LoadSystem : MonoBehaviour
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
         
         yield return new WaitForSeconds(pauseTime);
+        Player.instance.StateChange(PlayerState.State.Idle);
+
         progress = 0;
         while (progress < 1)
         {

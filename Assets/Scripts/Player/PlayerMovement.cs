@@ -227,6 +227,7 @@ public class PlayerMovement : MonoBehaviour
                 sceneBootedUP = true;
                 LoadSystem.SceneType scene = ladderNode.ladderController.GetTargetScene();
                 LoadSystem.instance.LoadScene(scene);
+                yield break;
             }
             float duration = TurnManager.instance.climbDuration;
 

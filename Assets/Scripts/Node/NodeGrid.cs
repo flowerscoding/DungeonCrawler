@@ -6,15 +6,15 @@ public class NodeGrid : MonoBehaviour
     public Vector3 gridOrigin;
     public int gridSize;
     public float offSet;
-    public NodeClass[,] grid {get; private set;}
+    public NodeClass[,] grid { get; private set; }
     public void CreateGrid()
     {
         grid = new NodeClass[gridSize, gridSize];
         float xOff = gridOrigin.x;
         float zOff = gridOrigin.z;
-        for(int x = 0; x < gridSize; x++)
+        for (int x = 0; x < gridSize; x++)
         {
-            for(int y = 0; y < gridSize; y++)
+            for (int y = 0; y < gridSize; y++)
             {
                 Vector3 worldPos = new Vector3(xOff, 0, zOff);
                 grid[x, y] = new NodeClass(worldPos, x, y);
@@ -23,10 +23,6 @@ public class NodeGrid : MonoBehaviour
             zOff = gridOrigin.z;
             xOff += offSet;
         }
-    }
-    public void SpawnPlayer()
-    {
-        Player.instance.playerMovement.playerRB.position = spawnPos;
     }
     public void AssignPlayer()
     {

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerGridAgent : MonoBehaviour
 {
+    public static event System.Action<NodeClass> OnPlayerMovement;
     public NodeClass.State state;
     public NodeClass node { get; private set; }
     public int nodeX;
@@ -17,6 +18,8 @@ public class PlayerGridAgent : MonoBehaviour
         node.enemyController = null;
         node.boulderController = null;
         node.ladderController = null;
+
+        OnPlayerMovement?.Invoke(node);
     }
     public void SetNode(NodeClass newNode)
     {
@@ -36,5 +39,7 @@ public class PlayerGridAgent : MonoBehaviour
                 node.state = NodeClass.State.Player;
                 break;
         }
+
+        OnPlayerMovement?.Invoke(node);
     }
 }

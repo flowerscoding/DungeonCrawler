@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerState : MonoBehaviour
 {
     public ParticleSystem bloodParticles;
+    public Transform playerHand;
     public enum State
     {
         Idle,
@@ -87,6 +88,7 @@ public class PlayerState : MonoBehaviour
     void ClimbState()
     {
         Player.instance.animateMachine.Animate(CharacterStateMachine.State.Climb);
+        playerHand.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
     }
     void BlockState()
     {

@@ -139,15 +139,12 @@ public class PlayerMovement : MonoBehaviour
 
         Player.instance.gridAgent.SetNode(targetNode);
 
-        StartCoroutine(MoveToTarget(targetNode, runToggle));
+        StartCoroutine(MoveToTarget(targetNode));
     }
-    IEnumerator MoveToTarget(NodeClass targetNode, bool running)
+    IEnumerator MoveToTarget(NodeClass targetNode)
     {
-        if(running) _skipEnemy = !_skipEnemy;
-        else _skipEnemy = false;
-
-        if(!_skipEnemy)
-            TurnManager.instance.ChangeTurn(TurnManager.State.EnemyTurn);
+        
+        TurnManager.instance.ChangeTurn(TurnManager.State.EnemyTurn);
         Vector3 start = playerRB.position;
         Vector3 goal = targetNode.worldPos;
         Quaternion goalQuat = Quaternion.LookRotation(goal - start);

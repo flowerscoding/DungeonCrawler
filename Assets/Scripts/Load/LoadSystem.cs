@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LoadSystem : MonoBehaviour
 {
     public static LoadSystem instance;
+    public static event System.Action OnLoad;
     public Image transitionImg;
     public enum SceneType
     {
@@ -47,6 +48,7 @@ public class LoadSystem : MonoBehaviour
         transitionImg.color = c;
         SceneManager.LoadScene(sceneName);
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
+        OnLoad?.Invoke(); //world signal
         
         yield return new WaitForSeconds(pauseTime);
         Player.instance.StateChange(PlayerState.State.Idle);

@@ -13,7 +13,6 @@ public class PlayerData : MonoBehaviour
     public struct WeaponInstance
     {
         public WeaponData data;
-
     }
     public WeaponInstance weapon;
 }

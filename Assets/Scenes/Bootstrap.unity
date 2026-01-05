@@ -13922,7 +13922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b27b2558d8e3544d8903fee424c3dbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  state: 1
+  state: 2
   nodeX: 0
   nodeY: 0
 --- !u!95 &9032411652586703146

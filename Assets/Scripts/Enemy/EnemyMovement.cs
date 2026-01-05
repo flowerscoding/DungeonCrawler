@@ -6,8 +6,19 @@ public class EnemyMovement : MonoBehaviour
 {
     public GridAgent gridAgent;
     private List<NodeClass> goalNodes = new List<NodeClass>();
+    private int _enemySlowCounter = 0;
     public void MoveAI(EnemyController controller)
     {
+        if (Player.instance.playerMovement.runToggle)
+        {
+            if (_enemySlowCounter++ % 2 != 0)
+            {
+
+                return; 
+            }
+        }
+        else
+            _enemySlowCounter = 0;
         FindPath(controller);
     }
     void FindPath(EnemyController controller)
@@ -16,12 +27,12 @@ public class EnemyMovement : MonoBehaviour
         NodeClass targetNode = Player.instance.gridAgent.node;
         NodeClass bestNode = newPath.FindPath(gridAgent.node, targetNode);
         Vector3 start = gridAgent.node.worldPos;
-
+        
         gridAgent.SetNode(bestNode);
 
         goalNodes.Add(bestNode);
 
-        if(goalNodes.Count == 1)
+        if (goalNodes.Count == 1)
             StartCoroutine(EnemyAnim(start, bestNode.worldPos, controller, bestNode));
     }
     IEnumerator EnemyAnim(Vector3 start, Vector3 goal, EnemyController controller, NodeClass curNode)
@@ -37,7 +48,6 @@ public class EnemyMovement : MonoBehaviour
             transform.position = Vector3.Lerp(start, goal, t);
             yield return null;
         }
-
         goalNodes.Remove(curNode);
 
         if (goalNodes.Count <= 0)

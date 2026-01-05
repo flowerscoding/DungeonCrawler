@@ -35,20 +35,24 @@ public class PlayerInteract : MonoBehaviour
             case NodeClass.State.Chest:
 
                 break;
-            case NodeClass.State.Latter:
+            case NodeClass.State.Ladder:
                 LatterInteract();
                 break;
+            case NodeClass.State.Destructible:
+                DestructibleInteract();
+                break;
         }
+    }
+    void DestructibleInteract()
+    {
+        TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
+        Player.instance.StateChange(PlayerState.State.Destroy);
     }
     void LatterInteract()
     {
         if(curInteractingNode.ladderController.active)
         {
-            int nodeX = Player.instance.gridAgent.nodeX;
-            int nodeY = Player.instance.gridAgent.nodeY;
-            NodeClass goalNode = Node.instance.nodeGrid.grid[nodeX, nodeY];
             Player.instance.Climb(curInteractingNode);
-            
             curInteractingNode.ladderController.DeactivateLatter();
         }
     }
@@ -112,7 +116,7 @@ public class PlayerInteract : MonoBehaviour
                 case NodeClass.State.Boulder:
                     curInteractingNode.boulderController.NewState(BoulderState.State.Idle);
                     break;
-                case NodeClass.State.Latter:
+                case NodeClass.State.Ladder:
                     curInteractingNode.ladderController.DeactivateLatter();
                     break;
             }
@@ -146,7 +150,7 @@ public class PlayerInteract : MonoBehaviour
                 case NodeClass.State.Empty: break;
                 case NodeClass.State.Enemy: break;
                 case NodeClass.State.Boulder: BoulderInteractable(checkingNode); break;
-                case NodeClass.State.Latter: LatterInteractable(checkingNode); break;
+                case NodeClass.State.Ladder: LatterInteractable(checkingNode); break;
             }
         }
     }

@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Bootstrap.unity
     guid: 3c48b25ac464cc14b9b31795d756e7a1
   - enabled: 1
+    path: Assets/Scenes/Intro/IntroArea.unity
+    guid: 8990f198852eef3409fddedb75f6ac14
+  - enabled: 1
     path: Assets/Scenes/Castle/Castle_Floor1.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:

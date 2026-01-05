@@ -16,22 +16,24 @@ public class GridAgent : MonoBehaviour
         nodeX = Mathf.FloorToInt(transform.position.x - Node.instance.nodeGrid.gridOrigin.x);
         nodeY = Mathf.FloorToInt(transform.position.z - Node.instance.nodeGrid.gridOrigin.z);
         node = Node.instance.nodeGrid.grid[nodeX, nodeY];
+        node.state = state;
         switch (state)
         {
             case NodeClass.State.Enemy:
                 node.enemyController = transform.GetComponent<EnemyController>();
-                node.state = NodeClass.State.Enemy;
                 break;
             case NodeClass.State.Boulder:
                 node.boulderController = transform.GetComponent<BoulderController>();
-                node.state = NodeClass.State.Boulder;
                 break;
             case NodeClass.State.Chest:
                 break;
-            case NodeClass.State.Latter:
+            case NodeClass.State.Ladder:
                 node.ladderController = transform.GetComponent<LadderController>();
-                node.state = NodeClass.State.Latter;
                 break;
+            case NodeClass.State.Destructible:
+                node.destructibleController = transform.GetComponent<DestructibleController>();
+                break;
+
         }
     }
     public void SetNode(NodeClass newNode)
@@ -58,10 +60,18 @@ public class GridAgent : MonoBehaviour
                 break;
             case NodeClass.State.Chest:
                 break;
-            case NodeClass.State.Latter:
+            case NodeClass.State.Ladder:
                 node.ladderController = transform.GetComponent<LadderController>();
-                node.state = NodeClass.State.Latter;
+                node.state = NodeClass.State.Ladder;
+                break;
+            case NodeClass.State.Destructible:
+                node.destructibleController = transform.GetComponent<DestructibleController>();
+                node.state = NodeClass.State.Destructible;
                 break;
         }
+    }
+    public void ChangeNodeState(NodeClass.State newState) //for destructibles
+    {
+        node.state = newState;
     }
 }

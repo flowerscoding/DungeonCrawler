@@ -8,6 +8,7 @@ public class PlayerData : MonoBehaviour
     public int defenseStat;
 
     public float attackHitPoint;
+    public float destroyHitPoint;
     [System.Serializable]
     public struct WeaponInstance
     {

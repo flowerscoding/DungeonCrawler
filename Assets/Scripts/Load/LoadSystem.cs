@@ -9,6 +9,7 @@ public class LoadSystem : MonoBehaviour
     public Image transitionImg;
     public enum SceneType
     {
+        IntroArea,
         Castle_Floor1,
     }
     void Awake()

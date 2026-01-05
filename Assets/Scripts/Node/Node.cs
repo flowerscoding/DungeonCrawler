@@ -19,6 +19,8 @@ public class Node : MonoBehaviour
     {
         node.enemyController = null;
         node.boulderController = null;
+        node.ladderController = null;
+        node.destructibleController = null;
         node.state = NodeClass.State.Empty;
     }
     public void AssignNodes()

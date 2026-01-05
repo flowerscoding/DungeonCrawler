@@ -16,6 +16,7 @@ public class PlayerState : MonoBehaviour
         BoulderPush,
         PushFail,
         Climb,
+        Destroy,
     }
     public State state { get; private set; }
     public void NewState(State newState)
@@ -53,7 +54,35 @@ public class PlayerState : MonoBehaviour
             case State.Climb:
                 ClimbState();
                 break;
+            case State.Destroy:
+                DestroyState();
+                break;
         }
+    }
+    void DestroyState()
+    {
+        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Destroy);
+        StartCoroutine(TrackDestroy());
+    }
+    IEnumerator TrackDestroy()
+    {
+        yield return null;
+        float progress = 0;
+        NodeClass destructibleNode = Player.instance.playerInteract.curInteractingNode;
+        bool hitLanded = false;
+        while (progress < 1)
+        {
+            AnimatorStateInfo info = Player.instance.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
+            progress = info.normalizedTime;
+            if(progress > Player.instance.playerData.destroyHitPoint && !hitLanded)
+            {
+                hitLanded = true;
+                destructibleNode.destructibleController.DestroyDestructible();
+            } 
+            yield return null;
+        }
+        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Idle);
+        TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
     }
     void ClimbState()
     {

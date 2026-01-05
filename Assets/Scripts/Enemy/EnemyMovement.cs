@@ -1,9 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
     public GridAgent gridAgent;
+    private List<NodeClass> goalNodes = new List<NodeClass>();
     public void MoveAI(EnemyController controller)
     {
         FindPath(controller);
@@ -16,9 +18,13 @@ public class EnemyMovement : MonoBehaviour
         Vector3 start = gridAgent.node.worldPos;
 
         gridAgent.SetNode(bestNode);
-        StartCoroutine(EnemyAnim(start, bestNode.worldPos, controller));
+
+        goalNodes.Add(bestNode);
+
+        if(goalNodes.Count == 1)
+            StartCoroutine(EnemyAnim(start, bestNode.worldPos, controller, bestNode));
     }
-    IEnumerator EnemyAnim(Vector3 start, Vector3 goal, EnemyController controller)
+    IEnumerator EnemyAnim(Vector3 start, Vector3 goal, EnemyController controller, NodeClass curNode)
     {
         yield return null;
         float t = 0;
@@ -31,10 +37,19 @@ public class EnemyMovement : MonoBehaviour
             transform.position = Vector3.Lerp(start, goal, t);
             yield return null;
         }
-        if (t > 1)
+
+        goalNodes.Remove(curNode);
+
+        if (goalNodes.Count <= 0)
         {
             transform.position = goal;
             controller.NewState(EnemyAI.State.Aggro);
+        }
+        else
+        {
+            transform.position = goal;
+            NodeClass newGoal = goalNodes[0];
+            StartCoroutine(EnemyAnim(goal, newGoal.worldPos, controller, newGoal));
         }
     }
 }

@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction _runToggleAction;
     private string _holdingDirection;
     public bool runToggle;
+    private bool _skipEnemy; 
     void Awake()
     {
         _upAction = InputManager.instance.inputActions.asset.FindActionMap("Player").FindAction("Up");
@@ -138,11 +139,15 @@ public class PlayerMovement : MonoBehaviour
 
         Player.instance.gridAgent.SetNode(targetNode);
 
-        StartCoroutine(MoveToTarget(targetNode));
+        StartCoroutine(MoveToTarget(targetNode, runToggle));
     }
-    IEnumerator MoveToTarget(NodeClass targetNode)
+    IEnumerator MoveToTarget(NodeClass targetNode, bool running)
     {
-        TurnManager.instance.ChangeTurn(TurnManager.State.EnemyTurn);
+        if(running) _skipEnemy = !_skipEnemy;
+        else _skipEnemy = false;
+
+        if(!_skipEnemy)
+            TurnManager.instance.ChangeTurn(TurnManager.State.EnemyTurn);
         Vector3 start = playerRB.position;
         Vector3 goal = targetNode.worldPos;
         Quaternion goalQuat = Quaternion.LookRotation(goal - start);

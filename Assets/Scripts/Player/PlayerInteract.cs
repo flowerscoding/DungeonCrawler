@@ -58,6 +58,7 @@ public class PlayerInteract : MonoBehaviour
     }
     void EnemyInteract()
     {
+        print("REACHED!");
         ActionsMenu.instance.EnableActionsMenu();
     }
     void BoulderPushCheck()

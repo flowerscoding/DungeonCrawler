@@ -2153,7 +2153,7 @@ MonoBehaviour:
   curHealth: 10
   attackStat: 1
   defenseStat: 1
-  attackHitPoint: 0.4
+  attackHitPoint: 0.3
   destroyHitPoint: 0.5
   weapon:
     data: {fileID: 11400000, guid: de6b72b4bdd8e89438597e025225d09a, type: 2}

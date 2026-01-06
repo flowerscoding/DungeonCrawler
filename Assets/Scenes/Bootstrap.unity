@@ -167,6 +167,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc259dae9d20bf84a9cda9088fe6fc09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActionsMenuInput
+--- !u!1 &103171171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 103171172}
+  m_Layer: 0
+  m_Name: PlayerHand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &103171172
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103171171}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7554354034179238889}
+  m_Father: {fileID: 1190471424804195792}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &127874885
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,6 +383,7 @@ Transform:
   - {fileID: 894115496}
   - {fileID: 778251278}
   - {fileID: 127874886}
+  - {fileID: 411197803}
   m_Father: {fileID: 2045548770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &326986559
@@ -449,6 +482,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 404828113}
   m_CullTransparentMesh: 1
+--- !u!1 &411197802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 411197803}
+  - component: {fileID: 411197804}
+  m_Layer: 0
+  m_Name: PlayerLoad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &411197803
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411197802}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 326986558}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &411197804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411197802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bde71ac20d1bf94dadaa16f42e78d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  playerHand: {fileID: 103171172}
 --- !u!1 &451307125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,6 +1459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerState
   bloodParticles: {fileID: 7965038383418000232}
+  playerHand: {fileID: 103171172}
 --- !u!1 &979227791
 GameObject:
   m_ObjectHideFlags: 0
@@ -2634,7 +2713,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6994097576029306239}
-  - {fileID: 7554354034179238889}
+  - {fileID: 103171172}
   m_Father: {fileID: 6343313483641859528}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1253228838451705667
@@ -3970,12 +4049,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7178074064743477587}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.20116878, y: 0.67788726, z: 0.67788726, w: 0.20116882}
-  m_LocalPosition: {x: -0.00007, y: -0.00364, z: -0.00018}
-  m_LocalScale: {x: 5.8158073, y: 5.8158107, z: 5.8967657}
+  m_LocalRotation: {x: -0.20116882, y: 0.6778872, z: 0.6778872, w: 0.20116884}
+  m_LocalPosition: {x: -0.000069992646, y: -0.0036400093, z: -0.00017999626}
+  m_LocalScale: {x: 5.8158083, y: 5.815812, z: 5.896766}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1190471424804195792}
+  m_Father: {fileID: 103171172}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &7814471668994945937
 SkinnedMeshRenderer:

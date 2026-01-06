@@ -48,6 +48,7 @@ public class LoadSystem : MonoBehaviour
         transitionImg.color = c;
         SceneManager.LoadScene(sceneName);
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
+        
         OnLoad?.Invoke(); //world signal
         
         yield return new WaitForSeconds(pauseTime);

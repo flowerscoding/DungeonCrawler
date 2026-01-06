@@ -11,9 +11,9 @@ public class DestructibleController : MonoBehaviour
     }
     public  void DestroyDestructible()
     {
+        GetComponent<NodeVisibility>().enabled = false;
         _meshRenderer.enabled = false;
         _gridAgent.ChangeNodeState(NodeClass.State.Empty);
         _gridAgent.node.destructibleController = null;
-        print(_gridAgent.node.state);
     }
 }

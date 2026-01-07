@@ -163,6 +163,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""LStick"",
+                    ""type"": ""Value"",
+                    ""id"": ""ad0f6a82-8426-4dab-991e-dd931a147259"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -385,6 +394,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Zoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6f132299-95a2-4335-ba7e-81c617ba990d"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LStick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -535,6 +555,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_RunToggle = m_Player.FindAction("RunToggle", throwIfNotFound: true);
         m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
         m_Player_Zoom = m_Player.FindAction("Zoom", throwIfNotFound: true);
+        m_Player_LStick = m_Player.FindAction("LStick", throwIfNotFound: true);
         // ActionsMenu
         m_ActionsMenu = asset.FindActionMap("ActionsMenu", throwIfNotFound: true);
         m_ActionsMenu_Confirm = m_ActionsMenu.FindAction("Confirm", throwIfNotFound: true);
@@ -629,6 +650,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_RunToggle;
     private readonly InputAction m_Player_Block;
     private readonly InputAction m_Player_Zoom;
+    private readonly InputAction m_Player_LStick;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -672,6 +694,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Zoom".
         /// </summary>
         public InputAction @Zoom => m_Wrapper.m_Player_Zoom;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/LStick".
+        /// </summary>
+        public InputAction @LStick => m_Wrapper.m_Player_LStick;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -722,6 +748,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Zoom.started += instance.OnZoom;
             @Zoom.performed += instance.OnZoom;
             @Zoom.canceled += instance.OnZoom;
+            @LStick.started += instance.OnLStick;
+            @LStick.performed += instance.OnLStick;
+            @LStick.canceled += instance.OnLStick;
         }
 
         /// <summary>
@@ -757,6 +786,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Zoom.started -= instance.OnZoom;
             @Zoom.performed -= instance.OnZoom;
             @Zoom.canceled -= instance.OnZoom;
+            @LStick.started -= instance.OnLStick;
+            @LStick.performed -= instance.OnLStick;
+            @LStick.canceled -= instance.OnLStick;
         }
 
         /// <summary>
@@ -971,6 +1003,13 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnZoom(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "LStick" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLStick(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "ActionsMenu" which allows adding and removing callbacks.

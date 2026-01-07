@@ -7,6 +7,8 @@ public class EnemyMovement : MonoBehaviour
     public GridAgent gridAgent;
     private List<NodeClass> goalNodes = new List<NodeClass>();
     private int _enemySlowCounter = 0;
+
+    
     public void MoveAI(EnemyController controller)
     {
         if (Player.instance.playerMovement.runToggle)

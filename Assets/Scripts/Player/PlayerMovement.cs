@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
         Right
     }
     public DirectionState directionState;
+    private InputAction _leftStickAction;
     private InputAction _upAction;
     private InputAction _downAction;
     private InputAction _leftAction;
@@ -21,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     private InputAction _runToggleAction;
     private string _holdingDirection;
     public bool runToggle;
-    private bool _skipEnemy; 
     void Awake()
     {
         _upAction = InputManager.instance.inputActions.asset.FindActionMap("Player").FindAction("Up");
@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         _leftAction = InputManager.instance.inputActions.asset.FindActionMap("Player").FindAction("Left");
         _rightAction = InputManager.instance.inputActions.asset.FindActionMap("Player").FindAction("Right");
         _runToggleAction = InputManager.instance.inputActions.asset.FindActionMap("Player").FindAction("RunToggle");
+        _leftStickAction = InputManager.instance.inputActions.asset.FindActionMap("Player").FindAction("LStick");
     }
     void OnEnable()
     {
@@ -37,12 +38,30 @@ public class PlayerMovement : MonoBehaviour
         _leftAction.performed += MoveLeft;
         _rightAction.performed += MoveRight;
         _runToggleAction.performed += RunToggle;
+        _leftStickAction.performed += StickMovement;
 
+        _leftStickAction.canceled += StickMovement;
         _runToggleAction.canceled += RunUntoggle;
         _upAction.canceled += UpRelease;
         _downAction.canceled += DownRelease;
         _leftAction.canceled += LeftRelease;
         _rightAction.canceled += RightRelease;
+    }
+    void StickMovement(InputAction.CallbackContext  ctx)
+    {
+        Vector2 input = ctx.ReadValue<Vector2>();
+        if(input.magnitude < 0.01f)
+        {
+            _holdingDirection = " ";
+            return;
+        }
+        bool xDir = Mathf.Abs(input.x) > Mathf.Abs(input.y);
+        if(xDir)
+        {
+            MoveDirection(input.x > 0 ? "right" : "left");
+        }
+        else
+            MoveDirection(input.y > 0 ? "up" : "down");
     }
     void RunToggle(InputAction.CallbackContext ctx)
     {

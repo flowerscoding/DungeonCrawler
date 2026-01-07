@@ -32,9 +32,6 @@ public class NodeVisibilitySkinnedMesh : MonoBehaviour
         int xD = Mathf.Abs(playerNode.nodeX - nodeX);
         int yD = Mathf.Abs(playerNode.nodeY - nodeY);
         int distance = xD + yD;
-        if (distance < _visibilityRadius)
-            _renderer.enabled = true;
-        else
-            _renderer.enabled = false;
+        _renderer.enabled = distance < _visibilityRadius;
     }
 }

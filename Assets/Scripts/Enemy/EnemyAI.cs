@@ -42,7 +42,9 @@ public class EnemyAI : MonoBehaviour
     }
     void WalkState(EnemyController controller)
     {
-        controller.animateMachine.Animate(CharacterStateMachine.State.Walking);
+        AnimatorStateInfo state = controller.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
+        if(!state.IsName("Walk"))
+            controller.animateMachine.Animate(CharacterStateMachine.State.Walking);
         controller.enemyMovement.MoveAI(controller);
     }
     void HurtState(EnemyController controller)

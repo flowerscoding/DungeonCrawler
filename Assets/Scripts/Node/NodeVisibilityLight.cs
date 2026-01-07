@@ -32,9 +32,6 @@ public class NodeVisibilityLight : MonoBehaviour
         int xD = Mathf.Abs(playerNode.nodeX - nodeX);
         int yD = Mathf.Abs(playerNode.nodeY - nodeY);
         int distance = xD + yD;
-        if (distance < _visibilityRadius)
-            _light.enabled = true;
-        else
-            _light.enabled = false;
+        _light.enabled = distance < _visibilityRadius;
     }
 }

@@ -20,6 +20,7 @@ public class OcclusionFader : MonoBehaviour
         _renderer.material.color = newColor;
         
         _occluding = false;
+
     }
 
     public void OccludingActivate()

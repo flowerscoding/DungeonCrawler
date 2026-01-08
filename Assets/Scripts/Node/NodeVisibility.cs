@@ -16,10 +16,12 @@ public class NodeVisibility : MonoBehaviour
     void OnEnable()
     {
         PlayerGridAgent.OnPlayerMovement += DistanceCheck;
+        PlayerGridAgent.OnPlayerNodeSet += DistanceCheck;
     }
     void OnDisable()
     {
         PlayerGridAgent.OnPlayerMovement -= DistanceCheck;
+        PlayerGridAgent.OnPlayerNodeSet -= DistanceCheck;
     }
     void SetReferenceNode()
     {

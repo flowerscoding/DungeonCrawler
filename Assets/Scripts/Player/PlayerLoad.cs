@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class PlayerLoad : MonoBehaviour
 {
     public Transform playerHand;
+
     void OnEnable()
     {
         LoadSystem.OnLoad += LoadPlayer;

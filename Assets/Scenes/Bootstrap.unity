@@ -887,6 +887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   inputMapping: {fileID: 1164020349}
+  inputControllerState: {fileID: 1268296521}
 --- !u!4 &679317128
 Transform:
   m_ObjectHideFlags: 0
@@ -901,6 +902,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1164020350}
+  - {fileID: 1268296520}
   m_Father: {fileID: 2045548770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &738328241
@@ -1945,6 +1947,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212718669}
   m_CullTransparentMesh: 1
+--- !u!1 &1268296519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1268296520}
+  - component: {fileID: 1268296521}
+  m_Layer: 0
+  m_Name: InputController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1268296520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268296519}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 679317128}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1268296521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268296519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d682880258c13942a76b76cac3598a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  state: 0
 --- !u!1 &1332987583
 GameObject:
   m_ObjectHideFlags: 0
@@ -13829,6 +13876,7 @@ GameObject:
   - component: {fileID: 9032411652586703147}
   - component: {fileID: 9032411652586703146}
   - component: {fileID: 9032411652586703145}
+  - component: {fileID: 9032411652586703148}
   m_Layer: 0
   m_Name: KnightDungeonCrawler
   m_TagString: Untagged
@@ -14053,6 +14101,27 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &9032411652586703148
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8507935378294428562}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.5290856, z: 1}
+  m_Center: {x: 0, y: 0.7645428, z: 0}
 --- !u!1 &9057125381097959606
 GameObject:
   m_ObjectHideFlags: 0

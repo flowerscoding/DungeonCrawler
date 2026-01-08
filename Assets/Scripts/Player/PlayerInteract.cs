@@ -6,17 +6,24 @@ public class PlayerInteract : MonoBehaviour
     public NodeClass curInteractingNode;
     public NodeClass goalNode;
 
-    public InputAction interactAction;
+    private InputAction _interactAction;
     void Awake()
     {
-        interactAction = InputManager.instance.inputActions.asset.FindActionMap("Player").FindAction("Interact");
+        _interactAction = InputManager.instance.inputActions.asset.FindActionMap("Player").FindAction("Interact");
+    }
+    void OnDisable()
+    {
+        _interactAction.performed -= InteractPressed;
     }
     void OnEnable()
     {
-        interactAction.performed += InteractPressed;
+        _interactAction.performed += InteractPressed;
     }
     void InteractPressed(InputAction.CallbackContext ctx)
     {
+
+        InputManager.instance.ControllerTypeCheck(ctx);
+
         if (curInteractingNode == null
         || TurnManager.instance.state != TurnManager.State.PlayerTurn
         || !ctx.performed) return;
@@ -50,7 +57,7 @@ public class PlayerInteract : MonoBehaviour
     }
     void LatterInteract()
     {
-        if(curInteractingNode.ladderController.active)
+        if (curInteractingNode.ladderController.active)
         {
             Player.instance.Climb(curInteractingNode);
             curInteractingNode.ladderController.DeactivateLatter();
@@ -58,7 +65,6 @@ public class PlayerInteract : MonoBehaviour
     }
     void EnemyInteract()
     {
-        print("REACHED!");
         ActionsMenu.instance.EnableActionsMenu();
     }
     void BoulderPushCheck()

@@ -47,16 +47,21 @@ public class PlayerMovement : MonoBehaviour
         _leftAction.canceled += LeftRelease;
         _rightAction.canceled += RightRelease;
     }
-    void StickMovement(InputAction.CallbackContext  ctx)
+    void ControllerTypeCheck(InputAction.CallbackContext ctx)
     {
+        InputManager.instance.ControllerTypeCheck(ctx);
+    }
+    void StickMovement(InputAction.CallbackContext ctx)
+    {
+        ControllerTypeCheck(ctx);
         Vector2 input = ctx.ReadValue<Vector2>();
-        if(input.magnitude < 0.01f)
+        if (input.magnitude < 0.01f)
         {
             _holdingDirection = " ";
             return;
         }
         bool xDir = Mathf.Abs(input.x) > Mathf.Abs(input.y);
-        if(xDir)
+        if (xDir)
         {
             MoveDirection(input.x > 0 ? "right" : "left");
         }
@@ -93,21 +98,25 @@ public class PlayerMovement : MonoBehaviour
     }
     void MoveUp(InputAction.CallbackContext ctx)
     {
+        ControllerTypeCheck(ctx);
         if (ctx.performed)
             MoveDirection("up");
     }
     void MoveDown(InputAction.CallbackContext ctx)
     {
+        ControllerTypeCheck(ctx);
         if (ctx.performed)
             MoveDirection("down");
     }
     void MoveLeft(InputAction.CallbackContext ctx)
     {
+        ControllerTypeCheck(ctx);
         if (ctx.performed)
             MoveDirection("left");
     }
     void MoveRight(InputAction.CallbackContext ctx)
     {
+        ControllerTypeCheck(ctx);
         if (ctx.performed)
             MoveDirection("right");
     }
@@ -162,7 +171,7 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator MoveToTarget(NodeClass targetNode)
     {
-        
+
         TurnManager.instance.ChangeTurn(TurnManager.State.EnemyTurn);
         Vector3 start = playerRB.position;
         Vector3 goal = targetNode.worldPos;
@@ -243,7 +252,7 @@ public class PlayerMovement : MonoBehaviour
         bool sceneBootedUP = false;
         while (t < 1)
         {
-            if(t > TransitionData.LadderToSceneTime && !sceneBootedUP) 
+            if (t > TransitionData.LadderToSceneTime && !sceneBootedUP)
             {
                 sceneBootedUP = true;
                 LoadSystem.SceneType scene = ladderNode.ladderController.GetTargetScene();
@@ -260,7 +269,7 @@ public class PlayerMovement : MonoBehaviour
         {
             TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
             playerRB.position = goal;
-            
+
             Player.instance.StateChange(PlayerState.State.Idle);
         }
     }

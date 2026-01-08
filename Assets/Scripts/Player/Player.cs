@@ -44,4 +44,8 @@ public class Player : MonoBehaviour
     {
         playerBlock.ParryBlockOn();
     }
+    public void InitializeStartNode(NodeClass playerNode)
+    {
+        gridAgent.InitializeStartNode(playerNode);
+    }
 }

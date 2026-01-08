@@ -30,5 +30,6 @@ public class NodeGrid : MonoBehaviour
         int y = Mathf.FloorToInt(spawnPos.z - gridOrigin.z);
         NodeClass node = Node.instance.nodeGrid.grid[x, y];
         Player.instance.gridAgent.SetStartNode(node);
+        Player.instance.InitializeStartNode(node);
     }
 }

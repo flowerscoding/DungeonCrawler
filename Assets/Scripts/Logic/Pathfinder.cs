@@ -23,7 +23,17 @@ public class Pathfinder
             {
                 NodeClass neighborNode = Node.instance.nodeGrid.grid[nodeX, nodeY];
 
-                if(neighborNode.state != NodeClass.State.Empty) continue; //skip if not empty
+                if(neighborNode.state != NodeClass.State.Empty)
+                {
+                    if(neighborNode.state == NodeClass.State.Player)
+                    {
+                        startNode.gCost = 0;
+                        startNode.hCost = 0;
+                        neighborNodes.Add(startNode);
+                        return startNode;
+                    }
+                    continue; 
+                }
 
                 neighborNodes.Add(neighborNode);
 

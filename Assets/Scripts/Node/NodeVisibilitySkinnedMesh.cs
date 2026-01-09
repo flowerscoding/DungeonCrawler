@@ -12,6 +12,7 @@ public class NodeVisibilitySkinnedMesh : MonoBehaviour
     {
         SetReferenceNode();
         _renderer = GetComponent<SkinnedMeshRenderer>();
+        DistanceCheck(Player.instance.gridAgent.node);
     }
     void OnEnable()
     {

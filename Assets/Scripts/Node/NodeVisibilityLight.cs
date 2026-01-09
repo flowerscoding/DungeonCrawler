@@ -12,6 +12,7 @@ public class NodeVisibilityLight : MonoBehaviour
     {
         SetReferenceNode();
         _light= GetComponent<Light>();
+        DistanceCheck(Player.instance.gridAgent.node);
     }
     void OnEnable()
     {

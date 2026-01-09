@@ -43,7 +43,8 @@ public class EnemyMovement : MonoBehaviour
         float t = 0;
         Vector3 direction = goal - start;
         direction.y = 0f;
-        gridAgent.transform.forward = direction.normalized;
+        if(direction.normalized != Vector3.zero)
+            gridAgent.transform.forward = direction.normalized;
         while (t < 1)
         {
             t += Time.deltaTime / TurnManager.instance.movementDuration;

@@ -12,16 +12,15 @@ public class NodeVisibility : MonoBehaviour
     {
         SetReferenceNode();
         _renderer = GetComponent<MeshRenderer>();
+        DistanceCheck(Player.instance.gridAgent.node);
     }
     void OnEnable()
     {
         PlayerGridAgent.OnPlayerMovement += DistanceCheck;
-        PlayerGridAgent.OnPlayerNodeSet += DistanceCheck;
     }
     void OnDisable()
     {
         PlayerGridAgent.OnPlayerMovement -= DistanceCheck;
-        PlayerGridAgent.OnPlayerNodeSet -= DistanceCheck;
     }
     void SetReferenceNode()
     {

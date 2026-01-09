@@ -4,7 +4,6 @@ using UnityEngine;
 public class PlayerGridAgent : MonoBehaviour
 {
     public static event Action<NodeClass> OnPlayerMovement;
-    public static event Action<NodeClass> OnPlayerNodeSet;
     public NodeClass.State state;
     public NodeClass node { get; private set; }
     public int nodeX;
@@ -12,7 +11,6 @@ public class PlayerGridAgent : MonoBehaviour
     public void InitializeStartNode(NodeClass node)
     {
         SetStartNode(node);
-        OnPlayerNodeSet?.Invoke(node);
     }
     public void SetStartNode(NodeClass newNode)
     {

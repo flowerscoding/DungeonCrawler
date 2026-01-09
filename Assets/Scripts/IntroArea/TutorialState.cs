@@ -6,7 +6,7 @@ public class TutorialState : MonoBehaviour
     {
         Normal,
         Sprint,
-        Vines,
+        Destructible,
         Interact,
         Attack,
         Parry,
@@ -24,8 +24,8 @@ public class TutorialState : MonoBehaviour
             case State.Sprint:
                 SprintState();
                 break;
-            case State.Vines:
-                VinesState();
+            case State.Destructible:
+                DestructibleState();
                 break;
             case State.Parry:
                 ParryState();
@@ -40,9 +40,9 @@ public class TutorialState : MonoBehaviour
         string text = "PRESS SHIFT TO SPRINT";
         TutorialManager.instance.InitiateTransition(text);
     }
-    void VinesState()
+    void DestructibleState()
     {
-        string text = "PRESS LEFT CLICK TO INTERACT WITH THE VINES";
+        string text = "PRESS LEFT CLICK TO CUT DOWN THE VINES (DESTRUCTIBLE)";
         TutorialManager.instance.InitiateTransition(text);
     }
     void ParryState()

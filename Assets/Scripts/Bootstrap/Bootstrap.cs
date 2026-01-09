@@ -6,7 +6,6 @@ public class Bootstrap : MonoBehaviour
     void Awake()
     {
         dontDestroyManager.DontDestroyInitialize();
-
     }
     void Start()
     {

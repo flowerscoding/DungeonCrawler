@@ -12,6 +12,7 @@ public class NodeVisibilityParticle : MonoBehaviour
     {
         SetReferenceNode();
         _ps = GetComponent<ParticleSystem>();
+        DistanceCheck(Player.instance.gridAgent.node);
     }
     void OnEnable()
     {

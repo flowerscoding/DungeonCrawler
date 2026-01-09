@@ -28,7 +28,7 @@ public class PlayerTutorial : MonoBehaviour
 
                 _playerInteract.enabled = true;
 
-                TutorialManager.instance.InitiatePhase(TutorialState.State.Vines);
+                TutorialManager.instance.InitiatePhase(TutorialState.State.Destructible);
             }
         }
     }

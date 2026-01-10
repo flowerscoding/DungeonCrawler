@@ -7,17 +7,18 @@ public class PlayerInteract : MonoBehaviour
     public NodeClass goalNode;
 
     private InputAction _interactAction;
+    [SerializeField] 
     void Awake()
     {
         _interactAction = InputManager.instance.inputActions.asset.FindActionMap("Player").FindAction("Interact");
     }
-    void OnDisable()
-    {
-        _interactAction.performed -= InteractPressed;
-    }
     void OnEnable()
     {
         _interactAction.performed += InteractPressed;
+    }
+    void OnDisable()
+    {
+        _interactAction.performed -= InteractPressed;
     }
     void InteractPressed(InputAction.CallbackContext ctx)
     {
@@ -43,24 +44,33 @@ public class PlayerInteract : MonoBehaviour
 
                 break;
             case NodeClass.State.Ladder:
-                LatterInteract();
+                LadderInteract();
                 break;
             case NodeClass.State.Destructible:
                 DestructibleInteract();
                 break;
+            case NodeClass.State.Coffin:
+            CoffinInteract();
+                break;
         }
+    }
+    void CoffinInteract()
+    {
+        TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
+        Player.instance.StateChange(PlayerState.State.Pray);
+        InputManager.instance.MapChange(InputMapping.MapType.RestMenu);
     }
     void DestructibleInteract()
     {
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
         Player.instance.StateChange(PlayerState.State.Destroy);
     }
-    void LatterInteract()
+    void LadderInteract()
     {
         if (curInteractingNode.ladderController.active)
         {
             Player.instance.Climb(curInteractingNode);
-            curInteractingNode.ladderController.DeactivateLatter();
+            curInteractingNode.ladderController.DeactivateLadder();
         }
     }
     void EnemyInteract()
@@ -124,7 +134,10 @@ public class PlayerInteract : MonoBehaviour
                     curInteractingNode.boulderController.NewState(BoulderState.State.Idle);
                     break;
                 case NodeClass.State.Ladder:
-                    curInteractingNode.ladderController.DeactivateLatter();
+                    curInteractingNode.ladderController.DeactivateLadder();
+                    break;
+                case NodeClass.State.Coffin:
+                    curInteractingNode.coffinController.InteractablesOff();
                     break;
             }
     }
@@ -157,13 +170,18 @@ public class PlayerInteract : MonoBehaviour
                 case NodeClass.State.Empty: break;
                 case NodeClass.State.Enemy: break;
                 case NodeClass.State.Boulder: BoulderInteractable(checkingNode); break;
-                case NodeClass.State.Ladder: LatterInteractable(checkingNode); break;
+                case NodeClass.State.Ladder: LadderInteractable(checkingNode); break;
+                case NodeClass.State.Coffin: CoffinInteractable(checkingNode); break;
             }
         }
     }
-    void LatterInteractable(NodeClass stairNode)
+    void CoffinInteractable(NodeClass coffinNode)
     {
-        stairNode.ladderController.ActivateLatter();
+        coffinNode.coffinController.InteractablesOn();
+    }
+    void LadderInteractable(NodeClass stairNode)
+    {
+        stairNode.ladderController.ActivateLadder();
     }
     void BoulderInteractable(NodeClass boulderNode)
     {

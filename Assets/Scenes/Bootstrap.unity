@@ -1161,15 +1161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b740676a6cd6f84a8b2f295db273a22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteract
-  interactAction:
-    m_Name: Interact
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 6c3ea1cc-df1d-4743-9b27-5db2d063bca6
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
 --- !u!1 &781571770
 GameObject:
   m_ObjectHideFlags: 0
@@ -2276,7 +2267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b259ff0d16fab442a808bc9bea5a5b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
-  curHealth: 10
+  curHealth: 1
   attackStat: 1
   defenseStat: 1
   attackHitPoint: 0.3

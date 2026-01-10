@@ -10,6 +10,7 @@ public class InputMapping : MonoBehaviour
     {
         Player,
         ActionsMenu,
+        RestMenu,
     }
     void Awake()
     {

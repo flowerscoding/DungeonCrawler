@@ -19,12 +19,14 @@ public class NodeClass
         Chest,
         Ladder,
         Destructible,
+        Coffin,
     }
     public State state;
     public EnemyController enemyController;
     public BoulderController boulderController;
     public LadderController ladderController;
     public DestructibleController destructibleController;
+    public CoffinController coffinController;
     public NodeClass(Vector3 _worldPos, int _nodeX, int _nodeY)
     {
         worldPos = _worldPos;

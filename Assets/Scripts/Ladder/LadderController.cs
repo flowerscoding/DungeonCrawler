@@ -5,12 +5,12 @@ public class LadderController : MonoBehaviour
     public Canvas interactUI;
     public bool active {get; private set;}
    [SerializeField] private LoadSystem.SceneType targetScene;
-    public void ActivateLatter()
+    public void ActivateLadder()
     {
         interactUI.enabled = true;
         active = true;
     }
-    public void DeactivateLatter()
+    public void DeactivateLadder()
     {
         interactUI.enabled = false;
         active = false;

@@ -33,7 +33,9 @@ public class GridAgent : MonoBehaviour
             case NodeClass.State.Destructible:
                 node.destructibleController = transform.GetComponent<DestructibleController>();
                 break;
-
+            case NodeClass.State.Coffin:
+                node.coffinController = GetComponent<CoffinController>();
+                break;
         }
     }
     public void SetNode(NodeClass newNode)

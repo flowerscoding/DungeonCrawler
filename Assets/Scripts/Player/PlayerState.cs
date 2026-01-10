@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 
 public class PlayerState : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class PlayerState : MonoBehaviour
         PushFail,
         Climb,
         Destroy,
+        Pray,
     }
     public State state { get; private set; }
     public void NewState(State newState)
@@ -58,7 +60,14 @@ public class PlayerState : MonoBehaviour
             case State.Destroy:
                 DestroyState();
                 break;
+            case State.Pray:
+                PrayState();
+                break;
         }
+    }
+    void PrayState()
+    {
+        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Pray);
     }
     void DestroyState()
     {

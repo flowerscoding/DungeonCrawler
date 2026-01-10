@@ -16,6 +16,7 @@ public class CharacterStateMachine : MonoBehaviour
         Block,
         Climb,
         Destroy,
+        Pray,
     }
     public State state;
 }

@@ -20,6 +20,7 @@ public class AnimateMachine : MonoBehaviour
             case CharacterStateMachine.State.Block: animator.Play("Block", 0, 0); break;
             case CharacterStateMachine.State.Climb: animator.Play("Climb", 0, 0); break;
             case CharacterStateMachine.State.Destroy: animator.Play("Destroy", 0, 0); break;
+            case CharacterStateMachine.State.Pray: animator.Play("Pray", 0, 0); break;
         }
     }
     public void ResetMachine()

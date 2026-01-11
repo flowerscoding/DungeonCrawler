@@ -3346,6 +3346,7 @@ GameObject:
   - component: {fileID: 85272155}
   - component: {fileID: 85272154}
   - component: {fileID: 85272153}
+  - component: {fileID: 85272163}
   m_Layer: 0
   m_Name: Alligatle
   m_TagString: Untagged
@@ -3522,6 +3523,19 @@ MonoBehaviour:
   enemyAttack: {fileID: 85272154}
   stagger: 0
   deadSpot: {x: 500, y: 0, z: 500}
+--- !u!114 &85272163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85272151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1702d50228d9e4eb35a63cdb116016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResetEnemy
+  _enemyController: {fileID: 85272162}
 --- !u!1 &87644101
 GameObject:
   m_ObjectHideFlags: 0
@@ -15170,6 +15184,7 @@ GameObject:
   - component: {fileID: 361106727}
   - component: {fileID: 361106732}
   - component: {fileID: 361106733}
+  - component: {fileID: 361106734}
   m_Layer: 0
   m_Name: Vines
   m_TagString: Untagged
@@ -15204,6 +15219,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2043ad2de8276384a84ea5a40ff07627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestructibleController
+  _meshRenderer: {fileID: 361106729}
+  _gridAgent: {fileID: 361106727}
+  _nodeVisibility: {fileID: 361106732}
 --- !u!23 &361106729
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15301,6 +15319,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb0b1ba32ea34f2438c2f0b3b075fa4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &361106734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361106726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661e1abff5b025e408d695570bd99df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResetDestructible
+  controller: {fileID: 361106728}
 --- !u!1 &361633804
 GameObject:
   m_ObjectHideFlags: 0
@@ -35953,6 +35984,64 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722997691}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &723864376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 723864377}
+  - component: {fileID: 723864379}
+  - component: {fileID: 723864378}
+  m_Layer: 0
+  m_Name: SceneSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &723864377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723864376}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1570198159}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &723864378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723864376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f3365343643ae0439bdd3000898a7fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneState
+--- !u!114 &723864379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723864376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 529f50c2b2853254c9315faab9753b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneSystem
+  sceneState: {fileID: 723864378}
 --- !u!1 &725464808
 GameObject:
   m_ObjectHideFlags: 0
@@ -41317,8 +41406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6abb40a0d92dab646962c745014fd311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  nodeX: 0
-  nodeY: 0
+  _gridAgent: {fileID: 85272161}
 --- !u!137 &854439512
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -67657,13 +67745,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1491303239}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.08872, y: 0, z: 15.24198}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.3761, y: -0.3618, z: 5.3663197}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1554836900}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1570198159}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1492793629
 GameObject:
@@ -71308,6 +71396,9 @@ Transform:
   m_Children:
   - {fileID: 2131049122}
   - {fileID: 358638523}
+  - {fileID: 1491303241}
+  - {fileID: 1844074093}
+  - {fileID: 723864377}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1570855850
@@ -74246,6 +74337,7 @@ GameObject:
   - component: {fileID: 1631137591}
   - component: {fileID: 1631137596}
   - component: {fileID: 1631137597}
+  - component: {fileID: 1631137598}
   m_Layer: 0
   m_Name: Vines
   m_TagString: Untagged
@@ -74280,6 +74372,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2043ad2de8276384a84ea5a40ff07627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestructibleController
+  _meshRenderer: {fileID: 1631137593}
+  _gridAgent: {fileID: 1631137591}
+  _nodeVisibility: {fileID: 1631137596}
 --- !u!23 &1631137593
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -74377,6 +74472,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb0b1ba32ea34f2438c2f0b3b075fa4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &1631137598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631137590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661e1abff5b025e408d695570bd99df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResetDestructible
+  controller: {fileID: 1631137592}
 --- !u!1 &1638967780
 GameObject:
   m_ObjectHideFlags: 0
@@ -80984,6 +81092,7 @@ GameObject:
   - component: {fileID: 1775234598}
   - component: {fileID: 1775234603}
   - component: {fileID: 1775234604}
+  - component: {fileID: 1775234605}
   m_Layer: 0
   m_Name: Vines
   m_TagString: Untagged
@@ -81018,6 +81127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2043ad2de8276384a84ea5a40ff07627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestructibleController
+  _meshRenderer: {fileID: 1775234600}
+  _gridAgent: {fileID: 1775234598}
+  _nodeVisibility: {fileID: 1775234603}
 --- !u!23 &1775234600
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -81115,6 +81227,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb0b1ba32ea34f2438c2f0b3b075fa4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &1775234605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775234597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661e1abff5b025e408d695570bd99df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResetDestructible
+  controller: {fileID: 1775234599}
 --- !u!1 &1776914241
 GameObject:
   m_ObjectHideFlags: 0
@@ -83775,12 +83900,12 @@ Transform:
   m_GameObject: {fileID: 1844074091}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.28738, y: -0.3618, z: -9.87566}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 14123863}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1570198159}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1844081217
 GameObject:
@@ -97664,8 +97789,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1352267621}
   - {fileID: 622558775}
-  - {fileID: 1491303241}
-  - {fileID: 1844074093}
   - {fileID: 781607545}
   - {fileID: 2013342273}
   - {fileID: 617190035}

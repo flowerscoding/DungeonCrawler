@@ -5,7 +5,7 @@ using System.Collections;
 public class BoulderState : MonoBehaviour
 {
     public MeshRenderer meshRenderer;
-    public Image interactImage;
+    
     public enum State
     {
         Idle,
@@ -25,21 +25,21 @@ public class BoulderState : MonoBehaviour
     }
     void IdleState()
     {
-        interactImage.enabled = false;
         meshRenderer.materials[1].SetColor("_OutlineColor", Color.black);
     }
     void InteractableState()
     {
-        interactImage.enabled = true;
         meshRenderer.materials[1].SetColor("_OutlineColor", Color.white);
     }
     void MovingState(BoulderController controller)
     {
+        meshRenderer.materials[1].SetColor("_OutlineColor", Color.black);
         NodeClass newNode = Player.instance.playerInteract.goalNode;
         Node.instance.ResetNode(newNode);
         newNode.state = NodeClass.State.Boulder;
         newNode.boulderController = controller;
         StartCoroutine(TrackMoving(newNode, controller));
+        controller.gridAgent.SetNode(newNode);
     }
     IEnumerator TrackMoving(NodeClass newNode, BoulderController controller)
     {

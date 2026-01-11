@@ -13,4 +13,8 @@ public class Enemy : MonoBehaviour
         }
         instance = this;
     }
+    public void ActivateEnemy(EnemyController controller)
+    {
+        enemySystem.ActivateEnemy(controller);
+    }
 }

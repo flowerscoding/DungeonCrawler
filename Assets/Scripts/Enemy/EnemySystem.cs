@@ -46,4 +46,8 @@ public class EnemySystem : MonoBehaviour
             }
         }
     }
+    public void ActivateEnemy(EnemyController controller)
+    {
+        activeEnemies.Add(controller);
+    }
 }

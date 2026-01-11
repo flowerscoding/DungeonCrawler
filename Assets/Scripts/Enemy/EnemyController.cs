@@ -37,4 +37,19 @@ public class EnemyController : MonoBehaviour
         else
             print("CurStagger = " + stagger);
     }
+    public void ResetEnemy()
+    {
+        enemyState.NewState(EnemyState.State.Active);
+        enemyAI.NewState(EnemyAI.State.Idle, this);
+        Enemy.instance.ActivateEnemy(this);
+        SetNode();
+        enemyHealth.curHealth = enemyData.maxHealth;
+    }
+    public void SetNode()
+    {
+        int x = Mathf.FloorToInt(transform.position.x - Node.instance.nodeGrid.gridOrigin.x);
+        int y = Mathf.FloorToInt(transform.position.z - Node.instance.nodeGrid.gridOrigin.z);
+
+        gridAgent.SetNode(Node.instance.nodeGrid.grid[x, y]);
+    }
 }

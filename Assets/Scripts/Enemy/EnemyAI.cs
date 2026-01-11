@@ -149,7 +149,7 @@ public class EnemyAI : MonoBehaviour
             progress = info.normalizedTime;
             yield return null;
         }
-        if (progress >= 1)
+        if (progress >= 1 && controller.enemyState.state == EnemyState.State.Dead) //dead check to make sure they are still dead when coroutine ends. otherwise they end up at the deadspot after soft reset
         {
             transform.position = controller.deadSpot;
             Node.instance.ResetNode(controller.gridAgent.node);

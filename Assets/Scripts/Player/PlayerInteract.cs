@@ -64,9 +64,9 @@ public class PlayerInteract : MonoBehaviour
     {
         if(TurnManager.instance.state == TurnManager.State.Dialogue) return;
 
-        print(3);
         TurnManager.instance.ChangeTurn(TurnManager.State.Dialogue);
         Player.instance.StateChange(PlayerState.State.Dialogue);
+        curInteractingNode.npcController.StateChange(NpcState.State.Idle2);
         DialogueSystem.instance.RunDialogue();
     }
     void CoffinInteract()

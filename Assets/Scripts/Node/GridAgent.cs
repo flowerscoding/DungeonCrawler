@@ -6,7 +6,7 @@ public class GridAgent : MonoBehaviour
     public NodeClass node { get; private set; }
     public int nodeX;
     public int nodeY;
-    void Start()
+    void Awake()
     {
         CreateStartNode();
     }

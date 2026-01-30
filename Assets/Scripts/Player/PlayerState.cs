@@ -64,14 +64,7 @@ public class PlayerState : MonoBehaviour
             case State.Pray:
                 PrayState();
                 break;
-            case State.Dialogue:
-                DialogueState();
-                break;
         }
-    }
-    void DialogueState()
-    {
-        //DialogueSystem.instance.dialogueRunner.RunDialogue();
     }
     void PrayState()
     {
@@ -254,7 +247,7 @@ public class PlayerState : MonoBehaviour
         }
         if (progress >= 1)
         {
-            print("DEAD!!! ADD GAMEOVER FUNCTIONS HERE!");
+            Player.instance.PlayerDied();
         }
     }
     void HurtState() //damage already taken in player controller and has been calculated to still survive

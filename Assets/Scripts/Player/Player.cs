@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public PlayerState playerState;
     public PlayerInteract playerInteract;
     public PlayerBlock playerBlock;
+    public  PlayerDeath playerDeath;
     void Awake()
     {
         if(instance != null)
@@ -47,5 +48,9 @@ public class Player : MonoBehaviour
     public void InitializeStartNode(NodeClass playerNode)
     {
         gridAgent.InitializeStartNode(playerNode);
+    }
+    public void PlayerDied()
+    {
+        playerDeath.DeathScreen();
     }
 }

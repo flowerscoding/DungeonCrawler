@@ -5,6 +5,7 @@ public class CharacterStateMachine : MonoBehaviour
     public enum State
     {
         Idle,
+        Idle2,
         Walking,
         Running,
         Aggro,
@@ -18,5 +19,4 @@ public class CharacterStateMachine : MonoBehaviour
         Destroy,
         Pray,
     }
-    public State state;
 }

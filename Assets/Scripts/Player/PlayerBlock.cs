@@ -53,7 +53,8 @@ public class PlayerBlock : MonoBehaviour
     void BlockPressed(InputAction.CallbackContext ctx)
     {
         InputManager.instance.ControllerTypeCheck(ctx);
-        if(Player.instance.playerState.state == PlayerState.State.Climb) return;
+        if(Player.instance.playerState.state == PlayerState.State.Climb ||
+        TurnManager.instance.state == TurnManager.State.Dialogue) return;
         if (okayToBlock)
         {
             holdingBlock = true;

@@ -36,6 +36,9 @@ public class GridAgent : MonoBehaviour
             case NodeClass.State.Coffin:
                 node.coffinController = GetComponent<CoffinController>();
                 break;
+            case NodeClass.State.Queen:
+                node.npcController = GetComponent<NpcController>();
+                break;
         }
     }
     public void SetNode(NodeClass newNode)
@@ -53,22 +56,26 @@ public class GridAgent : MonoBehaviour
         switch (state)
         {
             case NodeClass.State.Enemy:
-                node.enemyController = transform.GetComponent<EnemyController>();
+                node.enemyController = GetComponent<EnemyController>();
                 node.state = NodeClass.State.Enemy;
                 break;
             case NodeClass.State.Boulder:
-                node.boulderController = transform.GetComponent<BoulderController>();
+                node.boulderController = GetComponent<BoulderController>();
                 node.state = NodeClass.State.Boulder;
                 break;
             case NodeClass.State.Chest:
                 break;
             case NodeClass.State.Ladder:
-                node.ladderController = transform.GetComponent<LadderController>();
+                node.ladderController = GetComponent<LadderController>();
                 node.state = NodeClass.State.Ladder;
                 break;
             case NodeClass.State.Destructible:
-                node.destructibleController = transform.GetComponent<DestructibleController>();
+                node.destructibleController = GetComponent<DestructibleController>();
                 node.state = NodeClass.State.Destructible;
+                break;
+            case NodeClass.State.Queen:
+                node.npcController = GetComponent<NpcController>();
+                node.state = NodeClass.State.Queen;
                 break;
         }
     }

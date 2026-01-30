@@ -13,6 +13,7 @@ public class TurnManager : MonoBehaviour
         PlayerTurn,
         EnemyTurn,
         Resolving,
+        Dialogue,
     }
     public State state;
     void Awake()

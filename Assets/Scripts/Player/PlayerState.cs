@@ -20,6 +20,7 @@ public class PlayerState : MonoBehaviour
         Climb,
         Destroy,
         Pray,
+        Dialogue,
     }
     public State state { get; private set; }
     public void NewState(State newState)
@@ -63,7 +64,14 @@ public class PlayerState : MonoBehaviour
             case State.Pray:
                 PrayState();
                 break;
+            case State.Dialogue:
+                DialogueState();
+                break;
         }
+    }
+    void DialogueState()
+    {
+        //DialogueSystem.instance.dialogueRunner.RunDialogue();
     }
     void PrayState()
     {

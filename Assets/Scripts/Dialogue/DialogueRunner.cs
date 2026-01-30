@@ -21,7 +21,6 @@ public class DialogueRunner : MonoBehaviour
     }
     void RunState()
     {
-
         switch (state)
         {
             case State.Disabled:

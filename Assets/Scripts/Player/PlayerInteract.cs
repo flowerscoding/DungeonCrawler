@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 public class PlayerInteract : MonoBehaviour
@@ -52,7 +53,21 @@ public class PlayerInteract : MonoBehaviour
             case NodeClass.State.Coffin:
             CoffinInteract();
                 break;
+            case NodeClass.State.Queen:
+            QueenInteract();
+                break;
         }
+    }
+    public DialogueLines queenLines;
+    public DialogueLines playerLines;
+    void QueenInteract()
+    {
+        if(TurnManager.instance.state == TurnManager.State.Dialogue) return;
+
+        print(3);
+        TurnManager.instance.ChangeTurn(TurnManager.State.Dialogue);
+        Player.instance.StateChange(PlayerState.State.Dialogue);
+        DialogueSystem.instance.RunDialogue();
     }
     void CoffinInteract()
     {

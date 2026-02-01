@@ -8,7 +8,6 @@ public class EnemyController : MonoBehaviour
     public EnemyMovement enemyMovement;
     public EnemyState enemyState;
     public AnimateMachine animateMachine;
-    public CharacterStateMachine characterStateMachine;
     public EnemyHealth enemyHealth;
     public EnemyAttack enemyAttack;
     public float stagger;
@@ -51,5 +50,13 @@ public class EnemyController : MonoBehaviour
         int y = Mathf.FloorToInt(transform.position.z - Node.instance.nodeGrid.gridOrigin.z);
 
         gridAgent.SetNode(Node.instance.nodeGrid.grid[x, y]);
+    }
+    public void OpenParry(bool open)
+    {
+        enemyAttack.parryable = open;
+    }
+    public bool ParryableCheck()
+    {
+        return enemyAttack.parryable;
     }
 }

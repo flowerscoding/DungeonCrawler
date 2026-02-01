@@ -1,6 +1,5 @@
 using UnityEngine.UI;
 using UnityEngine;
-using Unity.VisualScripting;
 
 public class ActionsMenuState : MonoBehaviour
 {
@@ -31,6 +30,8 @@ public class ActionsMenuState : MonoBehaviour
     void AttackAction()
     {
         Player.instance.playerAttack.AttackPressed();
+        Player.instance.ParryBlockOn();
+        
         ActionsMenu.instance.DisableActionsMenu();
     }
     void ParryAction()

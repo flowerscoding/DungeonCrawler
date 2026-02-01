@@ -14,9 +14,10 @@ public class PlayerBlock : MonoBehaviour
     public float parryCoolDown;
 
     public bool okayToParry;
-    public bool parryIntialized;
+    public bool parryInitialized;
     public float initializeParryTimer;
     public bool parryActive;
+    public bool parried;
     void Awake()
     {
         _blockAction = InputManager.instance.inputActions.asset.FindActionMap("Player").FindAction("Block");
@@ -36,7 +37,7 @@ public class PlayerBlock : MonoBehaviour
     void BlockLetGo(InputAction.CallbackContext ctx)
     {
         holdingBlock = false;
-        parryIntialized = false;
+        parryInitialized = false;
         if (Player.instance.playerState.state == PlayerState.State.Block
         && TurnManager.instance.state == TurnManager.State.PlayerTurn)
         {
@@ -53,7 +54,7 @@ public class PlayerBlock : MonoBehaviour
     void BlockPressed(InputAction.CallbackContext ctx)
     {
         InputManager.instance.ControllerTypeCheck(ctx);
-        if(Player.instance.playerState.state == PlayerState.State.Climb ||
+        if (Player.instance.playerState.state == PlayerState.State.Climb ||
         TurnManager.instance.state == TurnManager.State.Dialogue) return;
         if (okayToBlock)
         {
@@ -63,10 +64,10 @@ public class PlayerBlock : MonoBehaviour
             {
                 okayToParry = false;
                 StartCoroutine(InitializeParry());
-                parryIntialized = true;
+                parryInitialized = true;
             }
             else
-                parryIntialized = false;
+                parryInitialized = false;
 
             Player.instance.StateChange(PlayerState.State.Block);
         }
@@ -75,14 +76,14 @@ public class PlayerBlock : MonoBehaviour
             holdingBlock = false;
             okayToBlock = false;
             parryActive = false;
-            parryIntialized = false;
+            parryInitialized = false;
         }
     }
     public void BlockOff()
     {
         okayToBlock = false;
         parryActive = false;
-        parryIntialized = false;
+        parryInitialized = false;
     }
     public void BlockOn()
     {
@@ -90,6 +91,8 @@ public class PlayerBlock : MonoBehaviour
     }
     public void SuccessfulParry(EnemyController controller)
     {
+        Player.instance.OccludePlayer(false);
+
         parryParticle.Play();
         StartCoroutine(ParryLights());
 
@@ -107,10 +110,23 @@ public class PlayerBlock : MonoBehaviour
             timer -= Time.deltaTime;
             yield return null;
         }
-        if (timer < 0 && parryIntialized)
+        if (timer <= 0 && parryInitialized)
         {
             parryActive = true;
             StartCoroutine(ParryCooldown());
+
+            EnemyController enemyController = Player.instance.playerInteract.curInteractingNode.enemyController;
+            if (enemyController != null)
+            {
+                if (enemyController.ParryableCheck())
+                {
+                    print("PARRIED");
+
+                    parried = true;
+                    Player.instance.playerBlock.SuccessfulParry(enemyController);
+                    Player.instance.playerBlock.BlockOn();
+                }
+            }
         }
     }
     IEnumerator ParryCooldown()
@@ -122,7 +138,7 @@ public class PlayerBlock : MonoBehaviour
             yield return null;
         }
         okayToParry = true;
-        parryIntialized = false;
+        parryInitialized = false;
         parryActive = false;
     }
     IEnumerator ParryLights()

@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public PlayerInteract playerInteract;
     public PlayerBlock playerBlock;
     public  PlayerDeath playerDeath;
+    public PlayerOcclusion playerOcclusion;
     void Awake()
     {
         if(instance != null)
@@ -52,5 +53,13 @@ public class Player : MonoBehaviour
     public void PlayerDied()
     {
         playerDeath.DeathScreen();
+    }
+    public void SuccessfulParry(EnemyController controller)
+    {
+        playerBlock.SuccessfulParry(controller);
+    }
+    public void OccludePlayer(bool occlude)
+    {
+        playerOcclusion.OccludePlayer(occlude);
     }
 }

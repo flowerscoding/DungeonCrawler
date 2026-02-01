@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    
+
     public ParticleSystem bloodParticles;
     public enum State
     {
@@ -43,7 +43,7 @@ public class EnemyAI : MonoBehaviour
     void WalkState(EnemyController controller)
     {
         AnimatorStateInfo state = controller.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
-        if(!state.IsName("Walk"))
+        if (!state.IsName("Walk"))
             controller.animateMachine.Animate(CharacterStateMachine.State.Walking);
         controller.enemyMovement.MoveAI(controller);
     }
@@ -51,22 +51,6 @@ public class EnemyAI : MonoBehaviour
     {
         bloodParticles.Play();
         controller.animateMachine.Animate(CharacterStateMachine.State.Hurt);
-        StartCoroutine(TrackHurt(controller));
-    }
-    IEnumerator TrackHurt(EnemyController controller)
-    {
-        yield return null; //wait a frame to help reset the animator
-        float progress = 0;
-        while (progress < 1)
-        {
-            AnimatorStateInfo info = controller.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
-            progress = info.normalizedTime;
-            yield return null;
-        }
-        if (progress >= 1)
-        {
-            NewState(State.Attacking, controller);
-        }
     }
     public void AttackState(EnemyController controller)
     {
@@ -75,37 +59,7 @@ public class EnemyAI : MonoBehaviour
 
         controller.animateMachine.Animate(CharacterStateMachine.State.Attacking);
 
-
-
         StartCoroutine(RotateAnimation());
-
-        StartCoroutine(TrackAttack(controller));
-    }
-    IEnumerator TrackAttack(EnemyController controller)
-    {
-        yield return null; 
-        float progress = 0;
-        bool hitLanded = false;
-        while (progress < 1)
-        {
-            AnimatorStateInfo info = controller.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
-            progress = info.normalizedTime;
-            if(progress > controller.enemyData.parryWindow 
-            && progress < controller.enemyData.attackHitFrame
-            && Player.instance.playerBlock.parryActive)
-            {
-                Player.instance.playerBlock.SuccessfulParry(controller);
-                Player.instance.playerBlock.BlockOn();
-                yield break;
-            }
-            if (progress > controller.enemyData.attackHitFrame && !hitLanded)
-            {
-                hitLanded = true;
-                Player.instance.TakeDamage(controller.enemyData.attackDamage);
-            }
-
-            yield return null;
-        }
     }
     IEnumerator RotateAnimation()
     {
@@ -123,18 +77,20 @@ public class EnemyAI : MonoBehaviour
 
             yield return null;
         }
-        if(t > duration)
+        if (t > duration)
         {
             transform.rotation = lookRotation;
         }
     }
     void DeadState(EnemyController controller)
     {
+        Player.instance.OccludePlayer(false);
+
         bloodParticles.Play();
         TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
         Enemy.instance.enemySystem.activeEnemies.Remove(controller);
         controller.enemyState.NewState(EnemyState.State.Dead);
-        
+
         controller.animateMachine.Animate(CharacterStateMachine.State.Dead);
         StartCoroutine(TrackDead(controller));
     }

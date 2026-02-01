@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 public class PlayerInteract : MonoBehaviour
@@ -91,6 +90,9 @@ public class PlayerInteract : MonoBehaviour
     void EnemyInteract()
     {
         ActionsMenu.instance.EnableActionsMenu();
+
+        if(curInteractingNode.nodeY > Player.instance.gridAgent.nodeY)
+            Player.instance.OccludePlayer(true);
     }
     void BoulderPushCheck()
     {

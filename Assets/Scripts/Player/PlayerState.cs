@@ -228,6 +228,8 @@ public class PlayerState : MonoBehaviour
     }
     void DeadState()
     {
+        Player.instance.OccludePlayer(false);
+
         Player.instance.animateMachine.ResetMachine();
         Player.instance.playerBlock.BlockOff();
 
@@ -252,6 +254,8 @@ public class PlayerState : MonoBehaviour
     }
     void HurtState() //damage already taken in player controller and has been calculated to still survive
     {
+        Player.instance.OccludePlayer(false);
+
         Player.instance.animateMachine.ResetMachine();
         Player.instance.playerBlock.BlockOff();
 

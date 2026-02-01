@@ -84,8 +84,6 @@ public class EnemyAI : MonoBehaviour
     }
     void DeadState(EnemyController controller)
     {
-        Player.instance.OccludePlayer(false);
-
         bloodParticles.Play();
         TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
         Enemy.instance.enemySystem.activeEnemies.Remove(controller);
@@ -105,10 +103,14 @@ public class EnemyAI : MonoBehaviour
             progress = info.normalizedTime;
             yield return null;
         }
-        if (progress >= 1 && controller.enemyState.state == EnemyState.State.Dead) //dead check to make sure they are still dead when coroutine ends. otherwise they end up at the deadspot after soft reset
+        progress = 0;
+        float deathDuration = 3f;
+        while(progress < deathDuration)
         {
+            progress += Time.deltaTime;
+            yield return null;
+        }
             transform.position = controller.deadSpot;
             Node.instance.ResetNode(controller.gridAgent.node);
-        }
     }
 }

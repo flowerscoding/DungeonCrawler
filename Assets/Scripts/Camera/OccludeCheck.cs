@@ -17,7 +17,7 @@ public class OccludeCheck : MonoBehaviour
     {
         Vector3 dir = _playerTransform.position - transform.position;
         float distance = dir.magnitude;
-        float radius = 0.4f;
+        float radius = 1f;
         Ray ray = new Ray(transform.position, dir);
         RaycastHit[] hits = Physics.SphereCastAll(ray, radius, distance, _occluderMask);
 

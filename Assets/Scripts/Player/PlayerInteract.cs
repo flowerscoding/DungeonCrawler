@@ -7,7 +7,7 @@ public class PlayerInteract : MonoBehaviour
     public NodeClass goalNode;
 
     private InputAction _interactAction;
-    [SerializeField] 
+    [SerializeField]
     void Awake()
     {
         _interactAction = InputManager.instance.inputActions.asset.FindActionMap("Player").FindAction("Interact");
@@ -50,10 +50,10 @@ public class PlayerInteract : MonoBehaviour
                 DestructibleInteract();
                 break;
             case NodeClass.State.Coffin:
-            CoffinInteract();
+                CoffinInteract();
                 break;
             case NodeClass.State.Queen:
-            QueenInteract();
+                QueenInteract();
                 break;
         }
     }
@@ -61,7 +61,9 @@ public class PlayerInteract : MonoBehaviour
     public DialogueLines playerLines;
     void QueenInteract()
     {
-        if(TurnManager.instance.state == TurnManager.State.Dialogue) return;
+        if (TurnManager.instance.state == TurnManager.State.Dialogue) return;
+        
+        Player.instance.OccludePlayer(true);
 
         TurnManager.instance.ChangeTurn(TurnManager.State.Dialogue);
         Player.instance.StateChange(PlayerState.State.Dialogue);
@@ -91,7 +93,7 @@ public class PlayerInteract : MonoBehaviour
     {
         ActionsMenu.instance.EnableActionsMenu();
 
-        if(curInteractingNode.nodeY > Player.instance.gridAgent.nodeY)
+        if (curInteractingNode.nodeY > Player.instance.gridAgent.nodeY)
             Player.instance.OccludePlayer(true);
     }
     void BoulderPushCheck()

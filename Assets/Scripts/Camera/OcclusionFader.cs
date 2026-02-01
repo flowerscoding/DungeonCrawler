@@ -12,9 +12,8 @@ public class OcclusionFader : MonoBehaviour
     void Update()
     {
         if (!_occluding)
-        {
             _alpha = 1f;
-        }
+            
         Color newColor = _renderer.material.color;
         newColor.a = _alpha;
         _renderer.material.color = newColor;

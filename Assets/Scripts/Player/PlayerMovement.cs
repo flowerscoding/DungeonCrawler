@@ -167,6 +167,7 @@ public class PlayerMovement : MonoBehaviour
 
         Player.instance.gridAgent.SetNode(targetNode);
 
+        Player.instance.OccludePlayer(false);
         StartCoroutine(MoveToTarget(targetNode));
     }
     IEnumerator MoveToTarget(NodeClass targetNode)

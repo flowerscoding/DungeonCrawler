@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -10,7 +11,6 @@ public class EnemyController : MonoBehaviour
     public AnimateMachine animateMachine;
     public EnemyHealth enemyHealth;
     public EnemyAttack enemyAttack;
-    public float stagger;
     public Vector3 deadSpot;
     public void NewState(EnemyAI.State newState)
     {
@@ -26,15 +26,9 @@ public class EnemyController : MonoBehaviour
             NewState(EnemyAI.State.Dead);
         }
     }
-    public void TakeStagger(float amount)
+    public void TakeStagger(int amount)
     {
-        stagger += amount;
-        if(stagger > enemyData.staggerLimit)
-        {
-            print("OVER STAGGER!    stagger: " + stagger);
-        }
-        else
-            print("CurStagger = " + stagger);
+        enemyHealth.TakeStagger(amount);
     }
     public void ResetEnemy()
     {
@@ -42,7 +36,7 @@ public class EnemyController : MonoBehaviour
         enemyAI.NewState(EnemyAI.State.Idle, this);
         Enemy.instance.ActivateEnemy(this);
         SetNode();
-        enemyHealth.SetNewHealth(enemyData.maxHealth);
+        enemyHealth.ResetHealth(enemyData.maxHealth);
     }
     public void SetNode()
     {

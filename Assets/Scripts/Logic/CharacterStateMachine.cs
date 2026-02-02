@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CharacterStateMachine : MonoBehaviour
+public class CharacterStateMachine
 {
     public enum State
     {

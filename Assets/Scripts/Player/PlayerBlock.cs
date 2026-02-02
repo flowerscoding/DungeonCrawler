@@ -91,6 +91,7 @@ public class PlayerBlock : MonoBehaviour
     }
     public void SuccessfulParry(EnemyController controller)
     {
+        
         Player.instance.OccludePlayer(false);
 
         parryParticle.Play();
@@ -101,6 +102,10 @@ public class PlayerBlock : MonoBehaviour
         TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
 
         controller.TakeStagger(Player.instance.playerData.weapon.data.stagger);
+    }
+    public void ResetParried()
+    {
+        parried = false;
     }
     IEnumerator InitializeParry()
     {

@@ -4,7 +4,6 @@ public class EnemyAttack : MonoBehaviour
 {
     public EnemyData enemyData;
     public bool parryable;
-
     public ParticleSystem[] loadUpParticles;
     public Light[] flashes;
     public EnemyController controller;
@@ -31,10 +30,8 @@ public class EnemyAttack : MonoBehaviour
     void CheckHit()
     {
         if(!Player.instance.playerBlock.parried)
-        {
             Player.instance.TakeDamage(controller.enemyData.attackDamage);
-        }
         else
-            Player.instance.SuccessfulParry(controller);
+            Player.instance.playerBlock.ResetParried();
     }
 }

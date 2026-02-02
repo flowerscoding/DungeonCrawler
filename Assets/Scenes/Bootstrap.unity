@@ -432,7 +432,6 @@ Transform:
   m_Children:
   - {fileID: 1622805922}
   - {fileID: 225019022}
-  - {fileID: 979227792}
   - {fileID: 1149691462}
   - {fileID: 894115496}
   - {fileID: 778251278}
@@ -457,7 +456,7 @@ MonoBehaviour:
   playerData: {fileID: 1622805923}
   playerMovement: {fileID: 225019023}
   gridAgent: {fileID: 1102344309792971973}
-  playerAttack: {fileID: 979227793}
+  playerAttack: {fileID: 1102344309792971974}
   animateMachine: {fileID: 1149691463}
   playerState: {fileID: 894115497}
   playerInteract: {fileID: 778251279}
@@ -1840,51 +1839,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerState
   bloodParticles: {fileID: 7965038383418000232}
   playerHand: {fileID: 103171172}
---- !u!1 &979227791
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 979227792}
-  - component: {fileID: 979227793}
-  m_Layer: 0
-  m_Name: PlayerAttack
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &979227792
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979227791}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 326986558}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &979227793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979227791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a3d6480b49bfa84c877a7b21982e576, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
-  damageOutput: 1
 --- !u!1 &1062938919
 GameObject:
   m_ObjectHideFlags: 0
@@ -3216,6 +3170,7 @@ GameObject:
   - component: {fileID: 1102344309792971973}
   - component: {fileID: 1102344309792971972}
   - component: {fileID: 1102344309792971971}
+  - component: {fileID: 1102344309792971974}
   m_Layer: 0
   m_Name: KnightDungeonCrawler
   m_TagString: Untagged
@@ -3402,6 +3357,19 @@ MonoBehaviour:
   state: 2
   nodeX: 0
   nodeY: 0
+--- !u!114 &1102344309792971974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290342416518628984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3d6480b49bfa84c877a7b21982e576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+  damageOutput: 1
 --- !u!4 &1127148741199511487
 Transform:
   m_ObjectHideFlags: 0

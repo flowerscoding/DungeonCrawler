@@ -190,36 +190,6 @@ public class PlayerState : MonoBehaviour
 
         Player.instance.playerInteract.CheckInteractables();
         Player.instance.animateMachine.Animate(CharacterStateMachine.State.Attacking);
-        StartCoroutine(TrackAttack());
-    }
-    IEnumerator TrackAttack()
-    {
-        yield return null;
-        PlayerAttack playerAttack = Player.instance.playerAttack;
-        float progress = 0;
-        bool hitLanded = false;
-        while (progress < 1)
-        {
-            AnimatorStateInfo info = Player.instance.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
-            progress = info.normalizedTime;
-            if (progress > Player.instance.playerData.attackHitPoint)
-            {
-                if (playerAttack.targetNode.enemyController != null && !hitLanded) //for empty attacks
-                {
-                    hitLanded = true;
-                    playerAttack.targetNode.enemyController.TakeDamage(playerAttack.damageOutput);
-                }
-            }
-            yield return null;
-        }
-        if (progress >= 1)
-        {
-            NewState(State.Idle);
-            if (playerAttack.targetNode.enemyController == null)
-            {
-                TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
-            }
-        }
     }
     void IdleState()
     {

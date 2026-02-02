@@ -18,7 +18,7 @@ public class EnemyController : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        enemyHealth.curHealth -= damage;
+        enemyHealth.TakeDamage(damage);
         if(enemyHealth.curHealth > 0)
             NewState(EnemyAI.State.Hurt);
         else if (enemyHealth.curHealth <= 0)
@@ -42,7 +42,7 @@ public class EnemyController : MonoBehaviour
         enemyAI.NewState(EnemyAI.State.Idle, this);
         Enemy.instance.ActivateEnemy(this);
         SetNode();
-        enemyHealth.curHealth = enemyData.maxHealth;
+        enemyHealth.SetNewHealth(enemyData.maxHealth);
     }
     public void SetNode()
     {

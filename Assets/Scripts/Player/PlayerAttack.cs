@@ -22,6 +22,10 @@ public class PlayerAttack : MonoBehaviour
         Player.instance.StateChange(PlayerState.State.Attacking);
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
     }
+    public void AttackLanded()
+    {
+        targetNode.enemyController.TakeDamage(damageOutput);
+    }
     void ExecuteEmptyAttack()
     {
         Player.instance.StateChange(PlayerState.State.Attacking);

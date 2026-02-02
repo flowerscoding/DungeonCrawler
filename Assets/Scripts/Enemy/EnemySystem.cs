@@ -3,22 +3,26 @@ using UnityEngine;
 
 public class EnemySystem : MonoBehaviour
 {
-    public EnemyController[] enemies;
+    public Transform enemiesParent;
+    List<EnemyController> _enemies = new List<EnemyController>();
     public List<EnemyController> activeEnemies;
     public int activateDistance;
+    void Awake()
+    {
+        foreach(Transform enemy in enemiesParent)
+            _enemies.Add(enemy.GetComponent<EnemyController>());
+    }
     public void MoveAI()
     { //kind of pointless since this only gets called by the players move decision but its defensive programming i guess lol
         if(TurnManager.instance.state != TurnManager.State.EnemyTurn)
-        {
-            print("NOT ENEMY TURN");
             return;
-        }
+            
         ActivateEnemies();
     }
     void ActivateEnemies()
     {
         activeEnemies.Clear();
-        foreach(EnemyController enemy in enemies)
+        foreach(EnemyController enemy in _enemies)
         {
             int xDis = Mathf.Abs(enemy.gridAgent.nodeX - Player.instance.gridAgent.nodeX);
             int yDis = Mathf.Abs(enemy.gridAgent.nodeY - Player.instance.gridAgent.nodeY);

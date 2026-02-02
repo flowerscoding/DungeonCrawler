@@ -9,6 +9,7 @@ public class PlayerDeath : MonoBehaviour
     public TextMeshProUGUI deathTmesh;
     public void DeathScreen()
     {
+        
         StartCoroutine(deathCoroutine());
     }
     IEnumerator deathCoroutine()

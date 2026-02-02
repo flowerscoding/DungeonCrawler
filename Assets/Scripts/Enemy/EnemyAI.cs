@@ -21,10 +21,10 @@ public class EnemyAI : MonoBehaviour
         switch (newState)
         {
             case State.Idle:
-                controller.animateMachine.Animate(CharacterStateMachine.State.Idle);
+                controller.animateMachine.Animate(AnimateMachine.State.Idle);
                 break;
             case State.Aggro:
-                controller.animateMachine.Animate(CharacterStateMachine.State.Aggro);
+                controller.animateMachine.Animate(AnimateMachine.State.Aggro);
                 break;
             case State.Walking:
                 WalkState(controller);
@@ -44,20 +44,20 @@ public class EnemyAI : MonoBehaviour
     {
         AnimatorStateInfo state = controller.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
         if (!state.IsName("Walk"))
-            controller.animateMachine.Animate(CharacterStateMachine.State.Walking);
+            controller.animateMachine.Animate(AnimateMachine.State.Walk);
         controller.enemyMovement.MoveAI(controller);
     }
     void HurtState(EnemyController controller)
     {
         bloodParticles.Play();
-        controller.animateMachine.Animate(CharacterStateMachine.State.Hurt);
+        controller.animateMachine.Animate(AnimateMachine.State.Hurt);
     }
     public void AttackState(EnemyController controller)
     {
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
         Player.instance.ParryBlockOn();
 
-        controller.animateMachine.Animate(CharacterStateMachine.State.Attacking);
+        controller.animateMachine.Animate(AnimateMachine.State.Attack);
 
         StartCoroutine(RotateAnimation());
     }
@@ -89,7 +89,7 @@ public class EnemyAI : MonoBehaviour
         Enemy.instance.enemySystem.activeEnemies.Remove(controller);
         controller.enemyState.NewState(EnemyState.State.Dead);
 
-        controller.animateMachine.Animate(CharacterStateMachine.State.Dead);
+        controller.animateMachine.Animate(AnimateMachine.State.Dead);
         StartCoroutine(TrackDead(controller));
     }
     IEnumerator TrackDead(EnemyController controller)

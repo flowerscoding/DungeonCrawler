@@ -15,10 +15,10 @@ public class NpcState : MonoBehaviour
         switch (state)
         {
             case State.Idle:
-                animateMachine.Animate(CharacterStateMachine.State.Idle);
+                animateMachine.Animate(AnimateMachine.State.Idle);
                 break;
             case State.Idle2:
-                animateMachine.Animate(CharacterStateMachine.State.Idle2);
+                animateMachine.Animate(AnimateMachine.State.Idle2);
                 break;
         }
     }

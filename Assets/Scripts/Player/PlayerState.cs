@@ -68,11 +68,11 @@ public class PlayerState : MonoBehaviour
     }
     void PrayState()
     {
-        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Pray);
+        Player.instance.animateMachine.Animate(AnimateMachine.State.Pray);
     }
     void DestroyState()
     {
-        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Destroy);
+        Player.instance.animateMachine.Animate(AnimateMachine.State.Destroy);
         StartCoroutine(TrackDestroy());
     }
     IEnumerator TrackDestroy()
@@ -92,17 +92,17 @@ public class PlayerState : MonoBehaviour
             } 
             yield return null;
         }
-        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Idle);
+        Player.instance.animateMachine.Animate(AnimateMachine.State.Idle);
         TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
     }
     void ClimbState()
     {
-        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Climb);
+        Player.instance.animateMachine.Animate(AnimateMachine.State.Climb);
         playerHand.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
     }
     void BlockState()
     {
-        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Block);
+        Player.instance.animateMachine.Animate(AnimateMachine.State.Block);
         StartCoroutine(TrackBlock());
     }
     IEnumerator TrackBlock()
@@ -126,7 +126,7 @@ public class PlayerState : MonoBehaviour
     {
         Player.instance.playerBlock.BlockOff();
 
-        Player.instance.animateMachine.Animate(CharacterStateMachine.State.PushFail);
+        Player.instance.animateMachine.Animate(AnimateMachine.State.PushFail);
         Player.instance.playerInteract.InteractablesOff();
         StartCoroutine(TrackPushFail());
     }
@@ -150,7 +150,7 @@ public class PlayerState : MonoBehaviour
     {
         Player.instance.playerBlock.BlockOff();
 
-        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Push);
+        Player.instance.animateMachine.Animate(AnimateMachine.State.Push);
         Player.instance.playerInteract.InteractablesOff();
         StartCoroutine(TrackBoulderPush());
     }
@@ -174,14 +174,14 @@ public class PlayerState : MonoBehaviour
     {
         Player.instance.animateMachine.ResetMachine();
 
-        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Walking);
+        Player.instance.animateMachine.Animate(AnimateMachine.State.Walk);
         Player.instance.playerInteract.InteractablesOff();
     }
     void RunState()
     {
         Player.instance.animateMachine.ResetMachine();
 
-        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Running);
+        Player.instance.animateMachine.Animate(AnimateMachine.State.Run);
         Player.instance.playerInteract.InteractablesOff();
     }
     void AttackState()
@@ -189,11 +189,11 @@ public class PlayerState : MonoBehaviour
         Player.instance.playerBlock.BlockOff();
 
         Player.instance.playerInteract.CheckInteractables();
-        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Attacking);
+        Player.instance.animateMachine.Animate(AnimateMachine.State.Attack);
     }
     void IdleState()
     {
-        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Idle);
+        Player.instance.animateMachine.Animate(AnimateMachine.State.Idle);
         Player.instance.playerInteract.CheckInteractables();
     }
     void DeadState()
@@ -204,7 +204,7 @@ public class PlayerState : MonoBehaviour
         Player.instance.playerBlock.BlockOff();
 
         bloodParticles.Play();
-        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Dead);
+        Player.instance.animateMachine.Animate(AnimateMachine.State.Dead);
         StartCoroutine(TrackDead());
     }
     IEnumerator TrackDead()
@@ -230,24 +230,6 @@ public class PlayerState : MonoBehaviour
         Player.instance.playerBlock.BlockOff();
 
         bloodParticles.Play();
-        Player.instance.animateMachine.Animate(CharacterStateMachine.State.Hurt);
-        StartCoroutine(TrackHurt());
-    }
-    IEnumerator TrackHurt()
-    {
-        yield return null; //frame pause for new getcurrentstateinfo(0)
-        float progress = 0;
-        while (progress < 1)
-        {
-            AnimatorStateInfo info = Player.instance.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
-            progress = info.normalizedTime;
-            yield return null;
-        }
-        if (progress >= 1)
-        {
-            NewState(State.Idle);
-            Player.instance.playerBlock.BlockOn();
-            TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
-        }
+        Player.instance.animateMachine.Animate(AnimateMachine.State.Hurt);
     }
 }

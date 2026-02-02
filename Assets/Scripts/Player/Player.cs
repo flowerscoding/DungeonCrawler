@@ -24,11 +24,7 @@ public class Player : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        playerData.curHealth -= damage;
-        if(playerData.curHealth > 0)
-            StateChange(PlayerState.State.Hurt);
-        else if(playerData.curHealth <= 0)
-            StateChange(PlayerState.State.Dead);
+        playerData.TakeDamage(damage);
     }
     public void StateChange(PlayerState.State newState)
     {

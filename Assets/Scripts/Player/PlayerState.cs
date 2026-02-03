@@ -186,6 +186,8 @@ public class PlayerState : MonoBehaviour
     }
     void AttackState()
     {
+        SaveSystem.Instance.SaveGame();
+        
         Player.instance.playerBlock.BlockOff();
 
         Player.instance.playerInteract.CheckInteractables();

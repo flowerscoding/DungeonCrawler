@@ -11,6 +11,7 @@ public class LoadSystem : MonoBehaviour
     public enum SceneType
     {
         IntroArea,
+        IntroCave,
         Castle_Floor1,
     }
     void Awake()
@@ -24,6 +25,7 @@ public class LoadSystem : MonoBehaviour
     }
     public void LoadScene(SceneType scene)
     {
+        Player.instance.SceneUpdate(scene);
         string sceneName = scene.ToString();
         StartCoroutine(TransitionEffect(sceneName));
     }
@@ -47,6 +49,11 @@ public class LoadSystem : MonoBehaviour
         c.a = 1;
         transitionImg.color = c;
         SceneManager.LoadScene(sceneName);
+
+        SaveSystem.Instance.SaveGame();
+        Player.instance.UpdatePlayerData();
+
+
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
         
         OnLoad?.Invoke(); //world signal

@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -175,6 +174,11 @@ public class PlayerMovement : MonoBehaviour
         bool transportDoor = CheckTransport(targetNode);
 
         Player.instance.gridAgent.SetNode(targetNode);
+
+        //not sure if i'll use this tbh but i just have it for now
+        Player.instance.UpdatePos(targetNode.worldPos);
+        SaveSystem.Instance.SaveGame();
+
 
         Player.instance.OccludePlayer(false);
         StartCoroutine(MoveToTarget(targetNode, transportDoor));

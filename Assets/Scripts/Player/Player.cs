@@ -58,4 +58,16 @@ public class Player : MonoBehaviour
     {
         playerOcclusion.OccludePlayer(occlude);
     }
+    public void UpdatePlayerData()
+    {
+        playerData.UpdateData();
+    }
+    public void SceneUpdate(LoadSystem.SceneType scene)
+    {
+        playerData.SceneUpdate(scene);
+    }
+    public void UpdatePos(Vector3 pos)
+    {
+        playerData.UpdateWorldPos(pos);
+    }
 }

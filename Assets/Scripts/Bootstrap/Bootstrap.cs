@@ -9,6 +9,7 @@ public class Bootstrap : MonoBehaviour
     }
     void Start()
     {
-        LoadSystem.instance.LoadScene(LoadSystem.SceneType.Castle_Floor1);
+        SaveSystem.Instance.LoadSaveData();
+        LoadSystem.instance.LoadScene(SaveSystem.Instance.currentData.scene);
     }
 }

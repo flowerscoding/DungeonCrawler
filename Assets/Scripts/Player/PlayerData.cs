@@ -6,13 +6,15 @@ public class PlayerData : MonoBehaviour
 {
     public int curHealth;
     public int maxHealth;
-
     public int attackStat;
     public int defenseStat;
+    public Vector3 worldPos;
 
     public float attackHitPoint;
     public float destroyHitPoint;
     public Image healthBar;
+
+    public LoadSystem.SceneType currentScene;
     [System.Serializable]
     public struct WeaponInstance
     {
@@ -46,5 +48,21 @@ public class PlayerData : MonoBehaviour
             yield return null;
         }
         healthBar.fillAmount = healthPercent;
+    }
+    public void UpdateData()
+    {
+        currentScene = SaveSystem.Instance.currentData.scene;
+        curHealth = SaveSystem.Instance.currentData.health;
+        worldPos = SaveSystem.Instance.currentData.position;
+
+        healthBar.fillAmount = (float) curHealth / maxHealth;
+    }
+    public void SceneUpdate(LoadSystem.SceneType scene)
+    {
+        currentScene = scene;
+    }
+    public void UpdateWorldPos(Vector3 pos)
+    {
+        worldPos = pos;
     }
 }

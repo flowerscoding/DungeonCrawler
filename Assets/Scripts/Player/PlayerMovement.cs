@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -122,12 +123,19 @@ public class PlayerMovement : MonoBehaviour
     }
     bool CheckIfWalkable(NodeClass targetNode)
     {
-        if (targetNode.state != NodeClass.State.Empty)
+        if (targetNode.state != NodeClass.State.Empty
+        && targetNode.state != NodeClass.State.TransportDoor)
         {
             StartCoroutine(TrackCrashAnimation(targetNode));
             return false;
         }
         return true;
+    }
+    bool CheckTransport(NodeClass targetNode)
+    {
+        if (targetNode.state == NodeClass.State.TransportDoor)
+            return true;
+        return false;
     }
     IEnumerator TrackCrashAnimation(NodeClass targetNode)
     {
@@ -164,13 +172,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (!CheckIfWalkable(targetNode))
             return; //return if empty. shouldn't waste a player's turn
+        bool transportDoor = CheckTransport(targetNode);
 
         Player.instance.gridAgent.SetNode(targetNode);
 
         Player.instance.OccludePlayer(false);
-        StartCoroutine(MoveToTarget(targetNode));
+        StartCoroutine(MoveToTarget(targetNode, transportDoor));
     }
-    IEnumerator MoveToTarget(NodeClass targetNode)
+    IEnumerator MoveToTarget(NodeClass targetNode, bool transportDoor)
     {
 
         TurnManager.instance.ChangeTurn(TurnManager.State.EnemyTurn);
@@ -201,6 +210,12 @@ public class PlayerMovement : MonoBehaviour
         }
         if (t >= 1)
         {
+            if (transportDoor)
+            {
+                TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
+                targetNode.transportController.InitiateTransport();
+                yield break;
+            }
             TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
             playerRB.position = goal;
             playerRB.rotation = goalQuat;
@@ -250,12 +265,10 @@ public class PlayerMovement : MonoBehaviour
         Vector3 start = playerRB.position;
         Vector3 goal = Player.instance.gridAgent.node.worldPos + new Vector3(0, 2, 0);
         float t = 0;
-        bool sceneBootedUP = false;
         while (t < 1)
         {
-            if (t > TransitionData.LadderToSceneTime && !sceneBootedUP)
+            if (t > TransitionData.LadderToSceneTime)
             {
-                sceneBootedUP = true;
                 LoadSystem.SceneType scene = ladderNode.ladderController.GetTargetScene();
                 LoadSystem.instance.LoadScene(scene);
                 yield break;

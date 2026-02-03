@@ -39,6 +39,9 @@ public class GridAgent : MonoBehaviour
             case NodeClass.State.Queen:
                 node.npcController = GetComponent<NpcController>();
                 break;
+            case NodeClass.State.TransportDoor:
+                node.transportController = GetComponent<TransportController>();
+                break;
         }
     }
     public void SetNode(NodeClass newNode)
@@ -76,6 +79,10 @@ public class GridAgent : MonoBehaviour
             case NodeClass.State.Queen:
                 node.npcController = GetComponent<NpcController>();
                 node.state = NodeClass.State.Queen;
+                break;
+            case NodeClass.State.TransportDoor:
+                node.transportController = GetComponent<TransportController>();
+                node.state = NodeClass.State.TransportDoor;
                 break;
         }
     }

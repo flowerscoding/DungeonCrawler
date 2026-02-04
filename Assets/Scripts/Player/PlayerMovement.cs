@@ -267,7 +267,7 @@ public class PlayerMovement : MonoBehaviour
     {
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
         Vector3 start = playerRB.position;
-        Vector3 goal = Player.instance.gridAgent.node.worldPos + new Vector3(0, 2, 0);
+        Vector3 goal = Player.instance.gridAgent.node.worldPos + new Vector3(0, 3, 0);
         float t = 0;
         while (t < 1)
         {

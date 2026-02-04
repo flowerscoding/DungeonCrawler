@@ -15,7 +15,9 @@ public class OccludeCheck : MonoBehaviour
     }
     void CheckForOccluders()
     {
-        Vector3 dir = _playerTransform.position - transform.position;
+        float cameraOffset = -0.7f; //so the occluder ray doesn't hit things in front of the player
+        Vector3 playerPos = _playerTransform.position + new Vector3(0, 0, cameraOffset); 
+        Vector3 dir = playerPos - transform.position;
         float distance = dir.magnitude;
         float radius = 1f;
         Ray ray = new Ray(transform.position, dir);

@@ -33,6 +33,10 @@ public class ActionsMenuState : MonoBehaviour
         Player.instance.ParryBlockOn();
         
         ActionsMenu.instance.DisableActionsMenu();
+
+        if (Player.instance.playerInteract.curInteractingNode.nodeY 
+        > Player.instance.gridAgent.nodeY)
+            Player.instance.OccludePlayer(true);
     }
     void ParryAction()
     {

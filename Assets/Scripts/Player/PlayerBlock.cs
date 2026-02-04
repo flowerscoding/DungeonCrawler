@@ -125,8 +125,6 @@ public class PlayerBlock : MonoBehaviour
             {
                 if (enemyController.ParryableCheck())
                 {
-                    print("PARRIED");
-
                     parried = true;
                     Player.instance.playerBlock.SuccessfulParry(enemyController);
                     Player.instance.playerBlock.BlockOn();

@@ -4,7 +4,7 @@ public class LadderController : MonoBehaviour
 {
     public Canvas interactUI;
     public bool active {get; private set;}
-   [SerializeField] private LoadSystem.SceneType targetScene;
+   [SerializeField] private LoadSystem.Scene targetScene;
     public void ActivateLadder()
     {
         interactUI.enabled = true;
@@ -15,7 +15,7 @@ public class LadderController : MonoBehaviour
         interactUI.enabled = false;
         active = false;
     }
-    public LoadSystem.SceneType GetTargetScene()
+    public LoadSystem.Scene GetTargetScene()
     {
         return targetScene;
     }

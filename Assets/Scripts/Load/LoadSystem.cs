@@ -8,8 +8,9 @@ public class LoadSystem : MonoBehaviour
     public static LoadSystem instance;
     public static event System.Action OnLoad;
     public Image transitionImg;
-    public enum SceneType
+    public enum Scene
     {
+        Hub,
         IntroArea,
         IntroCave,
         Castle_Floor1,
@@ -23,7 +24,7 @@ public class LoadSystem : MonoBehaviour
         }
         instance = this;
     }
-    public void LoadScene(SceneType scene)
+    public void LoadScene(Scene scene)
     {
         Player.instance.SceneUpdate(scene);
         string sceneName = scene.ToString();

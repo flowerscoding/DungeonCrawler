@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
     {
         playerData.UpdateData();
     }
-    public void SceneUpdate(LoadSystem.SceneType scene)
+    public void SceneUpdate(LoadSystem.Scene scene)
     {
         playerData.SceneUpdate(scene);
     }

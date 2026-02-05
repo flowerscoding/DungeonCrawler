@@ -14,7 +14,7 @@ public class PlayerData : MonoBehaviour
     public float destroyHitPoint;
     public Image healthBar;
 
-    public LoadSystem.SceneType currentScene;
+    public LoadSystem.Scene currentScene;
     [System.Serializable]
     public struct WeaponInstance
     {
@@ -57,7 +57,7 @@ public class PlayerData : MonoBehaviour
 
         healthBar.fillAmount = (float) curHealth / maxHealth;
     }
-    public void SceneUpdate(LoadSystem.SceneType scene)
+    public void SceneUpdate(LoadSystem.Scene scene)
     {
         currentScene = scene;
     }

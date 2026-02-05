@@ -20,7 +20,7 @@ public class SaveSystem : MonoBehaviour
     {
         public int health;
         public Vector3 position;
-        public LoadSystem.SceneType scene;
+        public LoadSystem.Scene scene;
         //public WeaponData equippedWeapon;
     }
     public void SaveGame()

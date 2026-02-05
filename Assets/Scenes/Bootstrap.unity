@@ -1988,6 +1988,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74167ed07a7fef049a5fae4153deb12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveSystem
+  currentData:
+    health: 0
+    position: {x: 0, y: 0, z: 0}
+    scene: 0
 --- !u!1 &1062938919
 GameObject:
   m_ObjectHideFlags: 0
@@ -3107,9 +3111,11 @@ MonoBehaviour:
   maxHealth: 10
   attackStat: 1
   defenseStat: 1
+  worldPos: {x: 0, y: 0, z: 0}
   attackHitPoint: 0.3
   destroyHitPoint: 0.5
   healthBar: {fileID: 1946643621}
+  currentScene: 0
   weapon:
     data: {fileID: 11400000, guid: de6b72b4bdd8e89438597e025225d09a, type: 2}
 --- !u!1 &1762903583

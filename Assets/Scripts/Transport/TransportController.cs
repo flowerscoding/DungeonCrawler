@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TransportController : MonoBehaviour
 {
-    public LoadSystem.SceneType sceneDestination;
+    public LoadSystem.Scene sceneDestination;
 
     public void InitiateTransport()
     {

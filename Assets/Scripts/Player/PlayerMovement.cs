@@ -186,7 +186,12 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator MoveToTarget(NodeClass targetNode, bool transportDoor)
     {
 
-        TurnManager.instance.ChangeTurn(TurnManager.State.EnemyTurn);
+        if (SceneSystem.instance != null
+        && SceneSystem.instance.GetSceneType() == SceneState.SceneType.Combat)
+            TurnManager.instance.ChangeTurn(TurnManager.State.EnemyTurn);
+        else
+            TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
+
         Vector3 start = playerRB.position;
         Vector3 goal = targetNode.worldPos;
         Quaternion goalQuat = Quaternion.LookRotation(goal - start);
@@ -273,7 +278,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (t > TransitionData.LadderToSceneTime)
             {
-                LoadSystem.SceneType scene = ladderNode.ladderController.GetTargetScene();
+                LoadSystem.Scene scene = ladderNode.ladderController.GetTargetScene();
                 LoadSystem.instance.LoadScene(scene);
                 yield break;
             }

@@ -39,4 +39,8 @@ public class SceneSystem : MonoBehaviour
         foreach(ResetScript script in resetScripts)
             script.ResetState();
     }
+    public SceneState.SceneType GetSceneType()
+    {
+        return sceneState.GetSceneType();
+    }
 }

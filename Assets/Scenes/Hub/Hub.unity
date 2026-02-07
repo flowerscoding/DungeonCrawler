@@ -9753,7 +9753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   interactUI: {fileID: 1708476522}
-  targetScene: 3
+  targetScene: 1
 --- !u!114 &1837515612
 MonoBehaviour:
   m_ObjectHideFlags: 0

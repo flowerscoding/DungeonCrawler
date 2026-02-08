@@ -90038,6 +90038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3365343643ae0439bdd3000898a7fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneState
+  _sceneType: 0
 --- !u!114 &1436416450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136944,7 +136945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241e7d182d82d534388e15b780413e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimateMachine
-  animator: {fileID: 0}
+  animator: {fileID: 4185459005711780198}
 --- !u!114 &4185459005711780202
 MonoBehaviour:
   m_ObjectHideFlags: 0

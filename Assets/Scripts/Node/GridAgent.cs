@@ -42,6 +42,9 @@ public class GridAgent : MonoBehaviour
             case NodeClass.State.TransportDoor:
                 node.transportController = GetComponent<TransportController>();
                 break;
+            case NodeClass.State.Item:
+                node.itemController = GetComponent<ItemController>();
+                break;
         }
     }
     public void SetNode(NodeClass newNode)
@@ -52,6 +55,8 @@ public class GridAgent : MonoBehaviour
         node.enemyController = null;
         node.boulderController = null;
         node.ladderController = null;
+        node.itemController = null;
+        node.destructibleController = null;
 
         node = newNode;
         nodeX = node.nodeX;
@@ -83,6 +88,10 @@ public class GridAgent : MonoBehaviour
             case NodeClass.State.TransportDoor:
                 node.transportController = GetComponent<TransportController>();
                 node.state = NodeClass.State.TransportDoor;
+                break;
+            case NodeClass.State.Item:
+                node.itemController = GetComponent<ItemController>();
+                node.state = NodeClass.State.Item;
                 break;
         }
     }

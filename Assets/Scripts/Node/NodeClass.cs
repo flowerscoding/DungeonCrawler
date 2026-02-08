@@ -22,6 +22,7 @@ public class NodeClass
         Coffin,
         Queen,
         TransportDoor,
+        Item,
     }
     public State state;
     public EnemyController enemyController;
@@ -31,6 +32,7 @@ public class NodeClass
     public CoffinController coffinController;
     public NpcController npcController;
     public TransportController transportController;
+    public ItemController itemController;
     public NodeClass(Vector3 _worldPos, int _nodeX, int _nodeY)
     {
         worldPos = _worldPos;

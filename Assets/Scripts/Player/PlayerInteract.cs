@@ -55,10 +55,17 @@ public class PlayerInteract : MonoBehaviour
             case NodeClass.State.Queen:
                 QueenInteract();
                 break;
+            case NodeClass.State.Item:
+                ItemInteract();
+                break;
         }
     }
     public DialogueLines queenLines;
     public DialogueLines playerLines;
+    void ItemInteract()
+    {
+        curInteractingNode.itemController.ObtainItem();
+    }
     void QueenInteract()
     {
         if (TurnManager.instance.state == TurnManager.State.Dialogue) return;
@@ -74,7 +81,7 @@ public class PlayerInteract : MonoBehaviour
     {
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
         Player.instance.StateChange(PlayerState.State.Pray);
-        InputManager.instance.MapChange(InputMapping.MapType.RestMenu);
+        InputManager.instance.MapChange(InputMapping.MapType.InventoryMenu);
     }
     void DestructibleInteract()
     {

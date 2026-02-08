@@ -172,6 +172,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""InventoryToggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""d3e7a752-d690-4ba2-84c1-fee3e4676ab4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -405,6 +414,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""LStick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9a1947e8-4a90-481f-afa2-0c22300eee5e"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InventoryToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25116020-d72a-4a2f-bede-108f587ae489"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InventoryToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -541,6 +572,244 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""InventoryMenu"",
+            ""id"": ""8a0ef509-b9d8-47ec-8a40-b31ac5d9500f"",
+            ""actions"": [
+                {
+                    ""name"": ""Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""2dd8f574-065f-4807-a856-22f106b479be"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""faf59075-97f0-4425-ae7e-80c3cfd4fa72"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""8d7ce6de-6565-4ba8-823b-5f9de0aa52d7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""76329cfb-6009-4102-aa74-0b143a16652e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftTab"",
+                    ""type"": ""Button"",
+                    ""id"": ""72c54060-e947-41bc-8c5e-f4dedcdd72c5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightTab"",
+                    ""type"": ""Button"",
+                    ""id"": ""5271b8e5-9623-491c-98d4-eb53e537ce64"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""56e3fbc6-8b75-448b-a4f7-289c941ea5fd"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""983610af-9c8c-4162-8a01-39aee0fd5e31"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eba4e91b-e2aa-4bd7-a818-6bc647ccdb54"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3cd25e52-afa9-4f47-be06-0f953c1d6bce"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b8ff795a-5103-481b-aad7-68038d0de1bb"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e3749963-b713-4e3b-9ab9-dbfe494f4d0a"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7c8dca7e-ea5a-4d85-8a5c-2dd1358e4882"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""388cc4b2-290e-4700-a792-b41ffc49b27f"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9394c0ea-9352-45c7-9c85-774bad121189"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c902ad38-a621-4064-838a-98fa21eb9c00"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a08a0fb7-079d-4809-9160-3d56c43fc705"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""00591d6b-2fb7-479f-9c96-be4f7e0f609c"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""638ad47d-4e49-4e24-ac64-953969b733c7"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftTab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""263441cc-5972-442e-8b91-9ca5a9b14327"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftTab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ff59bf54-d768-4942-88d3-27c9938ef1b6"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightTab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""448eb563-8c22-49d9-8d97-7f29cdacc658"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightTab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -556,17 +825,27 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
         m_Player_Zoom = m_Player.FindAction("Zoom", throwIfNotFound: true);
         m_Player_LStick = m_Player.FindAction("LStick", throwIfNotFound: true);
+        m_Player_InventoryToggle = m_Player.FindAction("InventoryToggle", throwIfNotFound: true);
         // ActionsMenu
         m_ActionsMenu = asset.FindActionMap("ActionsMenu", throwIfNotFound: true);
         m_ActionsMenu_Confirm = m_ActionsMenu.FindAction("Confirm", throwIfNotFound: true);
         m_ActionsMenu_Up = m_ActionsMenu.FindAction("Up", throwIfNotFound: true);
         m_ActionsMenu_Down = m_ActionsMenu.FindAction("Down", throwIfNotFound: true);
+        // InventoryMenu
+        m_InventoryMenu = asset.FindActionMap("InventoryMenu", throwIfNotFound: true);
+        m_InventoryMenu_Up = m_InventoryMenu.FindAction("Up", throwIfNotFound: true);
+        m_InventoryMenu_Down = m_InventoryMenu.FindAction("Down", throwIfNotFound: true);
+        m_InventoryMenu_Left = m_InventoryMenu.FindAction("Left", throwIfNotFound: true);
+        m_InventoryMenu_Right = m_InventoryMenu.FindAction("Right", throwIfNotFound: true);
+        m_InventoryMenu_LeftTab = m_InventoryMenu.FindAction("LeftTab", throwIfNotFound: true);
+        m_InventoryMenu_RightTab = m_InventoryMenu.FindAction("RightTab", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, PlayerInputActions.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_ActionsMenu.enabled, "This will cause a leak and performance issues, PlayerInputActions.ActionsMenu.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_InventoryMenu.enabled, "This will cause a leak and performance issues, PlayerInputActions.InventoryMenu.Disable() has not been called.");
     }
 
     /// <summary>
@@ -651,6 +930,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Block;
     private readonly InputAction m_Player_Zoom;
     private readonly InputAction m_Player_LStick;
+    private readonly InputAction m_Player_InventoryToggle;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -698,6 +978,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/LStick".
         /// </summary>
         public InputAction @LStick => m_Wrapper.m_Player_LStick;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/InventoryToggle".
+        /// </summary>
+        public InputAction @InventoryToggle => m_Wrapper.m_Player_InventoryToggle;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -751,6 +1035,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @LStick.started += instance.OnLStick;
             @LStick.performed += instance.OnLStick;
             @LStick.canceled += instance.OnLStick;
+            @InventoryToggle.started += instance.OnInventoryToggle;
+            @InventoryToggle.performed += instance.OnInventoryToggle;
+            @InventoryToggle.canceled += instance.OnInventoryToggle;
         }
 
         /// <summary>
@@ -789,6 +1076,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @LStick.started -= instance.OnLStick;
             @LStick.performed -= instance.OnLStick;
             @LStick.canceled -= instance.OnLStick;
+            @InventoryToggle.started -= instance.OnInventoryToggle;
+            @InventoryToggle.performed -= instance.OnInventoryToggle;
+            @InventoryToggle.canceled -= instance.OnInventoryToggle;
         }
 
         /// <summary>
@@ -940,6 +1230,157 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="ActionsMenuActions" /> instance referencing this action map.
     /// </summary>
     public ActionsMenuActions @ActionsMenu => new ActionsMenuActions(this);
+
+    // InventoryMenu
+    private readonly InputActionMap m_InventoryMenu;
+    private List<IInventoryMenuActions> m_InventoryMenuActionsCallbackInterfaces = new List<IInventoryMenuActions>();
+    private readonly InputAction m_InventoryMenu_Up;
+    private readonly InputAction m_InventoryMenu_Down;
+    private readonly InputAction m_InventoryMenu_Left;
+    private readonly InputAction m_InventoryMenu_Right;
+    private readonly InputAction m_InventoryMenu_LeftTab;
+    private readonly InputAction m_InventoryMenu_RightTab;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "InventoryMenu".
+    /// </summary>
+    public struct InventoryMenuActions
+    {
+        private @PlayerInputActions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public InventoryMenuActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "InventoryMenu/Up".
+        /// </summary>
+        public InputAction @Up => m_Wrapper.m_InventoryMenu_Up;
+        /// <summary>
+        /// Provides access to the underlying input action "InventoryMenu/Down".
+        /// </summary>
+        public InputAction @Down => m_Wrapper.m_InventoryMenu_Down;
+        /// <summary>
+        /// Provides access to the underlying input action "InventoryMenu/Left".
+        /// </summary>
+        public InputAction @Left => m_Wrapper.m_InventoryMenu_Left;
+        /// <summary>
+        /// Provides access to the underlying input action "InventoryMenu/Right".
+        /// </summary>
+        public InputAction @Right => m_Wrapper.m_InventoryMenu_Right;
+        /// <summary>
+        /// Provides access to the underlying input action "InventoryMenu/LeftTab".
+        /// </summary>
+        public InputAction @LeftTab => m_Wrapper.m_InventoryMenu_LeftTab;
+        /// <summary>
+        /// Provides access to the underlying input action "InventoryMenu/RightTab".
+        /// </summary>
+        public InputAction @RightTab => m_Wrapper.m_InventoryMenu_RightTab;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_InventoryMenu; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="InventoryMenuActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(InventoryMenuActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="InventoryMenuActions" />
+        public void AddCallbacks(IInventoryMenuActions instance)
+        {
+            if (instance == null || m_Wrapper.m_InventoryMenuActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_InventoryMenuActionsCallbackInterfaces.Add(instance);
+            @Up.started += instance.OnUp;
+            @Up.performed += instance.OnUp;
+            @Up.canceled += instance.OnUp;
+            @Down.started += instance.OnDown;
+            @Down.performed += instance.OnDown;
+            @Down.canceled += instance.OnDown;
+            @Left.started += instance.OnLeft;
+            @Left.performed += instance.OnLeft;
+            @Left.canceled += instance.OnLeft;
+            @Right.started += instance.OnRight;
+            @Right.performed += instance.OnRight;
+            @Right.canceled += instance.OnRight;
+            @LeftTab.started += instance.OnLeftTab;
+            @LeftTab.performed += instance.OnLeftTab;
+            @LeftTab.canceled += instance.OnLeftTab;
+            @RightTab.started += instance.OnRightTab;
+            @RightTab.performed += instance.OnRightTab;
+            @RightTab.canceled += instance.OnRightTab;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="InventoryMenuActions" />
+        private void UnregisterCallbacks(IInventoryMenuActions instance)
+        {
+            @Up.started -= instance.OnUp;
+            @Up.performed -= instance.OnUp;
+            @Up.canceled -= instance.OnUp;
+            @Down.started -= instance.OnDown;
+            @Down.performed -= instance.OnDown;
+            @Down.canceled -= instance.OnDown;
+            @Left.started -= instance.OnLeft;
+            @Left.performed -= instance.OnLeft;
+            @Left.canceled -= instance.OnLeft;
+            @Right.started -= instance.OnRight;
+            @Right.performed -= instance.OnRight;
+            @Right.canceled -= instance.OnRight;
+            @LeftTab.started -= instance.OnLeftTab;
+            @LeftTab.performed -= instance.OnLeftTab;
+            @LeftTab.canceled -= instance.OnLeftTab;
+            @RightTab.started -= instance.OnRightTab;
+            @RightTab.performed -= instance.OnRightTab;
+            @RightTab.canceled -= instance.OnRightTab;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="InventoryMenuActions.UnregisterCallbacks(IInventoryMenuActions)" />.
+        /// </summary>
+        /// <seealso cref="InventoryMenuActions.UnregisterCallbacks(IInventoryMenuActions)" />
+        public void RemoveCallbacks(IInventoryMenuActions instance)
+        {
+            if (m_Wrapper.m_InventoryMenuActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="InventoryMenuActions.AddCallbacks(IInventoryMenuActions)" />
+        /// <seealso cref="InventoryMenuActions.RemoveCallbacks(IInventoryMenuActions)" />
+        /// <seealso cref="InventoryMenuActions.UnregisterCallbacks(IInventoryMenuActions)" />
+        public void SetCallbacks(IInventoryMenuActions instance)
+        {
+            foreach (var item in m_Wrapper.m_InventoryMenuActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_InventoryMenuActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="InventoryMenuActions" /> instance referencing this action map.
+    /// </summary>
+    public InventoryMenuActions @InventoryMenu => new InventoryMenuActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player" which allows adding and removing callbacks.
     /// </summary>
@@ -1010,6 +1451,13 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnLStick(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "InventoryToggle" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnInventoryToggle(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "ActionsMenu" which allows adding and removing callbacks.
@@ -1039,5 +1487,55 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDown(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "InventoryMenu" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="InventoryMenuActions.AddCallbacks(IInventoryMenuActions)" />
+    /// <seealso cref="InventoryMenuActions.RemoveCallbacks(IInventoryMenuActions)" />
+    public interface IInventoryMenuActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Up" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnUp(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Down" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDown(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Left" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLeft(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Right" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRight(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "LeftTab" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLeftTab(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "RightTab" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRightTab(InputAction.CallbackContext context);
     }
 }

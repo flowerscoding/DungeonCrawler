@@ -66531,6 +66531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75194d71a960f9542b3982f50dfe03f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  gridAgent: {fileID: 1109716439}
   itemData: {fileID: 11400000, guid: 8a857dbc6fb30c04f80a805f9499018d, type: 2}
   neutralZone: {x: 500, y: 0, z: 500}
 --- !u!114 &1109716439

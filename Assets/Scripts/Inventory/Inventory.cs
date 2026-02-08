@@ -6,7 +6,7 @@ public class Inventory : MonoBehaviour
     public static Inventory Instance;
     public InventoryGrid grid;
     public InventoryBoxState inventoryBoxState;
-    
+    public InventoryStorage inventoryStorage;
     void Awake()
     {
         if(Instance == null)
@@ -28,12 +28,12 @@ public class Inventory : MonoBehaviour
     {
         inventoryBoxState.InventoryToggled();
     }
-    public void ActiveGridChange(int tabNumber)
+    public void AddItemToInventory(ItemData itemData)
     {
-        grid.GridChange(tabNumber);
+        inventoryStorage.AddToInventory(itemData);
     }
-    public void AddItemToGrid(ItemData itemData)
+    public void SetGrid(string itemsType)
     {
-        grid.AddItem(itemData);
+        grid.SetGrid(itemsType);
     }
 }

@@ -1,16 +1,17 @@
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
 
 public class InventoryBoxState : MonoBehaviour
 {
+    public Image[] itemSprites;
     public InventoryNode activeItemNode;
     public Canvas inventoryCanvas;
     public TextMeshProUGUI itemTypeText;
-    public Sprite itemSprite;
+    public Image itemDescriptionImage;
     public RectTransform itemHighlight;
     public RectTransform tabHighlight;
     public Vector2[] tabHighlightPositions;
-    public GameObject[] pages;
     private int _pageIndex;
     public enum State
     {
@@ -33,11 +34,14 @@ public class InventoryBoxState : MonoBehaviour
             case State.Inactive:
                 state = State.Active;
                 InputManager.instance.MapChange(InputMapping.MapType.InventoryMenu);
+                _pageIndex = 0;
+                FillItemBoxes();
                 SetCanvas(true);
                 break;
             case State.Active:
                 state = State.Inactive;
                 InputManager.instance.MapChange(InputMapping.MapType.Player);
+                _pageIndex = 0;
                 SetCanvas(false);
                 break;
         }
@@ -66,11 +70,33 @@ public class InventoryBoxState : MonoBehaviour
     }
     public void TabChange(int direction)
     {
-        if (_pageIndex + direction >= 0 && _pageIndex + direction < pages.Length)
+        if (_pageIndex + direction >= 0 && _pageIndex + direction < 3)
             _pageIndex = _pageIndex + direction;
-        foreach (GameObject page in pages)
-            page.SetActive(page == pages[_pageIndex]);
         tabHighlight.anchoredPosition = tabHighlightPositions[_pageIndex];
-        Inventory.Instance.ActiveGridChange(_pageIndex);
+        FillItemBoxes();
+    }
+    void FillItemBoxes()
+    {
+        int i = 0;
+        switch (_pageIndex)
+        {
+            case 0:
+                Inventory.Instance.SetGrid("General");
+                foreach(InventoryNode node in Inventory.Instance.grid.grid)
+                {
+                    itemSprites[i].sprite = node.itemData.ItemSprite;
+                    Color c = itemSprites[i].color;
+                    c.a = 1;
+                    itemSprites[i].color = c;
+                    i++;
+                }
+                break;
+            case 1:
+                Inventory.Instance.SetGrid("Armor");
+                break;
+            case 2:
+                Inventory.Instance.SetGrid("Key");
+                break;
+        }
     }
 }

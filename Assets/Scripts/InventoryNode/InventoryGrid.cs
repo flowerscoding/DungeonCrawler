@@ -2,67 +2,63 @@ using UnityEngine;
 
 public class InventoryGrid : MonoBehaviour
 {
-    public InventoryNode[,] tab1Grid;
-    public InventoryNode[,] tab2Grid;
-    public InventoryNode[,] tab3Grid;
+    public InventoryNode[,] grid;
     public InventoryNode[,] activeGrid { get; private set; }
-    public InventoryNode activeNode { get; private set; }
     public int gridXSize;
     public int gridYSize;
     void Awake()
     {
-        tab1Grid = new InventoryNode[gridXSize, gridYSize];
-        tab2Grid = new InventoryNode[gridXSize, gridYSize];
-        tab3Grid = new InventoryNode[gridXSize, gridYSize];
-        CreateGrid(tab1Grid);
-        CreateGrid(tab2Grid);
-        CreateGrid(tab3Grid);
-        activeGrid = tab1Grid;
+        grid = new InventoryNode[gridXSize, gridYSize];
+        CreateGrid(grid);
+        activeGrid = grid;
     }
     void CreateGrid(InventoryNode[,] grid)
     {
-        for (int x = 0; x < gridXSize; x++)
+        for (int y = 0; y < gridXSize; y++)
         {
-            for (int y = 0; y < gridYSize; y++)
+            for (int x = 0; x < gridYSize; x++)
             {
                 grid[x, y] = new InventoryNode(x, y);
             }
         }
     }
-    public void GridChange(int tabNumber)
+    void ResetGrid()
     {
-        activeGrid = tab1Grid;
-        switch (tabNumber)
+        for (int y = 0; y < gridYSize; y++)
         {
-            case 0:
-                activeGrid = tab1Grid;
-                break;
-            case 1:
-                activeGrid = tab2Grid;
-                break;
-            case 2:
-                activeGrid = tab3Grid;
-                break;
+            for (int x = 0; x < gridXSize; x++)
+            {
+                grid[x, y] = new InventoryNode(x, y);
+            }
         }
-        activeNode = activeGrid[0, 0];
     }
-    public void AddItem(ItemData itemData)
+    public void SetGrid(string itemsType)
     {
-        switch(itemData.ItemType)
+        ResetGrid();
+        switch (itemsType)
         {
-            case "Healing": 
-                foreach(InventoryNode node in tab1Grid)
+            case "General":
+                foreach (ItemData itemData in Inventory.Instance.inventoryStorage.storageGeneralItems)
                 {
-                    if(node.itemData == null)
-                    {
+                    foreach (InventoryNode node in grid)
                         node.itemData = itemData;
-                        print("SUCCESSFULLY STORED");
-                        break;
-                    }
-                    print("INVENTORY FULL");
                 }
                 break;
-            default : break;
+            case "Armor":
+                foreach (ItemData itemData in Inventory.Instance.inventoryStorage.storageArmorItems)
+                {
+                    foreach (InventoryNode node in grid)
+                        node.itemData = itemData;
+                }
+                break;
+            case "Key":
+                foreach (ItemData itemData in Inventory.Instance.inventoryStorage.storageKeyItems)
+                {
+                    foreach (InventoryNode node in grid)
+                        node.itemData = itemData;
+                }
+                break;
+            default: break;
         }
     }
 }

@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public PlayerBlock playerBlock;
     public  PlayerDeath playerDeath;
     public PlayerOcclusion playerOcclusion;
+    public ItemUsage itemUsage;
     void Awake()
     {
         if(instance != null)
@@ -69,5 +70,14 @@ public class Player : MonoBehaviour
     public void UpdatePos(Vector3 pos)
     {
         playerData.UpdateWorldPos(pos);
+    }
+    public bool UseItem(ItemData itemData)
+    {
+        bool used = itemUsage.UseItem(itemData);
+        return used;
+    }
+    public void HealPlayer(int amount)
+    {
+        playerData.Heal(amount);
     }
 }

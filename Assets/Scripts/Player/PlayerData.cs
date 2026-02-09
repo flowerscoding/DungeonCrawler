@@ -65,4 +65,9 @@ public class PlayerData : MonoBehaviour
     {
         worldPos = pos;
     }
+    public void Heal(int amount)
+    {
+        curHealth += amount;
+        healthBar.fillAmount = (float) curHealth / maxHealth;
+    }
 }

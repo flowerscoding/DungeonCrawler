@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour
     }
     public void TabChange(int direction)
     {
-        inventoryBoxState.TabChange(direction);
+        inventoryBoxState.TabSwitch(direction);
     }
     public void InventoryToggled()
     {
@@ -35,5 +35,13 @@ public class Inventory : MonoBehaviour
     public void SetGrid(string itemsType)
     {
         grid.SetGrid(itemsType);
+    }
+    public void InteractWithNode()
+    {
+        inventoryBoxState.InteractWithNode();
+    }
+    public void RemoveFromInventory(ItemData itemData)
+    {
+        inventoryStorage.RemoveFromInventory(itemData);
     }
 }

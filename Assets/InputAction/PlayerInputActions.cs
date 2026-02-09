@@ -630,6 +630,24 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InventoryToggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""b5e2c4e8-857f-4cfd-a533-3a9aeda7af39"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Confirm"",
+                    ""type"": ""Button"",
+                    ""id"": ""eaa0b96e-ce09-4f42-95d9-316f7ee26194"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -808,6 +826,61 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""RightTab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c77b7ea3-f565-4f56-bc11-0e548efca15c"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InventoryToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a9a8cba0-9b74-452b-92d6-273198d64041"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InventoryToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9994f96c-7ac9-4656-9efa-e6aef56c2dd0"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3d07499c-6ec6-4ddc-899e-5c09816484a6"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fe18c852-cf38-4683-9591-05e30ba2379e"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -839,6 +912,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_InventoryMenu_Right = m_InventoryMenu.FindAction("Right", throwIfNotFound: true);
         m_InventoryMenu_LeftTab = m_InventoryMenu.FindAction("LeftTab", throwIfNotFound: true);
         m_InventoryMenu_RightTab = m_InventoryMenu.FindAction("RightTab", throwIfNotFound: true);
+        m_InventoryMenu_InventoryToggle = m_InventoryMenu.FindAction("InventoryToggle", throwIfNotFound: true);
+        m_InventoryMenu_Confirm = m_InventoryMenu.FindAction("Confirm", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
@@ -1240,6 +1315,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_InventoryMenu_Right;
     private readonly InputAction m_InventoryMenu_LeftTab;
     private readonly InputAction m_InventoryMenu_RightTab;
+    private readonly InputAction m_InventoryMenu_InventoryToggle;
+    private readonly InputAction m_InventoryMenu_Confirm;
     /// <summary>
     /// Provides access to input actions defined in input action map "InventoryMenu".
     /// </summary>
@@ -1275,6 +1352,14 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "InventoryMenu/RightTab".
         /// </summary>
         public InputAction @RightTab => m_Wrapper.m_InventoryMenu_RightTab;
+        /// <summary>
+        /// Provides access to the underlying input action "InventoryMenu/InventoryToggle".
+        /// </summary>
+        public InputAction @InventoryToggle => m_Wrapper.m_InventoryMenu_InventoryToggle;
+        /// <summary>
+        /// Provides access to the underlying input action "InventoryMenu/Confirm".
+        /// </summary>
+        public InputAction @Confirm => m_Wrapper.m_InventoryMenu_Confirm;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1319,6 +1404,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @RightTab.started += instance.OnRightTab;
             @RightTab.performed += instance.OnRightTab;
             @RightTab.canceled += instance.OnRightTab;
+            @InventoryToggle.started += instance.OnInventoryToggle;
+            @InventoryToggle.performed += instance.OnInventoryToggle;
+            @InventoryToggle.canceled += instance.OnInventoryToggle;
+            @Confirm.started += instance.OnConfirm;
+            @Confirm.performed += instance.OnConfirm;
+            @Confirm.canceled += instance.OnConfirm;
         }
 
         /// <summary>
@@ -1348,6 +1439,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @RightTab.started -= instance.OnRightTab;
             @RightTab.performed -= instance.OnRightTab;
             @RightTab.canceled -= instance.OnRightTab;
+            @InventoryToggle.started -= instance.OnInventoryToggle;
+            @InventoryToggle.performed -= instance.OnInventoryToggle;
+            @InventoryToggle.canceled -= instance.OnInventoryToggle;
+            @Confirm.started -= instance.OnConfirm;
+            @Confirm.performed -= instance.OnConfirm;
+            @Confirm.canceled -= instance.OnConfirm;
         }
 
         /// <summary>
@@ -1537,5 +1634,19 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRightTab(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "InventoryToggle" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnInventoryToggle(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Confirm" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnConfirm(InputAction.CallbackContext context);
     }
 }

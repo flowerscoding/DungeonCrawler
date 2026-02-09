@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfb1ac820444af14e9236345d6ed05d3, type: 3}
-  m_Name: DragonToeHerb
+  m_Name: FeatherOfLight
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  ItemName: Dragon Toe Heart
+  ItemName: Feather Of Light
   ItemType: Consumable
   SubType: Healing
-  Description: A heart that once resided in the toe of a great dragon. It provides
-    a small amount of healing.
-  HealthAttribute: 5
-  ItemSprite: {fileID: 21300000, guid: adb02546ba6371f4fb9969e7e86893ea, type: 3}
+  Description: The feather of an angel that was rumored to have severed the heads
+    of hundreds of demons.
+  HealthAttribute: 10
+  ItemSprite: {fileID: 21300000, guid: 55b4a17ab9f33d641a1ceccb32e0deec, type: 3}

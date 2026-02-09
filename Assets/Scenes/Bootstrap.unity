@@ -3373,6 +3373,7 @@ MonoBehaviour:
     itemSubTypeText: {fileID: 371802244}
   itemOptions:
     itemImage: {fileID: 1901062332}
+    fgImage: {fileID: 86361853}
     bgImage: {fileID: 937102568}
     borderImage: {fileID: 164938508}
     buttonsBGImage: {fileID: 561029120}

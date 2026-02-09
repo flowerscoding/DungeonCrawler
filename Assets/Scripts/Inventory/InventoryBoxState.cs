@@ -8,6 +8,7 @@ public class InventoryBoxState : MonoBehaviour
     public class ItemOptions
     {
         public Image itemImage;
+        public Image fgImage;
         public Image bgImage;
         public Image borderImage;
         public Image buttonsBGImage;
@@ -183,6 +184,7 @@ public class InventoryBoxState : MonoBehaviour
     void EnableItemOptionsPanel(bool enable)
     {
         itemOptions.itemImage.enabled = enable;
+        itemOptions.fgImage.enabled = enable;
         itemOptions.buttonsBGImage.enabled = enable;
         itemOptions.bgImage.enabled = enable;
         itemOptions.borderImage.enabled = enable;
@@ -343,10 +345,12 @@ public class InventoryBoxState : MonoBehaviour
     }
     void DiscardItem()
     {
+        Inventory.Instance.RemoveFromInventory(_interactNode.itemData);
         EnableItemOptionsPanel(false);
         ChangePhase(InventoryPhase.Box);
         ResetItemOptionButton();
         ResetInteractNode();
+        FillItemBoxes();
         FillSidePanel();
     }
     void CancelItemOptions()

@@ -6,5 +6,12 @@ public class EnemyData : ScriptableObject
     public string enemyName;
     public int maxHealth;
     public float maxStagger;
-    public int attackDamage;
+    [System.Serializable]
+    public class Attack
+    {
+        public string attackName;
+        public int attackDamage;
+        public float chargeDuration;
+    }
+    public Attack[] attacks;
 }

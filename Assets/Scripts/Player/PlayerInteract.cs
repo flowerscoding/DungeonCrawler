@@ -34,8 +34,11 @@ public class PlayerInteract : MonoBehaviour
 
         switch (curInteractingNode.state)
         {
+            case NodeClass.State.Empty:
+                Attack();
+                break;
             case NodeClass.State.Enemy:
-                EnemyInteract();
+                Attack();
                 break;
             case NodeClass.State.Boulder:
                 BoulderPushCheck();
@@ -58,6 +61,9 @@ public class PlayerInteract : MonoBehaviour
             case NodeClass.State.Item:
                 ItemInteract();
                 break;
+            default:
+                Attack();
+                break;
         }
     }
     public DialogueLines queenLines;
@@ -69,7 +75,7 @@ public class PlayerInteract : MonoBehaviour
     void QueenInteract()
     {
         if (TurnManager.instance.state == TurnManager.State.Dialogue) return;
-        
+
         Player.instance.OccludePlayer(true);
 
         TurnManager.instance.ChangeTurn(TurnManager.State.Dialogue);
@@ -96,9 +102,10 @@ public class PlayerInteract : MonoBehaviour
             curInteractingNode.ladderController.DeactivateLadder();
         }
     }
-    void EnemyInteract()
+    void Attack()
     {
-        ActionsMenu.instance.EnableActionsMenu();
+        //ActionsMenu.instance.EnableActionsMenu();
+        Player.instance.Attack();
     }
     void BoulderPushCheck()
     {

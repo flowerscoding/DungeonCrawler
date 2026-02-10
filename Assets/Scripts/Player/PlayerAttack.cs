@@ -24,7 +24,8 @@ public class PlayerAttack : MonoBehaviour
     }
     public void AttackLanded()
     {
-        targetNode.enemyController.TakeDamage(damageOutput);
+        if(targetNode.state == NodeClass.State.Enemy)
+            targetNode.enemyController.TakeDamage(damageOutput);
     }
     void ExecuteEmptyAttack()
     {

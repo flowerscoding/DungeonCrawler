@@ -80,4 +80,8 @@ public class Player : MonoBehaviour
     {
         playerData.Heal(amount);
     }
+    public void Attack()
+    {
+        playerAttack.AttackPressed();
+    }
 }

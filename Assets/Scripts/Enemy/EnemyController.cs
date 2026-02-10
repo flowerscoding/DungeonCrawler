@@ -53,4 +53,12 @@ public class EnemyController : MonoBehaviour
     {
         return enemyAttack.parryable;
     }
+    public void EnableAttackCharge(bool enable)
+    {
+        enemyAttack.EnableAttackCharge(enable);
+    }
+    public void CheckSurrounding()
+    {
+        enemyMovement.CheckSurrounding(gridAgent.node, this);
+    }
 }

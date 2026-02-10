@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Linq;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -65,16 +64,23 @@ public class EnemyAttack : MonoBehaviour
     {
         while (attackDuration < 1)
         {
+
             chargeBar.fillAmount = attackDuration;
             attackDuration += Time.deltaTime / _activeAttack.chargeDuration;
             yield return null;
         }
-        StartCoroutine(Attack());
+        print("FULL");
+        while (TurnManager.instance.state != TurnManager.State.PlayerTurn)
+        {
+            print(TurnManager.instance.state);
+            yield return null;
+        }
+            StartCoroutine(Attack());
     }
     IEnumerator Attack()
     {
-        if(controller.enemyState.state != EnemyState.State.Active) yield break;
-        while(TurnManager.instance.state != TurnManager.State.PlayerTurn)
+        if (controller.enemyState.state != EnemyState.State.Active) yield break;
+        while (TurnManager.instance.state != TurnManager.State.PlayerTurn)
         {
             yield return null;
         }

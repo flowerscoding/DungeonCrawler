@@ -171,6 +171,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (!CheckIfWalkable(targetNode))
             return; //return if empty. shouldn't waste a player's turn
+        
         bool transportDoor = CheckTransport(targetNode);
 
         Player.instance.gridAgent.SetNode(targetNode);

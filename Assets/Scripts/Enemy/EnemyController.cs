@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -37,6 +37,7 @@ public class EnemyController : MonoBehaviour
         Enemy.instance.ActivateEnemy(this);
         SetNode();
         enemyHealth.ResetHealth(enemyData.maxHealth);
+        enemyAI.EnableBars(false);
     }
     public void SetNode()
     {

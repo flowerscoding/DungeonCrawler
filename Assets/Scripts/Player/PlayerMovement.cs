@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction _runToggleAction;
     private string _holdingDirection;
     public bool runToggle;
+    public bool suspendMovement;
     void Awake()
     {
         _upAction = InputManager.instance.inputActions.asset.FindActionMap("Player").FindAction("Up");
@@ -171,7 +172,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (!CheckIfWalkable(targetNode))
             return; //return if empty. shouldn't waste a player's turn
-        
+
         bool transportDoor = CheckTransport(targetNode);
 
         Player.instance.gridAgent.SetNode(targetNode);
@@ -229,7 +230,7 @@ public class PlayerMovement : MonoBehaviour
             TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
             playerRB.position = goal;
             playerRB.rotation = goalQuat;
-            if (_holdingDirection != " " && TurnManager.instance.state == TurnManager.State.PlayerTurn)
+            if (_holdingDirection != " " && TurnManager.instance.state == TurnManager.State.PlayerTurn && !suspendMovement)
                 switch (_holdingDirection)
                 {
                     case "up": MoveDirection("up"); break;
@@ -237,9 +238,20 @@ public class PlayerMovement : MonoBehaviour
                     case "left": MoveDirection("left"); break;
                     case "right": MoveDirection("right"); break;
                 }
+            else if (suspendMovement)
+                SuspendPlayer();
             else
                 Player.instance.StateChange(PlayerState.State.Idle);
         }
+    }
+    void SuspendPlayer()
+    {
+        Player.instance.StateChange(PlayerState.State.Idle);
+        TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
+    }
+    public void SuspendMovement(bool suspend)
+    {
+        suspendMovement = suspend;
     }
     public void MoveBoulder(NodeClass goalNode)
     {

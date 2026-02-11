@@ -1,10 +1,14 @@
 using System.Collections;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
 
     public ParticleSystem bloodParticles;
+    public Canvas healthBarCanvas;
+    public Canvas staggerBarCanvas;
+    public Image chargeBar;
     public enum State
     {
         Idle,
@@ -83,6 +87,7 @@ public class EnemyAI : MonoBehaviour
     }
     void DeadState(EnemyController controller)
     {
+        EnableBars(false);
         bloodParticles.Play();
         TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
         Enemy.instance.enemySystem.activeEnemies.Remove(controller);
@@ -93,7 +98,6 @@ public class EnemyAI : MonoBehaviour
     }
     IEnumerator TrackDead(EnemyController controller)
     {
-
         yield return null;
         float progress = 0;
         while (progress < 1)
@@ -111,5 +115,11 @@ public class EnemyAI : MonoBehaviour
         }
             transform.position = controller.deadSpot;
             Node.instance.ResetNode(controller.gridAgent.node);
+    }
+    public void EnableBars(bool enable)
+    {
+        healthBarCanvas.enabled = enable;
+        staggerBarCanvas.enabled = enable;
+        chargeBar.enabled = enable;
     }
 }

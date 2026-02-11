@@ -84,4 +84,8 @@ public class Player : MonoBehaviour
     {
         playerAttack.AttackPressed();
     }
+    public void SuspendMovement(bool suspend)
+    {
+        playerMovement.SuspendMovement(suspend);
+    }
 }

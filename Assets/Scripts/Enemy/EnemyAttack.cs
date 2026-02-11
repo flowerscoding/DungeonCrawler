@@ -42,6 +42,8 @@ public class EnemyAttack : MonoBehaviour
 
         _attackCharge = null;
         controller.CheckSurrounding();
+
+        Player.instance.SuspendMovement(false);
     }
     public void EnableAttackCharge(bool enable)
     {
@@ -64,28 +66,17 @@ public class EnemyAttack : MonoBehaviour
     {
         while (attackDuration < 1)
         {
-
             chargeBar.fillAmount = attackDuration;
-            attackDuration += Time.deltaTime / _activeAttack.chargeDuration;
+            attackDuration +=  TurnManager.instance.state != TurnManager.State.PlayerAttacking ? Time.deltaTime / _activeAttack.chargeDuration : 0;
             yield return null;
         }
-        print("FULL");
-        while (TurnManager.instance.state != TurnManager.State.PlayerTurn)
-        {
-            print(TurnManager.instance.state);
-            yield return null;
-        }
-            StartCoroutine(Attack());
+        StartCoroutine(Attack());
     }
     IEnumerator Attack()
     {
         if (controller.enemyState.state != EnemyState.State.Active) yield break;
-        while (TurnManager.instance.state != TurnManager.State.PlayerTurn)
-        {
-            yield return null;
-        }
+        Player.instance.SuspendMovement(true);
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
-
         controller.NewState(EnemyAI.State.Attacking);
         print("ENEMY ATTACK");
     }

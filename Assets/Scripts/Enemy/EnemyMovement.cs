@@ -77,10 +77,15 @@ public class EnemyMovement : MonoBehaviour
         }
         goalNodes.Remove(curNode);
 
-        if (goalNodes.Count <= 0)
+        if (goalNodes.Count <= 0 && controller.enemyAI.state != EnemyAI.State.Attacking)
         {
             transform.position = goal;
             controller.NewState(EnemyAI.State.Aggro);
+        }
+        else if(controller.enemyAI.state == EnemyAI.State.Attacking)
+        {
+            transform.position = goal;
+            yield break;
         }
         else
         {

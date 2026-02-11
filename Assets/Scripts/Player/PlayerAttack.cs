@@ -20,7 +20,7 @@ public class PlayerAttack : MonoBehaviour
     {
         damageOutput = AttackDamageCalculation();
         Player.instance.StateChange(PlayerState.State.Attacking);
-        TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
+        TurnManager.instance.ChangeTurn(TurnManager.State.PlayerAttacking);
     }
     public void AttackLanded()
     {
@@ -30,7 +30,7 @@ public class PlayerAttack : MonoBehaviour
     void ExecuteEmptyAttack()
     {
         Player.instance.StateChange(PlayerState.State.Attacking);
-        TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
+        TurnManager.instance.ChangeTurn(TurnManager.State.PlayerAttacking);
     }
     int AttackDamageCalculation()
     {//Damage output factors can be added

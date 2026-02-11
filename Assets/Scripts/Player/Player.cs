@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public  PlayerDeath playerDeath;
     public PlayerOcclusion playerOcclusion;
     public ItemUsage itemUsage;
+    public PlayerSurrounding playerSurrounding;
     void Awake()
     {
         if(instance != null)

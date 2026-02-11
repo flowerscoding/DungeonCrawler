@@ -35,6 +35,7 @@ public class EnemyAttack : MonoBehaviour
     }
     void CheckHit()
     {
+        Player.instance.OccludePlayer(false);
         if (!Player.instance.playerBlock.parried)
             Player.instance.TakeDamage(_activeAttack.attackDamage);
         else
@@ -75,6 +76,8 @@ public class EnemyAttack : MonoBehaviour
     IEnumerator Attack()
     {
         if (controller.enemyState.state != EnemyState.State.Active) yield break;
+        if(controller.gridAgent.nodeY > Player.instance.gridAgent.nodeY)
+            Player.instance.OccludePlayer(true);
         Player.instance.SuspendMovement(true);
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
         controller.NewState(EnemyAI.State.Attacking);

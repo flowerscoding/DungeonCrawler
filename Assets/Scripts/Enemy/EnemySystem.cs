@@ -19,6 +19,13 @@ public class EnemySystem : MonoBehaviour
             
         ActivateEnemies();
     }
+    public void PauseCharges(bool pause)
+    {
+        foreach(EnemyController enemy in activeEnemies)
+        {
+            enemy.PauseCharges(pause);
+        }
+    }
     void ActivateEnemies()
     {
         activeEnemies.Clear();

@@ -10,8 +10,8 @@ public class EnemyAttack : MonoBehaviour
     public Light[] flashes;
     public EnemyController controller;
     Coroutine _attackCharge;
+    float _attackChargeAmount = 0;
     private EnemyData.Attack _activeAttack;
-    float attackDuration = 0;
     public Image chargeBar;
     public void LoadUp()
     {
@@ -45,30 +45,33 @@ public class EnemyAttack : MonoBehaviour
         controller.CheckSurrounding();
 
         Player.instance.SuspendMovement(false);
+        Player.instance.EnableAttackCharge(true);
     }
     public void EnableAttackCharge(bool enable)
     {
         if (enable && _attackCharge == null)
         {
-            print("ENABLE!");
-            attackDuration = 0;
             chargeBar.enabled = true;
             DetermineAttack();
             _attackCharge = StartCoroutine(AttackCharge());
         }
         else if (!enable && _attackCharge != null)
         {
-            print("DISABLE!");
             StopCoroutine(_attackCharge);
             _attackCharge = null;
         }
     }
+    public bool pauseCharges = false;
+    public void PauseCharges(bool pause)
+    {
+        pauseCharges = pause;
+    }
     IEnumerator AttackCharge()
     {
-        while (attackDuration < 1)
+        while (_attackChargeAmount < 1)
         {
-            chargeBar.fillAmount = attackDuration;
-            attackDuration +=  TurnManager.instance.state != TurnManager.State.PlayerAttacking ? Time.deltaTime / _activeAttack.chargeDuration : 0;
+            chargeBar.fillAmount = _attackChargeAmount;
+            _attackChargeAmount +=  pauseCharges ? 0 : Time.deltaTime / _activeAttack.chargeDuration;
             yield return null;
         }
         StartCoroutine(Attack());
@@ -81,7 +84,7 @@ public class EnemyAttack : MonoBehaviour
         Player.instance.SuspendMovement(true);
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
         controller.NewState(EnemyAI.State.Attacking);
-        print("ENEMY ATTACK");
+        _attackChargeAmount = 0;
     }
     void DetermineAttack()
     {

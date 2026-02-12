@@ -64,4 +64,8 @@ public class EnemyController : MonoBehaviour
     {
         enemyMovement.CheckSurrounding(gridAgent.node, this);
     }
+    public void PauseCharges(bool pause)
+    {
+        enemyAttack.PauseCharges(pause);
+    }
 }

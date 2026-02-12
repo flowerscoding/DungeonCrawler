@@ -93,4 +93,8 @@ public class Player : MonoBehaviour
     {
         playerAttack.EnableAttackCharge(enable);
     }
+    public bool CheckSurrounding(PlayerSurrounding.CheckType type)
+    {
+        return playerSurrounding.CheckFor(type);
+    }
 }

@@ -17,4 +17,8 @@ public class Enemy : MonoBehaviour
     {
         enemySystem.ActivateEnemy(controller);
     }
+    public void PauseCharges(bool pause)
+    {
+        enemySystem.PauseCharges(pause);
+    }
 }

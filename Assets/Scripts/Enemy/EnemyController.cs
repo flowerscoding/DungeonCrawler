@@ -54,11 +54,10 @@ public class EnemyController : MonoBehaviour
     {
         return enemyAttack.parryable;
     }
-    public void EnableAttackCharge(bool enable)
+    public void EnableAttackCharge(bool enable, bool runCharge)
     {
         enemyAttack.EnableAttackCharge(enable);
-        if(enable)
-            Player.instance.EnableAttackCharge(true);
+        Player.instance.EnableAttackCharge(enable, runCharge);
     }
     public void CheckSurrounding()
     {

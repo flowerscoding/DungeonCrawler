@@ -9,22 +9,19 @@ public class PlayerAttack : MonoBehaviour
     public int damageOutput;
     public float attackChargeMax;
     bool _chargeEnabled;
-    Coroutine _attackCharge;
     [SerializeField] Canvas _chargeCanvas;
     [SerializeField] Image _chargeBar;
     bool _attackReady;
     float _attackChargeAmount = 0;
-    public void EnableAttackCharge(bool enable)
+    public void EnableAttackCharge(bool enableUI, bool runCharge)
     {
-        _chargeCanvas.enabled = enable;
-        _chargeEnabled = enable;
-        if (_attackCharge == null && enable)
-            _attackCharge = StartCoroutine(AttackCharge());
+        _chargeCanvas.enabled = enableUI;
+        _chargeEnabled = runCharge;
+        if (runCharge)
+            StartCoroutine(AttackCharge());
         else
         {
-            if (_attackCharge != null)
-                StopCoroutine(_attackCharge);
-            _attackCharge = null;
+            StopCoroutine(AttackCharge());
             _attackReady = false;
         }
     }
@@ -62,7 +59,6 @@ public class PlayerAttack : MonoBehaviour
         Enemy.instance.PauseCharges(true);
 
         StopCoroutine(AttackCharge());
-        _attackCharge = null;
         _chargeCanvas.enabled = false;
         _chargeBar.fillAmount = 0;
         _attackChargeAmount = 0;
@@ -73,7 +69,8 @@ public class PlayerAttack : MonoBehaviour
         if (targetNode.state == NodeClass.State.Enemy)
             targetNode.enemyController.TakeDamage(damageOutput);
         Enemy.instance.PauseCharges(false);
-        EnableAttackCharge(Player.instance.CheckSurrounding(PlayerSurrounding.CheckType.ActiveEnemy));
+        bool enable = Player.instance.CheckSurrounding(PlayerSurrounding.CheckType.ActiveEnemy);
+        EnableAttackCharge(enable, enable);
     }
     int AttackDamageCalculation()
     {//Damage output factors can be added

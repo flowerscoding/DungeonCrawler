@@ -45,7 +45,7 @@ public class EnemyAttack : MonoBehaviour
         controller.CheckSurrounding();
 
         Player.instance.SuspendMovement(false);
-        Player.instance.EnableAttackCharge(true);
+        Player.instance.EnableAttackCharge(true, true);
     }
     public void EnableAttackCharge(bool enable)
     {
@@ -85,6 +85,8 @@ public class EnemyAttack : MonoBehaviour
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
         controller.NewState(EnemyAI.State.Attacking);
         _attackChargeAmount = 0;
+
+        Player.instance.EnableAttackCharge(true, false);
     }
     void DetermineAttack()
     {

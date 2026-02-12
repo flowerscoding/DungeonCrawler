@@ -59,7 +59,7 @@ public class EnemyMovement : MonoBehaviour
             else
                 playerFound = false;
         }
-        controller.EnableAttackCharge(playerFound);
+        controller.EnableAttackCharge(playerFound, playerFound);
     }
     IEnumerator EnemyAnim(Vector3 start, Vector3 goal, EnemyController controller, NodeClass curNode)
     {

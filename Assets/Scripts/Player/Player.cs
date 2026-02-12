@@ -89,9 +89,9 @@ public class Player : MonoBehaviour
     {
         playerMovement.SuspendMovement(suspend);
     }
-    public void EnableAttackCharge(bool enable)
+    public void EnableAttackCharge(bool enableUI, bool runCharge)
     {
-        playerAttack.EnableAttackCharge(enable);
+        playerAttack.EnableAttackCharge(enableUI, runCharge);
     }
     public bool CheckSurrounding(PlayerSurrounding.CheckType type)
     {

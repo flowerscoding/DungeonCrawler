@@ -57,6 +57,8 @@ public class EnemyController : MonoBehaviour
     public void EnableAttackCharge(bool enable)
     {
         enemyAttack.EnableAttackCharge(enable);
+        if(enable)
+            Player.instance.EnableAttackCharge(true);
     }
     public void CheckSurrounding()
     {

@@ -89,4 +89,8 @@ public class Player : MonoBehaviour
     {
         playerMovement.SuspendMovement(suspend);
     }
+    public void EnableAttackCharge(bool enable)
+    {
+        playerAttack.EnableAttackCharge(enable);
+    }
 }

@@ -1,9 +1,47 @@
+using System.Collections;
+using UnityEngine.UI;
 using UnityEngine;
+
 
 public class PlayerAttack : MonoBehaviour
 {
     public NodeClass targetNode; //for PlayerState script
     public int damageOutput;
+    public float attackChargeMax;
+    bool _chargeEnabled;
+    Coroutine _attackCharge;
+    [SerializeField] Canvas _chargeCanvas;
+    [SerializeField] Image _chargeBar;
+    bool _attackReady;
+    public void EnableAttackCharge(bool enable)
+    {
+        _chargeCanvas.enabled = enable;
+        _chargeEnabled = enable;
+        if(_attackCharge == null && enable)
+            _attackCharge = StartCoroutine(AttackCharge());
+        else
+        {
+            if(_attackCharge != null)
+                StopCoroutine(_attackCharge);
+            _attackCharge = null;
+            _attackReady = false;
+        }
+    }
+    IEnumerator AttackCharge()
+    {
+        float attackCharge = 0;
+        while (attackCharge < 1)
+        {
+            if(!_chargeEnabled)
+                yield break;
+            
+            attackCharge += Time.deltaTime / attackChargeMax;
+            _chargeBar.fillAmount = attackCharge;
+            yield return null;
+        }
+        if(attackCharge >= 1)
+            _attackReady = true;
+    }
     public void AttackPressed()
     {
         targetNode = NodeFacing();
@@ -11,26 +49,25 @@ public class PlayerAttack : MonoBehaviour
         if (TurnManager.instance.state == TurnManager.State.PlayerTurn
         && targetNode.enemyController != null 
         && targetNode.enemyController.enemyState.state  == EnemyState.State.Active
-        && targetNode.enemyController.enemyHealth.curHealth > 0f)
+        && targetNode.enemyController.enemyHealth.curHealth > 0f
+        && _attackReady)
             ExecuteAttack();
-        else if(TurnManager.instance.state == TurnManager.State.PlayerTurn)
-            ExecuteEmptyAttack();
     }
     void ExecuteAttack()
     {
         damageOutput = AttackDamageCalculation();
         Player.instance.StateChange(PlayerState.State.Attacking);
         TurnManager.instance.ChangeTurn(TurnManager.State.PlayerAttacking);
+
+        StopCoroutine(_attackCharge);
+        _attackCharge = null;
+        _chargeCanvas.enabled = false;
+        _chargeBar.fillAmount = 0;
     }
     public void AttackLanded()
     {
         if(targetNode.state == NodeClass.State.Enemy)
             targetNode.enemyController.TakeDamage(damageOutput);
-    }
-    void ExecuteEmptyAttack()
-    {
-        Player.instance.StateChange(PlayerState.State.Attacking);
-        TurnManager.instance.ChangeTurn(TurnManager.State.PlayerAttacking);
     }
     int AttackDamageCalculation()
     {//Damage output factors can be added

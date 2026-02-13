@@ -52,7 +52,7 @@ public class LoadSystem : MonoBehaviour
         SceneManager.LoadScene(sceneName);
 
         SaveSystem.Instance.SaveGame();
-        Player.instance.UpdatePlayerData();
+        SaveSystem.Instance.LoadSaveData();
 
 
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);

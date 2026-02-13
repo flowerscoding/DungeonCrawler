@@ -52,7 +52,6 @@ public class PlayerAttack : MonoBehaviour
     }
     void ExecuteAttack()
     {
-        print("ATTACK EXECUTE");
         damageOutput = AttackDamageCalculation();
         Player.instance.StateChange(PlayerState.State.Attacking);
         TurnManager.instance.ChangeTurn(TurnManager.State.PlayerAttacking);

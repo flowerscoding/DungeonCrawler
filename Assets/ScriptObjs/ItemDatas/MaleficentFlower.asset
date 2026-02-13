@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfb1ac820444af14e9236345d6ed05d3, type: 3}
-  m_Name: DragonToeHerb
+  m_Name: MaleficentFlower
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  ItemName: Dragon Toe Heart
+  ItemName: Maleficent Flower
   ItemType: Consumable
   SubType: Healing
-  Description: A heart that once resided in the toe of a great dragon. It provides
-    a small amount of healing.
-  HealthAttribute: 5
+  Description: A flower the cruel but pristine queen of Midgrove, Queen Tedra, once
+    endeared. According to the folktale of the wicked queen, the flower would lay
+    on her bosom as she decapitated the heads of hundreds and thousands of enemy
+    soldiers.
+  HealthAttribute: 1
   ItemSprite: {fileID: 21300000, guid: adb02546ba6371f4fb9969e7e86893ea, type: 3}

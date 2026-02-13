@@ -23,6 +23,10 @@ public class EnemyHealth : MonoBehaviour
         _healthBarCanvas.enabled = true;
         _prevHealthPercent = (float)curHealth / enemyData.maxHealth;
         curHealth -= damage;
+
+        Color orange = new Color(1, 0.4f, 0.1f);
+        DamageManager.Instance.SpawnDamage(damage, transform, orange);
+
         StartCoroutine(HealthBarAnimation());
     }
     IEnumerator HealthBarAnimation()

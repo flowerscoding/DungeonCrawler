@@ -91,6 +91,5 @@ public class EnemyAttack : MonoBehaviour
     void DetermineAttack()
     {
         _activeAttack = enemyData.attacks[Random.Range(0, enemyData.attacks.Length)];
-        print("CHOSEN ATTACK: " + _activeAttack.attackName);
     }
 }

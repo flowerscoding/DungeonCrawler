@@ -25,6 +25,8 @@ public class PlayerData : MonoBehaviour
     float _prevHealthPercent;
     public void TakeDamage(int damage)
     {
+        Color red = new Color(1, 0, 0);
+        DamageManager.Instance.SpawnDamage(damage, Player.instance.playerMovement.playerRB.transform, red);
         _prevHealthPercent = (float)curHealth / maxHealth;
         curHealth -= damage;
         if(curHealth > 0)
@@ -49,7 +51,7 @@ public class PlayerData : MonoBehaviour
         }
         healthBar.fillAmount = healthPercent;
     }
-    public void UpdateData()
+    public void LoadData()
     {
         currentScene = SaveSystem.Instance.currentData.scene;
         curHealth = SaveSystem.Instance.currentData.health;
@@ -67,7 +69,21 @@ public class PlayerData : MonoBehaviour
     }
     public void Heal(int amount)
     {
+        float prevHealth = curHealth;
         curHealth += amount;
+        if(curHealth > maxHealth)
+            curHealth = maxHealth;
+        StartCoroutine(HealPlayer(prevHealth));
+    }
+    IEnumerator HealPlayer(float prevHealth)
+    {
+        float duration = 0.3f;
+        while(prevHealth < curHealth)
+        {
+            prevHealth += Time.deltaTime / duration;
+            healthBar.fillAmount = (float) prevHealth / maxHealth;
+            yield return null;
+        }
         healthBar.fillAmount = (float) curHealth / maxHealth;
     }
 }

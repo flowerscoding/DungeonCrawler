@@ -19,6 +19,7 @@ public class InventoryStorage : MonoBehaviour
                 break;
             default : break;
         }
+        SaveSystem.Instance.SaveGame();
     }
     public void RemoveFromInventory(ItemData itemData)
     {
@@ -31,5 +32,13 @@ public class InventoryStorage : MonoBehaviour
                 break;
             default : break;
         }
+        SaveSystem.Instance.SaveGame();
+    }
+    public void LoadInventory()
+    {
+        storage = SaveSystem.Instance.currentData.storage;
+        storageConsumableItems = SaveSystem.Instance.currentData.storageConsumableItems;
+        storageArmorItems = SaveSystem.Instance.currentData.storageArmorItems;
+        storageKeyItems = SaveSystem.Instance.currentData.storageKeyItems;
     }
 }

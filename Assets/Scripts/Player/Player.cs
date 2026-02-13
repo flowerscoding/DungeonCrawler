@@ -60,9 +60,9 @@ public class Player : MonoBehaviour
     {
         playerOcclusion.OccludePlayer(occlude);
     }
-    public void UpdatePlayerData()
+    public void LoadPlayerData()
     {
-        playerData.UpdateData();
+        playerData.LoadData();
     }
     public void SceneUpdate(LoadSystem.Scene scene)
     {

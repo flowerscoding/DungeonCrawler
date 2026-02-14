@@ -59,8 +59,6 @@ public class EnemyAI : MonoBehaviour
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
         Player.instance.ParryBlockOn();
 
-        controller.animateMachine.Animate(AnimateMachine.State.Attack);
-
         StartCoroutine(RotateAnimation());
     }
     IEnumerator RotateAnimation()

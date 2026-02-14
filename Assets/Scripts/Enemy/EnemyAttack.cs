@@ -71,7 +71,7 @@ public class EnemyAttack : MonoBehaviour
         while (_attackChargeAmount < 1)
         {
             chargeBar.fillAmount = _attackChargeAmount;
-            _attackChargeAmount +=  pauseCharges ? 0 : Time.deltaTime / _activeAttack.chargeDuration;
+            _attackChargeAmount += pauseCharges ? 0 : Time.deltaTime / _activeAttack.chargeDuration;
             yield return null;
         }
         StartCoroutine(Attack());
@@ -79,10 +79,23 @@ public class EnemyAttack : MonoBehaviour
     IEnumerator Attack()
     {
         if (controller.enemyState.state != EnemyState.State.Active) yield break;
-        if(controller.gridAgent.nodeY > Player.instance.gridAgent.nodeY)
+        if (controller.gridAgent.nodeY > Player.instance.gridAgent.nodeY)
             Player.instance.OccludePlayer(true);
         Player.instance.SuspendMovement(true);
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
+
+        switch (_activeAttack.attackName)
+        {
+            case "LightAttack":
+                controller.animateMachine.Animate(AnimateMachine.State.LightAttack);
+                break;
+            case "NormalAttack":
+                controller.animateMachine.Animate(AnimateMachine.State.NormalAttack);
+                break;
+            case "HeavyAttack":
+                controller.animateMachine.Animate(AnimateMachine.State.HeavyAttack);
+                break;
+        }
         controller.NewState(EnemyAI.State.Attacking);
         _attackChargeAmount = 0;
 

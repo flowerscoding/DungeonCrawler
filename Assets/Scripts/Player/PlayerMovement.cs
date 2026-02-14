@@ -204,6 +204,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //run toggle allows smooth walk to run movement speeds/animations
             float duration = runToggle ? TurnManager.instance.runDuration : TurnManager.instance.movementDuration;
+            
             if (runToggle)
                 Player.instance.StateChange(PlayerState.State.Running);
             else

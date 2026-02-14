@@ -8,6 +8,7 @@ public class PlayerData : MonoBehaviour
     public int maxHealth;
     public int attackStat;
     public int defenseStat;
+    public float staminaMax;
     public Vector3 worldPos;
 
     public float attackHitPoint;

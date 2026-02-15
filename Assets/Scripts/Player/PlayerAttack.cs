@@ -11,7 +11,7 @@ public class PlayerAttack : MonoBehaviour
     bool _chargeEnabled;
     [SerializeField] Canvas _chargeCanvas;
     [SerializeField] Image _chargeBar;
-    bool _attackReady;
+    public bool _attackReady;
     float _attackChargeAmount = 0;
     public void EnableAttackCharge(bool enableUI, bool runCharge)
     {
@@ -46,9 +46,16 @@ public class PlayerAttack : MonoBehaviour
         if (TurnManager.instance.state == TurnManager.State.PlayerTurn
         && targetNode.enemyController != null
         && targetNode.enemyController.enemyState.state == EnemyState.State.Active
-        && targetNode.enemyController.enemyHealth.curHealth > 0f
         && _attackReady)
-            ExecuteAttack();
+        {
+            if (targetNode.enemyController.enemyHealth.curHealth > 0f)
+            {
+                if(targetNode.enemyController.enemyHealth.curStagger >= targetNode.enemyController.enemyData.maxStagger)
+                    ExecuteStaggerAttack();
+                else
+                    ExecuteAttack();
+            }
+        }
     }
     void ExecuteAttack()
     {
@@ -63,10 +70,31 @@ public class PlayerAttack : MonoBehaviour
         _attackChargeAmount = 0;
         _attackReady = false;
     }
+    void ExecuteStaggerAttack()
+    {
+        Player.instance.StateChange(PlayerState.State.StaggerAttacking);
+        TurnManager.instance.ChangeTurn(TurnManager.State.PlayerAttacking);
+        Enemy.instance.PauseCharges(true);
+
+        StopCoroutine(AttackCharge());
+        _chargeCanvas.enabled = false;
+        _chargeBar.fillAmount = 0;
+        _attackChargeAmount = 0;
+        _attackReady = false;
+    }
     public void AttackLanded()
     {
         if (targetNode.state == NodeClass.State.Enemy)
             targetNode.enemyController.TakeDamage(damageOutput);
+        Enemy.instance.PauseCharges(false);
+        bool enable = Player.instance.CheckSurrounding(PlayerSurrounding.CheckType.ActiveEnemy);
+        EnableAttackCharge(enable, enable);
+        TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
+    }
+    public void StaggerAttackLanded()
+    {
+        if (targetNode.state == NodeClass.State.Enemy)
+            targetNode.enemyController.StaggerAttackReceived();
         Enemy.instance.PauseCharges(false);
         bool enable = Player.instance.CheckSurrounding(PlayerSurrounding.CheckType.ActiveEnemy);
         EnableAttackCharge(enable, enable);

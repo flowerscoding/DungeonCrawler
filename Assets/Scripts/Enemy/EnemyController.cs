@@ -30,6 +30,10 @@ public class EnemyController : MonoBehaviour
     {
         enemyHealth.TakeStagger(amount);
     }
+    public void StaggerAttackReceived()
+    {
+        NewState(EnemyAI.State.Dead);
+    }
     public void ResetEnemy()
     {
         enemyState.NewState(EnemyState.State.Active);

@@ -101,7 +101,7 @@ public class PlayerBlock : MonoBehaviour
 
         TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
 
-        controller.TakeStagger(Player.instance.playerData.weapon.data.stagger);
+        controller.TakeStagger(controller.enemyAttack.activeAttack.staggerValue);
     }
     public void ResetParried()
     {

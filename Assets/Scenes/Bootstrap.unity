@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 96798077}
   - component: {fileID: 96798076}
   m_Layer: 0
-  m_Name: HealthCanvas
+  m_Name: StatusCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -373,7 +373,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96798074}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -1499,6 +1499,7 @@ MonoBehaviour:
   playerOcclusion: {fileID: 103836419}
   itemUsage: {fileID: 48610996}
   playerSurrounding: {fileID: 1682402508}
+  playerStamina: {fileID: 0}
 --- !u!1 &349797937
 GameObject:
   m_ObjectHideFlags: 0
@@ -8192,6 +8193,7 @@ MonoBehaviour:
   maxHealth: 10
   attackStat: 1
   defenseStat: 1
+  staminaMax: 10
   worldPos: {x: 0, y: 0, z: 0}
   attackHitPoint: 0.3
   destroyHitPoint: 0.5

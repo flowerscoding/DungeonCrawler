@@ -133240,7 +133240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   gridAgent: {fileID: 7867978130260212826}
-  enemyData: {fileID: 11400000, guid: 9ad3ea1284bb253408f4b0d590957779, type: 2}
+  enemyData: {fileID: 11400000, guid: 248049367f4aef347bf65e5e94587587, type: 2}
   enemyAI: {fileID: 7867978130260212831}
   enemyMovement: {fileID: 7867978130260212830}
   enemyState: {fileID: 7867978130260212829}

@@ -11,7 +11,7 @@ public class EnemyAttack : MonoBehaviour
     public EnemyController controller;
     Coroutine _attackCharge;
     float _attackChargeAmount = 0;
-    private EnemyData.Attack _activeAttack;
+    public EnemyData.Attack activeAttack;
     public Image chargeBar;
     public void LoadUp()
     {
@@ -37,7 +37,7 @@ public class EnemyAttack : MonoBehaviour
     {
         Player.instance.OccludePlayer(false);
         if (!Player.instance.playerBlock.parried)
-            Player.instance.TakeDamage(_activeAttack.attackDamage);
+            Player.instance.TakeDamage(activeAttack.attackDamage);
         else
             Player.instance.playerBlock.ResetParried();
 
@@ -71,7 +71,7 @@ public class EnemyAttack : MonoBehaviour
         while (_attackChargeAmount < 1)
         {
             chargeBar.fillAmount = _attackChargeAmount;
-            _attackChargeAmount += pauseCharges ? 0 : Time.deltaTime / _activeAttack.chargeDuration;
+            _attackChargeAmount += pauseCharges ? 0 : Time.deltaTime / activeAttack.chargeDuration;
             yield return null;
         }
         StartCoroutine(Attack());
@@ -84,7 +84,7 @@ public class EnemyAttack : MonoBehaviour
         Player.instance.SuspendMovement(true);
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
 
-        switch (_activeAttack.attackName)
+        switch (activeAttack.attackName)
         {
             case "LightAttack":
                 controller.animateMachine.Animate(AnimateMachine.State.LightAttack);
@@ -103,6 +103,6 @@ public class EnemyAttack : MonoBehaviour
     }
     void DetermineAttack()
     {
-        _activeAttack = enemyData.attacks[Random.Range(0, enemyData.attacks.Length)];
+        activeAttack = enemyData.attacks[Random.Range(0, enemyData.attacks.Length)];
     }
 }

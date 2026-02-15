@@ -12,6 +12,7 @@ public class PlayerState : MonoBehaviour
         Walking,
         Running,
         Attacking,
+        StaggerAttacking,
         Block,
         Hurt,
         Dead,
@@ -39,6 +40,9 @@ public class PlayerState : MonoBehaviour
                 break;
             case State.Attacking:
                 AttackState();
+                break;
+            case State.StaggerAttacking:
+            StaggerAttackState();
                 break;
             case State.Hurt:
                 HurtState();
@@ -192,6 +196,15 @@ public class PlayerState : MonoBehaviour
 
         Player.instance.playerInteract.CheckInteractables();
         Player.instance.animateMachine.Animate(AnimateMachine.State.Attack);
+    }
+    void StaggerAttackState()
+    {
+        SaveSystem.Instance.SaveGame();
+        
+        Player.instance.playerBlock.BlockOff();
+
+        Player.instance.playerInteract.CheckInteractables();
+        Player.instance.animateMachine.Animate(AnimateMachine.State.StaggerAttack);
     }
     void IdleState()
     {

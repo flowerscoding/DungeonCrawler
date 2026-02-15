@@ -14,14 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Batty
   maxHealth: 10
-  maxStagger: 20
+  maxStagger: 3
   attacks:
   - attackName: LightAttack
     attackDamage: 1
     chargeDuration: 3
+    staggerValue: 1
   - attackName: NormalAttack
     attackDamage: 2
     chargeDuration: 6
+    staggerValue: 2
   - attackName: HeavyAttack
     attackDamage: 3
     chargeDuration: 10
+    staggerValue: 3

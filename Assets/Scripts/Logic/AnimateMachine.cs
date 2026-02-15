@@ -11,6 +11,7 @@ public class AnimateMachine : MonoBehaviour
         Aggro,
         Walk,
         Attack,
+        StaggerAttack,
         LightAttack,
         NormalAttack,
         HeavyAttack,
@@ -34,6 +35,7 @@ public class AnimateMachine : MonoBehaviour
             case State.Aggro: animator.Play("Aggro"); break;
             case State.Walk: animator.Play("Walk"); break;
             case State.Attack: animator.Play("Attack", 0, 0); break;
+            case State.StaggerAttack: animator.Play("StaggerAttack", 0, 0); break;
             case State.Hurt: animator.Play("Hurt", 0, 0); break;
             case State.Dead: animator.Play("Dead", 0, 0); break;
             case State.Push: animator.Play("BoulderPush", 0, 0); break;

@@ -12,6 +12,7 @@ public class EnemyData : ScriptableObject
         public string attackName;
         public int attackDamage;
         public float chargeDuration;
+        public int staggerValue;
     }
     public Attack[] attacks;
 }

@@ -6,6 +6,7 @@ public class GridAgent : MonoBehaviour
     public NodeClass node { get; private set; }
     public int nodeX;
     public int nodeY;
+    public float yWorldPosOffset;
     void Awake()
     {
         CreateStartNode();
@@ -16,6 +17,7 @@ public class GridAgent : MonoBehaviour
         nodeX = Mathf.RoundToInt(transform.position.x - Node.instance.nodeGrid.gridOrigin.x);
         nodeY = Mathf.RoundToInt(transform.position.z - Node.instance.nodeGrid.gridOrigin.z);
         node = Node.instance.nodeGrid.grid[nodeX, nodeY];
+        node.worldPos = node.worldPos + new Vector3(0, yWorldPosOffset, 0);
         node.state = state;
         switch (state)
         {

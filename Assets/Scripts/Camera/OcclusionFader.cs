@@ -5,7 +5,7 @@ public class OcclusionFader : MonoBehaviour
     Renderer _renderer;
     bool _occluding;
     float _alpha;
-    private NodeVisibility _nodeVisibility;
+    NodeVisibility _nodeVisibility;
     void Awake()
     {
         _renderer = GetComponent<Renderer>();

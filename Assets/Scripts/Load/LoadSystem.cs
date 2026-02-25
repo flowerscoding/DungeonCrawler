@@ -11,8 +11,9 @@ public class LoadSystem : MonoBehaviour
     public enum Scene
     {
         Hub,
-        IntroArea,
-        IntroCave,
+        Hub_Chapel,
+        Intro_Area,
+        Intro_Cave,
         Castle_Floor1,
     }
     void Awake()

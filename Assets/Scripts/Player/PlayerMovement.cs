@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -143,6 +144,7 @@ public class PlayerMovement : MonoBehaviour
 
         Quaternion start = playerRB.rotation;
         Quaternion goal = Quaternion.LookRotation(targetNode.worldPos - playerRB.position);
+        goal = Quaternion.Euler(new Vector3(0, goal.eulerAngles.y, goal.eulerAngles.z)); //keeps player xRot to 0
         float t = 0;
         while (t < 1)
         {
@@ -197,14 +199,14 @@ public class PlayerMovement : MonoBehaviour
         Vector3 start = playerRB.position;
         Vector3 goal = targetNode.worldPos;
         Quaternion goalQuat = Quaternion.LookRotation(goal - start);
+        goalQuat = Quaternion.Euler(new Vector3(0, goalQuat.eulerAngles.y, goalQuat.eulerAngles.z)); //keeps player xRot to 0
         Quaternion startQuat = playerRB.rotation;
         float t = 0;
         float t2 = 0;
         while (t < 1)
-        {
-            //run toggle allows smooth walk to run movement speeds/animations
+        {//run toggle allows smooth walk to run movement speeds/animations
             float duration = runToggle ? TurnManager.instance.runDuration : TurnManager.instance.movementDuration;
-            
+
             if (runToggle)
                 Player.instance.StateChange(PlayerState.State.Running);
             else
@@ -220,30 +222,27 @@ public class PlayerMovement : MonoBehaviour
             playerRB.MovePosition(Vector3.Lerp(start, goal, t));
             yield return new WaitForFixedUpdate();
         }
-        if (t >= 1)
+        if (transportDoor)
         {
-            if (transportDoor)
-            {
-                TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
-                targetNode.transportController.InitiateTransport();
-                yield break;
-            }
-            TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
-            playerRB.position = goal;
-            playerRB.rotation = goalQuat;
-            if (_holdingDirection != " " && TurnManager.instance.state == TurnManager.State.PlayerTurn && !suspendMovement)
-                switch (_holdingDirection)
-                {
-                    case "up": MoveDirection("up"); break;
-                    case "down": MoveDirection("down"); break;
-                    case "left": MoveDirection("left"); break;
-                    case "right": MoveDirection("right"); break;
-                }
-            else if (suspendMovement)
-                SuspendPlayer();
-            else
-                Player.instance.StateChange(PlayerState.State.Idle);
+            TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
+            targetNode.transportController.InitiateTransport();
+            yield break;
         }
+        TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
+        playerRB.position = goal;
+        playerRB.rotation = goalQuat;
+        if (_holdingDirection != " " && TurnManager.instance.state == TurnManager.State.PlayerTurn && !suspendMovement)
+            switch (_holdingDirection)
+            {
+                case "up": MoveDirection("up"); break;
+                case "down": MoveDirection("down"); break;
+                case "left": MoveDirection("left"); break;
+                case "right": MoveDirection("right"); break;
+            }
+        else if (suspendMovement)
+            SuspendPlayer();
+        else
+            Player.instance.StateChange(PlayerState.State.Idle);
     }
     void SuspendPlayer()
     {

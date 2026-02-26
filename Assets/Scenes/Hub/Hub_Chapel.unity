@@ -7022,6 +7022,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   nodeGrid: {fileID: 1969019907}
+  nodeVisibilityScripts: []
+  nodeVisibilityMultiplesScripts: []
 --- !u!1 &163822758
 GameObject:
   m_ObjectHideFlags: 0
@@ -14311,7 +14313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TransportController
   sceneDestination: 0
-  spawnPoint: ChapelExit
+  spawnPoint: ChapelEntrance
 --- !u!1 &711763724
 GameObject:
   m_ObjectHideFlags: 0

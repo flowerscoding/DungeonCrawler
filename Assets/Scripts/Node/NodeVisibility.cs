@@ -12,27 +12,19 @@ public class NodeVisibility : MonoBehaviour
     {
         SetReferenceNode();
         _renderer = GetComponent<MeshRenderer>();
-        DistanceCheck(Player.instance.gridAgent.node);
     }
-    void OnEnable()
+    public void DistanceCheck(NodeClass playerNode)
     {
-        PlayerGridAgent.OnPlayerMovement += DistanceCheck;
-    }
-    void OnDisable()
-    {
-        PlayerGridAgent.OnPlayerMovement -= DistanceCheck;
+        int xD = Mathf.Abs(playerNode.nodeX - nodeX);
+        int yD = Mathf.Abs(playerNode.nodeY - nodeY);
+        int distance = xD + yD;
+        if(_renderer != null)
+            _renderer.enabled = distance < _visibilityRadius;
     }
     void SetReferenceNode()
     {
         nodeX = Mathf.RoundToInt(transform.position.x - Node.instance.nodeGrid.gridOrigin.x);
         nodeY = Mathf.RoundToInt(transform.position.z - Node.instance.nodeGrid.gridOrigin.z);
         node = Node.instance.nodeGrid.grid[nodeX, nodeY];
-    }
-    void DistanceCheck(NodeClass playerNode)
-    {
-        int xD = Mathf.Abs(playerNode.nodeX - nodeX);
-        int yD = Mathf.Abs(playerNode.nodeY - nodeY);
-        int distance = xD + yD;
-        _renderer.enabled = distance < _visibilityRadius;
     }
 }

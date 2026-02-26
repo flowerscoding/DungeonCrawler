@@ -7,9 +7,10 @@ public class PlayerDeath : MonoBehaviour
 {
     public Image blackScreen;
     public TextMeshProUGUI deathTmesh;
+    public Canvas attackChargeCanvas;
     public void DeathScreen()
     {
-        
+        attackChargeCanvas.enabled = false;
         StartCoroutine(deathCoroutine());
     }
     IEnumerator deathCoroutine()

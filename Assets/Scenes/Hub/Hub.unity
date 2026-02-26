@@ -15730,6 +15730,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   nodeGrid: {fileID: 1969019907}
+  nodeVisibilityScripts: []
+  nodeVisibilityMultiplesScripts: []
 --- !u!1 &163740046
 GameObject:
   m_ObjectHideFlags: 0
@@ -69567,7 +69569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 780255354}
   m_Layer: 0
-  m_Name: ChapelExit
+  m_Name: ChapelEntrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91180,6 +91182,37 @@ MonoBehaviour:
   nodeX: 0
   nodeY: 0
   yWorldPosOffset: 0.1
+--- !u!1 &1066252923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1066252924}
+  m_Layer: 0
+  m_Name: HubEntrance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1066252924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066252923}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2, y: 0.1, z: -6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1068183450
 GameObject:
   m_ObjectHideFlags: 0
@@ -148759,6 +148792,69 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094933181}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2095910039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2095910041}
+  - component: {fileID: 2095910040}
+  - component: {fileID: 2095910042}
+  m_Layer: 0
+  m_Name: CastleEntrance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2095910040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095910039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43119d0bb7ed56242b2e4c2f38c22ec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TransportController
+  sceneDestination: 4
+  spawnPoint: CastleEntrance
+--- !u!4 &2095910041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095910039}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14, y: 0, z: -2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2095910042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095910039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf63259b2d3c847489365a3375008e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridAgent
+  state: 10
+  nodeX: 0
+  nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &2097765588
 GameObject:
   m_ObjectHideFlags: 0
@@ -153158,3 +153254,5 @@ SceneRoots:
   - {fileID: 4511600696503113626}
   - {fileID: 2044863002}
   - {fileID: 780255354}
+  - {fileID: 2095910041}
+  - {fileID: 1066252924}

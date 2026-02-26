@@ -13,15 +13,6 @@ public class NodeVisibilityMultiple : MonoBehaviour
     void Start()
     {
         SetReferenceNode();
-        DistanceCheck(Player.instance.gridAgent.node);
-    }
-    void OnEnable()
-    {
-        PlayerGridAgent.OnPlayerMovement += DistanceCheck;
-    }
-    void OnDisable()
-    {
-        PlayerGridAgent.OnPlayerMovement -= DistanceCheck;
     }
     void SetReferenceNode()
     {
@@ -29,7 +20,7 @@ public class NodeVisibilityMultiple : MonoBehaviour
         nodeY = Mathf.RoundToInt(transform.position.z - Node.instance.nodeGrid.gridOrigin.z);
         node = Node.instance.nodeGrid.grid[nodeX, nodeY];
     }
-    void DistanceCheck(NodeClass playerNode)
+    public void DistanceCheck(NodeClass playerNode)
     {
         int xD = Mathf.Abs(playerNode.nodeX - nodeX);
         int yD = Mathf.Abs(playerNode.nodeY - nodeY);

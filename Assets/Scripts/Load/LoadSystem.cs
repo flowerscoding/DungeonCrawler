@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class LoadSystem : MonoBehaviour
 {
     public static LoadSystem instance;
-    public static event Action OnLoad;
     public Image transitionImg;
     public enum Scene
     {
@@ -58,12 +57,10 @@ public class LoadSystem : MonoBehaviour
         SaveSystem.Instance.SaveGame();
         SaveSystem.Instance.LoadSaveData();
 
-
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
 
-        OnLoad?.Invoke(); //world signal
-
         yield return new WaitForSeconds(pauseTime);
+        Player.instance.LoadPlayer();
         Player.instance.StateChange(PlayerState.State.Idle);
 
         progress = 0;

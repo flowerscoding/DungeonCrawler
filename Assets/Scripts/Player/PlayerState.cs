@@ -220,22 +220,6 @@ public class PlayerState : MonoBehaviour
 
         bloodParticles.Play();
         Player.instance.animateMachine.Animate(AnimateMachine.State.Dead);
-        StartCoroutine(TrackDead());
-    }
-    IEnumerator TrackDead()
-    {
-        yield return null;
-        float progress = 0;
-        while (progress < 1)
-        {
-            AnimatorStateInfo info = Player.instance.animateMachine.animator.GetCurrentAnimatorStateInfo(0);
-            progress = info.normalizedTime;
-            yield return null;
-        }
-        if (progress >= 1)
-        {
-            Player.instance.PlayerDied();
-        }
     }
     void HurtState() //damage already taken in player controller and has been calculated to still survive
     {

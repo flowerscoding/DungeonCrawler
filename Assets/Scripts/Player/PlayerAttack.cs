@@ -81,6 +81,7 @@ public class PlayerAttack : MonoBehaviour
         _chargeBar.fillAmount = 0;
         _attackChargeAmount = 0;
         _attackReady = false;
+
     }
     public void AttackLanded()
     {

@@ -387,6 +387,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &12840636
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,6 +530,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &12987752
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,6 +1064,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &29107598
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,6 +1368,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &29491041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2354,6 +2358,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &65720633
 GameObject:
   m_ObjectHideFlags: 0
@@ -3648,6 +3653,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &126856409
 GameObject:
   m_ObjectHideFlags: 0
@@ -3742,6 +3748,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &136623555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4658,6 +4665,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &168045361
 GameObject:
   m_ObjectHideFlags: 0
@@ -5479,6 +5487,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &188315718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5633,6 +5642,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &191392094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6067,6 +6077,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &204621032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6629,6 +6640,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &213383116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6819,6 +6831,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &222264831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7554,6 +7567,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &245189781
 GameObject:
   m_ObjectHideFlags: 0
@@ -7709,6 +7723,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &245790479
 GameObject:
   m_ObjectHideFlags: 0
@@ -8242,6 +8257,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &259191897
 GameObject:
   m_ObjectHideFlags: 0
@@ -8293,6 +8309,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &259191900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9205,6 +9222,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &284570178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16775,6 +16793,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &367310115
 GameObject:
   m_ObjectHideFlags: 0
@@ -17205,6 +17224,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &381046700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17702,6 +17722,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &393105156
 GameObject:
   m_ObjectHideFlags: 0
@@ -18254,6 +18275,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &402880818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18751,6 +18773,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &411353679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19110,6 +19133,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &426264506
 GameObject:
   m_ObjectHideFlags: 0
@@ -19991,6 +20015,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &454189557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20351,6 +20376,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &465910920
 GameObject:
   m_ObjectHideFlags: 0
@@ -20619,6 +20645,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &470446203
 GameObject:
   m_ObjectHideFlags: 0
@@ -21027,6 +21054,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &481271337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21342,6 +21370,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &490276217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21701,6 +21730,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &500921450
 GameObject:
   m_ObjectHideFlags: 0
@@ -21843,6 +21873,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &501093412
 GameObject:
   m_ObjectHideFlags: 0
@@ -22386,6 +22417,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &521442173
 GameObject:
   m_ObjectHideFlags: 0
@@ -23071,6 +23103,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &529971474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28349,6 +28382,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &552719033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28503,6 +28537,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &561817214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28921,6 +28956,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &583332726
 GameObject:
   m_ObjectHideFlags: 0
@@ -29098,6 +29134,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &584437625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29366,6 +29403,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &588326397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29679,6 +29717,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &602209120
 GameObject:
   m_ObjectHideFlags: 0
@@ -30073,6 +30112,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &620318416
 GameObject:
   m_ObjectHideFlags: 0
@@ -30376,6 +30416,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &633927613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30609,6 +30650,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &637589721
 GameObject:
   m_ObjectHideFlags: 0
@@ -31029,6 +31071,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &645177772
 GameObject:
   m_ObjectHideFlags: 0
@@ -31171,6 +31214,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &645551186
 GameObject:
   m_ObjectHideFlags: 0
@@ -31866,6 +31910,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &661997208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32112,6 +32157,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &668563271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33454,6 +33500,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &697537942
 GameObject:
   m_ObjectHideFlags: 0
@@ -33906,6 +33953,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &700581236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34060,6 +34108,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &702443387
 GameObject:
   m_ObjectHideFlags: 0
@@ -39901,6 +39950,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &713016532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41029,6 +41079,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &745445471
 GameObject:
   m_ObjectHideFlags: 0
@@ -41676,6 +41727,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &765933215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42202,6 +42254,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &786494165
 GameObject:
   m_ObjectHideFlags: 0
@@ -42596,6 +42649,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &798488122
 GameObject:
   m_ObjectHideFlags: 0
@@ -53264,6 +53318,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &847516202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54631,6 +54686,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &887109907
 GameObject:
   m_ObjectHideFlags: 0
@@ -54974,6 +55030,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &892293246
 GameObject:
   m_ObjectHideFlags: 0
@@ -55198,6 +55255,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &897463615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61905,6 +61963,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &955294594
 GameObject:
   m_ObjectHideFlags: 0
@@ -62831,6 +62890,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &988536426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63064,6 +63124,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &991965807
 GameObject:
   m_ObjectHideFlags: 0
@@ -63115,6 +63176,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &991965810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63510,6 +63572,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &997778059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63929,6 +63992,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1023575587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64426,6 +64490,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1044129528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65086,6 +65151,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1064818719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66081,6 +66147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   nodeGrid: {fileID: 1148418431}
+  nodeVisibilityScripts: []
+  nodeVisibilityMultiplesScripts: []
 --- !u!1 &1098304689
 GameObject:
   m_ObjectHideFlags: 0
@@ -71382,6 +71450,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1116794192
 GameObject:
   m_ObjectHideFlags: 0
@@ -71524,6 +71593,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1121616497
 GameObject:
   m_ObjectHideFlags: 0
@@ -71575,6 +71645,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1121616500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77208,6 +77279,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1151831491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77970,6 +78042,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1159810423
 GameObject:
   m_ObjectHideFlags: 0
@@ -78363,6 +78436,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1166192582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80295,6 +80369,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1222257157
 GameObject:
   m_ObjectHideFlags: 0
@@ -80450,6 +80525,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1228840267
 GameObject:
   m_ObjectHideFlags: 0
@@ -80628,6 +80704,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1239145900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81460,6 +81537,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1252744039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81866,6 +81944,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1274269816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82271,6 +82350,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1280646594
 GameObject:
   m_ObjectHideFlags: 0
@@ -82705,6 +82785,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1292735620
 GameObject:
   m_ObjectHideFlags: 0
@@ -83742,6 +83823,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1304946343
 GameObject:
   m_ObjectHideFlags: 0
@@ -84337,6 +84419,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1324245285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85680,6 +85763,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1350836249
 GameObject:
   m_ObjectHideFlags: 0
@@ -85807,6 +85891,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1355650643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86178,6 +86263,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1372361502
 GameObject:
   m_ObjectHideFlags: 0
@@ -86824,6 +86910,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1385224775
 GameObject:
   m_ObjectHideFlags: 0
@@ -87455,6 +87542,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1400430973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87724,6 +87812,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1408953762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95327,6 +95416,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1480542847
 GameObject:
   m_ObjectHideFlags: 0
@@ -95378,6 +95468,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1480542850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96116,6 +96207,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1492548842
 GameObject:
   m_ObjectHideFlags: 0
@@ -96510,6 +96602,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1495641107
 GameObject:
   m_ObjectHideFlags: 0
@@ -96687,6 +96780,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1507343660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97386,6 +97480,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1521655680
 GameObject:
   m_ObjectHideFlags: 0
@@ -97793,6 +97888,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1524572698
 GameObject:
   m_ObjectHideFlags: 0
@@ -97935,6 +98031,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1527177878
 GameObject:
   m_ObjectHideFlags: 0
@@ -98203,6 +98300,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1537405146
 GameObject:
   m_ObjectHideFlags: 0
@@ -98369,6 +98467,37 @@ Transform:
   - {fileID: 1735083388}
   m_Father: {fileID: 1666197859}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1544036331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1544036332}
+  m_Layer: 0
+  m_Name: CastleEntrance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1544036332
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544036331}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2, y: -0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1547580750
 GameObject:
   m_ObjectHideFlags: 0
@@ -98511,6 +98640,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1548825965
 GameObject:
   m_ObjectHideFlags: 0
@@ -99632,6 +99762,7 @@ MonoBehaviour:
   state: 6
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1582641548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99646,6 +99777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   interactUI: {fileID: 1421767907}
   targetScene: 0
+  spawnPoint: HubEntrance
 --- !u!114 &1582641549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99764,6 +99896,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1588580344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105211,6 +105344,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1596811641
 GameObject:
   m_ObjectHideFlags: 0
@@ -105262,6 +105396,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1596811644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105921,6 +106056,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1603885831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106317,6 +106453,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1610732264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106597,6 +106734,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1616585021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107649,6 +107787,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1637752716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108706,6 +108845,7 @@ MonoBehaviour:
   state: 4
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1698586123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108936,6 +109076,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1715913050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109330,6 +109471,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1720890581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109599,6 +109741,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1724937095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109753,6 +109896,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1725724828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110435,6 +110579,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1735824634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110992,6 +111137,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1757545327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111146,6 +111292,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1763585760
 GameObject:
   m_ObjectHideFlags: 0
@@ -111489,6 +111636,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1782325130
 GameObject:
   m_ObjectHideFlags: 0
@@ -111918,6 +112066,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1799094312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112151,6 +112300,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1811371434
 GameObject:
   m_ObjectHideFlags: 0
@@ -112606,6 +112756,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1825010497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113091,6 +113242,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1841341766
 GameObject:
   m_ObjectHideFlags: 0
@@ -113233,6 +113385,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1843757440
 GameObject:
   m_ObjectHideFlags: 0
@@ -113879,6 +114032,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1853440187
 GameObject:
   m_ObjectHideFlags: 0
@@ -114057,6 +114211,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1854958153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114337,6 +114492,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1858701380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114645,6 +114801,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1889993204
 GameObject:
   m_ObjectHideFlags: 0
@@ -114949,6 +115106,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1891605376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115459,6 +115617,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1913053676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116147,6 +116306,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1927188830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116420,6 +116580,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1929923722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116958,6 +117119,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1951816142
 GameObject:
   m_ObjectHideFlags: 0
@@ -117100,6 +117262,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1953474170
 GameObject:
   m_ObjectHideFlags: 0
@@ -117620,6 +117783,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1971743820
 GameObject:
   m_ObjectHideFlags: 0
@@ -117762,6 +117926,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1974162661
 GameObject:
   m_ObjectHideFlags: 0
@@ -117813,6 +117978,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &1974162664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118298,6 +118464,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &1997601488
 GameObject:
   m_ObjectHideFlags: 0
@@ -124890,6 +125057,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &2061186389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125401,6 +125569,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &2080156195
 GameObject:
   m_ObjectHideFlags: 0
@@ -126182,6 +126351,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &2133735326
 GameObject:
   m_ObjectHideFlags: 0
@@ -126702,6 +126872,7 @@ MonoBehaviour:
   state: 1
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &6496526149950401
 GameObject:
   m_ObjectHideFlags: 0
@@ -127507,6 +127678,11 @@ MonoBehaviour:
   - {fileID: 1081151663}
   - {fileID: 1486490936}
   controller: {fileID: 966017380389555221}
+  activeAttack:
+    attackName: 
+    attackDamage: 0
+    chargeDuration: 0
+    staggerValue: 0
   chargeBar: {fileID: 1763585762}
   pauseCharges: 0
 --- !u!114 &966017380389555215
@@ -127596,6 +127772,7 @@ MonoBehaviour:
   state: 3
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &966017380389555221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130448,6 +130625,7 @@ MonoBehaviour:
   state: 9
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!1 &4218298013081047024
 GameObject:
   m_ObjectHideFlags: 0
@@ -133145,6 +133323,7 @@ MonoBehaviour:
   state: 3
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &7867978130260212827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133166,6 +133345,11 @@ MonoBehaviour:
   - {fileID: 1050439288}
   - {fileID: 711116530}
   controller: {fileID: 7867978130260212832}
+  activeAttack:
+    attackName: 
+    attackDamage: 0
+    chargeDuration: 0
+    staggerValue: 0
   chargeBar: {fileID: 1508191741}
   pauseCharges: 0
 --- !u!114 &7867978130260212828
@@ -133808,6 +133992,7 @@ MonoBehaviour:
   state: 4
   nodeX: 0
   nodeY: 0
+  yWorldPosOffset: 0
 --- !u!114 &8663480219721126230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134228,3 +134413,4 @@ SceneRoots:
   - {fileID: 1666197859}
   - {fileID: 1582641546}
   - {fileID: 4185459005711780197}
+  - {fileID: 1544036332}

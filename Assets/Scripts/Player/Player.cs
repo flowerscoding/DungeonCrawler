@@ -11,11 +11,11 @@ public class Player : MonoBehaviour
     public PlayerState playerState;
     public PlayerInteract playerInteract;
     public PlayerBlock playerBlock;
-    public  PlayerDeath playerDeath;
+    public PlayerDeath playerDeath;
     public PlayerOcclusion playerOcclusion;
     public ItemUsage itemUsage;
     public PlayerSurrounding playerSurrounding;
-    public PlayerStamina playerStamina;
+    public PlayerLoad playerLoad;
     void Awake()
     {
         if(instance != null)
@@ -97,5 +97,9 @@ public class Player : MonoBehaviour
     public bool CheckSurrounding(PlayerSurrounding.CheckType type)
     {
         return playerSurrounding.CheckFor(type);
+    }
+    public void LoadPlayer()
+    {
+        playerLoad.LoadPlayer();
     }
 }

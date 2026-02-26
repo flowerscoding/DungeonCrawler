@@ -1,9 +1,7 @@
-using System;
 using UnityEngine;
 
 public class PlayerGridAgent : MonoBehaviour
 {
-    public static event Action<NodeClass> OnPlayerMovement;
     public NodeClass.State state;
     public NodeClass node { get; private set; }
     public int nodeX;
@@ -27,7 +25,7 @@ public class PlayerGridAgent : MonoBehaviour
         node.boulderController = null;
         node.ladderController = null;
 
-        OnPlayerMovement?.Invoke(node);
+        Node.instance.DistanceCheck(node);
     }
     public void SetNode(NodeClass newNode)
     {
@@ -48,6 +46,6 @@ public class PlayerGridAgent : MonoBehaviour
                 break;
         }
 
-        OnPlayerMovement?.Invoke(node);
+        Node.instance.DistanceCheck(node);
     }
 }

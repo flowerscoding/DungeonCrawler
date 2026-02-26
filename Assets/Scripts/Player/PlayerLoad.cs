@@ -2,19 +2,14 @@ using UnityEngine;
 
 public class PlayerLoad : MonoBehaviour
 {
+    public Transform player;
     public Transform playerHand;
     public Canvas healthCanvas;
-    void OnEnable()
-    {
-        LoadSystem.OnLoad += LoadPlayer;
-    }
-    void OnDisable()
-    {
-        LoadSystem.OnLoad -= LoadPlayer;
-    }
-    void LoadPlayer()
+    public void LoadPlayer()
     {
         playerHand.GetChild(0).GetComponent<MeshRenderer>().enabled = true;
         healthCanvas.enabled = true;
+        player.position = Player.instance.gridAgent.node.worldPos;
+        Node.instance.DistanceCheck(Player.instance.gridAgent.node);
     }
 }

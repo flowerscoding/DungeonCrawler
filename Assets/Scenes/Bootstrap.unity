@@ -1499,7 +1499,7 @@ MonoBehaviour:
   playerOcclusion: {fileID: 103836419}
   itemUsage: {fileID: 48610996}
   playerSurrounding: {fileID: 1682402508}
-  playerStamina: {fileID: 0}
+  playerLoad: {fileID: 411197804}
 --- !u!1 &349797937
 GameObject:
   m_ObjectHideFlags: 0
@@ -2156,6 +2156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bde71ac20d1bf94dadaa16f42e78d8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  player: {fileID: 1102344309792971970}
   playerHand: {fileID: 103171172}
   healthCanvas: {fileID: 96798078}
 --- !u!1 &451279483
@@ -4808,6 +4809,7 @@ MonoBehaviour:
     storageConsumableItems: []
     storageArmorItems: []
     storageKeyItems: []
+    spawnPoint: 
 --- !u!1 &937102566
 GameObject:
   m_ObjectHideFlags: 0
@@ -8194,10 +8196,10 @@ MonoBehaviour:
   attackStat: 1
   defenseStat: 1
   staminaMax: 10
-  worldPos: {x: 0, y: 0, z: 0}
   attackHitPoint: 0.3
   destroyHitPoint: 0.5
   healthBar: {fileID: 1946643621}
+  spawnPoint: 
   currentScene: 0
   weapon:
     data: {fileID: 11400000, guid: de6b72b4bdd8e89438597e025225d09a, type: 2}
@@ -10737,6 +10739,7 @@ MonoBehaviour:
   attackChargeMax: 3
   _chargeCanvas: {fileID: 1030727021}
   _chargeBar: {fileID: 1979707814}
+  _attackReady: 0
 --- !u!114 &1102344309792971975
 MonoBehaviour:
   m_ObjectHideFlags: 0

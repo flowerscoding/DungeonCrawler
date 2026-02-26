@@ -179,8 +179,6 @@ public class PlayerMovement : MonoBehaviour
 
         Player.instance.gridAgent.SetNode(targetNode);
 
-        //not sure if i'll use this tbh but i just have it for now
-        Player.instance.UpdatePos(targetNode.worldPos);
         SaveSystem.Instance.SaveGame();
 
 
@@ -292,7 +290,7 @@ public class PlayerMovement : MonoBehaviour
             if (t > TransitionData.LadderToSceneTime)
             {
                 LoadSystem.Scene scene = ladderNode.ladderController.GetTargetScene();
-                LoadSystem.instance.LoadScene(scene);
+                LoadSystem.instance.LoadScene(scene, ladderNode.ladderController.spawnPoint);
                 yield break;
             }
             float duration = TurnManager.instance.climbDuration;

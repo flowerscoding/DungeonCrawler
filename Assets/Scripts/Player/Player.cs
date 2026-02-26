@@ -69,9 +69,9 @@ public class Player : MonoBehaviour
     {
         playerData.SceneUpdate(scene);
     }
-    public void UpdatePos(Vector3 pos)
+    public void SpawnPointUpdate(string newSpawnPoint)
     {
-        playerData.UpdateWorldPos(pos);
+        playerData.SpawnPointUpdate(newSpawnPoint);
     }
     public bool UseItem(ItemData itemData)
     {

@@ -7,7 +7,7 @@ public class GridAgent : MonoBehaviour
     public int nodeX;
     public int nodeY;
     public float yWorldPosOffset;
-    void Awake()
+    void Start()
     {
         CreateStartNode();
     }

@@ -5,6 +5,7 @@ public class LadderController : MonoBehaviour
     public Canvas interactUI;
     public bool active {get; private set;}
    [SerializeField] private LoadSystem.Scene targetScene;
+   public string spawnPoint;
     public void ActivateLadder()
     {
         interactUI.enabled = true;

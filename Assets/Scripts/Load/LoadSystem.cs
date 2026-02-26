@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 public class LoadSystem : MonoBehaviour
 {
     public static LoadSystem instance;
-    public static event System.Action OnLoad;
+    public static event Action OnLoad;
     public Image transitionImg;
     public enum Scene
     {
@@ -25,13 +26,14 @@ public class LoadSystem : MonoBehaviour
         }
         instance = this;
     }
-    public void LoadScene(Scene scene)
+    public void LoadScene(Scene scene, String spawnPoint)
     {
+        Player.instance.SpawnPointUpdate(spawnPoint);
         Player.instance.SceneUpdate(scene);
         string sceneName = scene.ToString();
-        StartCoroutine(TransitionEffect(sceneName));
+        StartCoroutine(TransitionEffect(sceneName, spawnPoint));
     }
-    IEnumerator TransitionEffect(string sceneName)
+    IEnumerator TransitionEffect(string sceneName, string spawnPoint)
     {
         Color c = new Color();
         float progress = 0;
@@ -50,6 +52,7 @@ public class LoadSystem : MonoBehaviour
         }
         c.a = 1;
         transitionImg.color = c;
+
         SceneManager.LoadScene(sceneName);
 
         SaveSystem.Instance.SaveGame();
@@ -57,9 +60,9 @@ public class LoadSystem : MonoBehaviour
 
 
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
-        
+
         OnLoad?.Invoke(); //world signal
-        
+
         yield return new WaitForSeconds(pauseTime);
         Player.instance.StateChange(PlayerState.State.Idle);
 
@@ -76,7 +79,7 @@ public class LoadSystem : MonoBehaviour
             yield return null;
         }
         TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
-         c.a = 0;
+        c.a = 0;
         transitionImg.color = c;
     }
 }

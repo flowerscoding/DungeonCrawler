@@ -10,6 +10,6 @@ public class Bootstrap : MonoBehaviour
     void Start()
     {
         SaveSystem.Instance.LoadSaveData();
-        LoadSystem.instance.LoadScene(SaveSystem.Instance.currentData.scene);
+        LoadSystem.instance.LoadScene(SaveSystem.Instance.currentData.scene, null);
     }
 }

@@ -7,6 +7,11 @@ public class NodeGrid : MonoBehaviour
     public int gridSize;
     public float offSet;
     public NodeClass[,] grid { get; private set; }
+    void Awake()
+    {
+        CreateGrid();
+        AssignPlayer();
+    }
     public void CreateGrid()
     {
         grid = new NodeClass[gridSize, gridSize];
@@ -26,10 +31,32 @@ public class NodeGrid : MonoBehaviour
     }
     public void AssignPlayer()
     {
-        int x = Mathf.FloorToInt(spawnPos.x - gridOrigin.x);
-        int y = Mathf.FloorToInt(spawnPos.z - gridOrigin.z);
-        NodeClass node = Node.instance.nodeGrid.grid[x, y];
-        Player.instance.gridAgent.SetStartNode(node);
-        Player.instance.InitializeStartNode(node);
+        string spawnPoint = Player.instance.playerData.spawnPoint;
+        if (spawnPoint == null)
+        {
+            int x = Mathf.FloorToInt(spawnPos.x - gridOrigin.x);
+            int y = Mathf.FloorToInt(spawnPos.z - gridOrigin.z);
+            NodeClass node = Node.instance.nodeGrid.grid[x, y];
+            Player.instance.gridAgent.SetStartNode(node);
+            Player.instance.InitializeStartNode(node);
+            return;
+        }
+        if (spawnPoint != null)
+        {
+            Transform spawn;
+            if (GameObject.Find(spawnPoint))
+            {
+                spawn = GameObject.Find(spawnPoint).transform;
+                Player.instance.SpawnPointUpdate(spawnPoint);
+                int x2 = Mathf.FloorToInt(spawn.position.x - gridOrigin.x);
+                int y2 = Mathf.FloorToInt(spawn.position.z - gridOrigin.z);
+                NodeClass node2 = Node.instance.nodeGrid.grid[x2, y2];
+                Vector3 origPos = node2.worldPos;
+                node2.worldPos = spawn.transform.position;
+                Player.instance.gridAgent.SetStartNode(node2);
+                Player.instance.InitializeStartNode(node2);
+                node2.worldPos = origPos; //to erase any humps created by gridagent offsets
+            }
+        }
     }
 }

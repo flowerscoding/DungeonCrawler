@@ -9,11 +9,11 @@ public class PlayerData : MonoBehaviour
     public int attackStat;
     public int defenseStat;
     public float staminaMax;
-    public Vector3 worldPos;
 
     public float attackHitPoint;
     public float destroyHitPoint;
     public Image healthBar;
+    public string spawnPoint;
 
     public LoadSystem.Scene currentScene;
     [System.Serializable]
@@ -56,7 +56,6 @@ public class PlayerData : MonoBehaviour
     {
         currentScene = SaveSystem.Instance.currentData.scene;
         curHealth = SaveSystem.Instance.currentData.health;
-        worldPos = SaveSystem.Instance.currentData.position;
 
         healthBar.fillAmount = (float) curHealth / maxHealth;
     }
@@ -64,9 +63,9 @@ public class PlayerData : MonoBehaviour
     {
         currentScene = scene;
     }
-    public void UpdateWorldPos(Vector3 pos)
+    public void SpawnPointUpdate(string newSpawnPoint)
     {
-        worldPos = pos;
+        spawnPoint = newSpawnPoint;
     }
     public void Heal(int amount)
     {

@@ -10,7 +10,7 @@ public class NodeVisibilityMultiple : MonoBehaviour
     public int nodeX;
     public int nodeY;
     private int _visibilityRadius = 11;
-    void Awake()
+    void Start()
     {
         SetReferenceNode();
         DistanceCheck(Player.instance.gridAgent.node);

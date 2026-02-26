@@ -26,6 +26,7 @@ public class SaveSystem : MonoBehaviour
         public List<ItemData> storageConsumableItems = new List<ItemData>();
         public List<ItemData> storageArmorItems = new List<ItemData>();
         public List<ItemData> storageKeyItems = new List<ItemData>();
+        public string spawnPoint;
     }
     public void SaveGame()
     {
@@ -33,13 +34,12 @@ public class SaveSystem : MonoBehaviour
         {
             health = Player.instance.playerData.curHealth,
             scene = Player.instance.playerData.currentScene,
-            position = Player.instance.playerData.worldPos,
             storage = Inventory.Instance.inventoryStorage.storage,
             storageConsumableItems = Inventory.Instance.inventoryStorage.storageConsumableItems,
             storageArmorItems = Inventory.Instance.inventoryStorage.storageArmorItems,
             storageKeyItems = Inventory.Instance.inventoryStorage.storageKeyItems,
+            spawnPoint = Player.instance.playerData.spawnPoint,
         };
-
         string json = JsonUtility.ToJson(currentData, true);
         File.WriteAllText(savePath, json);
     }

@@ -149,8 +149,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.9380054
-        functionName: IdleSwitch
+      - time: 1
+        functionName: EndEnemyTurn
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -308,6 +308,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 1
+        functionName: EndTurn
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -375,6 +382,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.8174158
         functionName: LandStaggerEffects
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: EndTurn
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

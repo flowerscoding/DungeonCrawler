@@ -14751,7 +14751,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -15665,10 +15665,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   damageOutput: 1
-  attackChargeMax: 3
   _chargeCanvas: {fileID: 1030727021}
   _chargeBar: {fileID: 1979707814}
-  _attackReady: 0
 --- !u!114 &1102344309792971975
 MonoBehaviour:
   m_ObjectHideFlags: 0

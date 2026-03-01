@@ -307,4 +307,17 @@ public class PlayerMovement : MonoBehaviour
             Player.instance.StateChange(PlayerState.State.Idle);
         }
     }
+    public IEnumerator RotateBody(Vector3 goal, float duration)
+    {
+        float progress = 0;
+        Quaternion startRot = playerRB.rotation;
+        Quaternion targetRot = Quaternion.LookRotation(goal - playerRB.position);
+        while(progress < 1)
+        {
+            progress += Time.deltaTime / duration;
+            playerRB.rotation = Quaternion.Slerp(startRot, targetRot, progress);
+            yield return null;
+        }
+        playerRB.rotation = targetRot;
+    }
 }

@@ -79,9 +79,19 @@ public class EnemyAttack : MonoBehaviour
     IEnumerator Attack()
     {
         if (controller.enemyState.state != EnemyState.State.Active) yield break;
+        while(TurnManager.instance.state != TurnManager.State.PlayerTurn)
+        { //put on hold in case player/enemy is attacking
+            yield return null;
+        }
+        Enemy.instance.PauseCharges(true);
         if (controller.gridAgent.nodeY > Player.instance.gridAgent.nodeY)
             Player.instance.OccludePlayer(true);
         Player.instance.SuspendMovement(true);
+
+        float playerRotDuration = 0.2f;
+        Player.instance.RotatePlayerBody(transform.position, playerRotDuration);
+
+
         TurnManager.instance.ChangeTurn(TurnManager.State.Resolving);
 
         switch (activeAttack.attackName)

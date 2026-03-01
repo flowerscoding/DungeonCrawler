@@ -71,4 +71,8 @@ public class EnemyController : MonoBehaviour
     {
         enemyAttack.PauseCharges(pause);
     }
+    public void RotateEnemyBody(Vector3 goal, float duration)
+    {
+        StartCoroutine(enemyMovement.RotateBody(goal, duration));
+    }
 }

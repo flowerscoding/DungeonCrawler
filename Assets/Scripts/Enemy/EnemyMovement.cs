@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.XInput;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -93,5 +92,18 @@ public class EnemyMovement : MonoBehaviour
             NodeClass newGoal = goalNodes[0];
             StartCoroutine(EnemyAnim(goal, newGoal.worldPos, controller, newGoal));
         }
+    }
+    public IEnumerator RotateBody(Vector3 goal, float duration)
+    {
+        float progress = 0;
+        Quaternion startRot = transform.rotation;
+        Quaternion targetRot = Quaternion.LookRotation(goal - transform.position);
+        while(progress < 1)
+        {
+            progress += Time.deltaTime / duration;
+            transform.rotation = Quaternion.Slerp(startRot, targetRot, progress);
+            yield return null;
+        }
+        transform.rotation = targetRot;
     }
 }

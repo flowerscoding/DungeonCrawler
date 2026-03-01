@@ -56,6 +56,7 @@ public class Player : MonoBehaviour
     public void SuccessfulParry(EnemyController controller)
     {
         playerBlock.SuccessfulParry(controller);
+        playerAttack.EnableAttackCharge(true, true);
     }
     public void OccludePlayer(bool occlude)
     {
@@ -101,5 +102,9 @@ public class Player : MonoBehaviour
     public void LoadPlayer()
     {
         playerLoad.LoadPlayer();
+    }
+    public void RotatePlayerBody(Vector3 goal, float duration)
+    {
+        StartCoroutine(playerMovement.RotateBody(goal, duration));
     }
 }

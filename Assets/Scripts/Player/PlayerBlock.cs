@@ -99,7 +99,9 @@ public class PlayerBlock : MonoBehaviour
 
         Player.instance.animateMachine.ResetMachine();
 
+        ParryBlockOn();
         TurnManager.instance.ChangeTurn(TurnManager.State.PlayerTurn);
+        Enemy.instance.PauseCharges(false);
 
         controller.TakeStagger(controller.enemyAttack.activeAttack.staggerValue);
     }
@@ -126,8 +128,8 @@ public class PlayerBlock : MonoBehaviour
                 if (enemyController.ParryableCheck())
                 {
                     parried = true;
-                    Player.instance.playerBlock.SuccessfulParry(enemyController);
-                    Player.instance.playerBlock.BlockOn();
+                    Player.instance.SuccessfulParry(enemyController);
+                    BlockOn();
                 }
             }
         }

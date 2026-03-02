@@ -83,6 +83,7 @@ public class EnemyAttack : MonoBehaviour
         { //put on hold in case player/enemy is attacking
             yield return null;
         }
+        if(controller.enemyState.state != EnemyState.State.Active) yield break;
         Enemy.instance.PauseCharges(true);
         if (controller.gridAgent.nodeY > Player.instance.gridAgent.nodeY)
             Player.instance.OccludePlayer(true);
